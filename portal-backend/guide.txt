@@ -1,6 +1,6 @@
 • Use this from portal-backend each time:
 
-  cd ~/Documents/bioinformatics/todel_2/kreatbio_github/kreatbio-public-v5/portal-backend
+  cd ~/Documents/bioinformatics/todel_2/web/v5/portal-backend
 
   PORT=8080 \
   GCS_BUCKET=koda123 \
