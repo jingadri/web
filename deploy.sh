@@ -202,7 +202,7 @@ else
 fi
 
 printf '\nPublishing GitHub Pages...\n'
-github_username="adrianakreatbio"
+github_username="jingadri"
 read -r -s -p "GitHub personal access token for $github_username: " github_token
 printf '\n'
 [[ -n "$github_token" ]] || fail "a GitHub personal access token is required to publish the portal."
