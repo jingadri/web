@@ -70,7 +70,7 @@ svg .m{fill:var(--mute)}
 </style>
 </head>
 <body>
-<nav id="toc" aria-label="Sections"><a href="#s0"><b>★</b> My project</a><a href="#s1"><b>1</b> Why</a><a href="#s2"><b>2</b> Immunity</a><a href="#s3"><b>3</b> NLR</a><a href="#s4"><b>4</b> Workflow</a><a href="#s5"><b>5</b> Design zoom</a><a href="#s6"><b>6</b> Software</a><a href="#s7"><b>7</b> Pipeline</a><a href="#s8"><b>8</b> Automation</a><a href="#s9"><b>9</b> AI agents</a><a href="#s10"><b>10</b> Binding≠signal</a><a href="#s11"><b>11</b> Calcium</a><a href="#s12"><b>12</b> Modules</a><a href="#s13"><b>13</b> Glossary</a></nav>
+<nav id="toc" aria-label="Sections"><a href="#s0"><b>&#9733;</b> My project</a><a href="#s1"><b>1</b> Why</a><a href="#s2"><b>2</b> Immunity</a><a href="#s3"><b>3</b> Getting in</a><a href="#s4"><b>4</b> Which effector</a><a href="#s5"><b>5</b> NLR</a><a href="#s6"><b>6</b> Workflow</a><a href="#s7"><b>7</b> Find effectors</a><a href="#s8"><b>8</b> Target face</a><a href="#s9"><b>9</b> Design zoom</a><a href="#s10"><b>10</b> Software</a><a href="#s11"><b>11</b> Pipeline</a><a href="#s12"><b>12</b> Automation</a><a href="#s13"><b>13</b> AI agents</a><a href="#s14"><b>14</b> Binding&#8800;signal</a><a href="#s15"><b>15</b> Calcium</a><a href="#s16"><b>16</b> Modules</a><a href="#s17"><b>17</b> Glossary</a></nav>
 <main>
 
 <h1>Building a Synthetic Plant Immune Receptor</h1>
@@ -90,7 +90,7 @@ svg .m{fill:var(--mute)}
   <div class="box D" style="text-align:left"><b>Resistosome</b><small>The ring an activated NLR forms; it opens a channel that lets Ca²⁺ flood in.</small></div>
   <div class="box C" style="text-align:left"><b>Ca²⁺ signal</b><small>A calcium spike inside the cell: an early proof the receptor switched on, not just bound.</small></div>
 </div>
-<p class="sub" style="margin:8px 0 0">Every other term is in the <a href="#s13" style="color:var(--b)">searchable glossary</a> (section 13).</p>
+<p class="sub" style="margin:8px 0 0">Every other term is in the <a href="#s17" style="color:var(--b)">searchable glossary</a> (section 17).</p>
 </div>
 
 <!-- PROJECT -->
@@ -231,7 +231,195 @@ svg .m{fill:var(--mute)}
 </div>
 
 <!-- 3 NLR ARCHITECTURE -->
-<h2 id="s3"><span class="n">3</span>NLR anatomy → the engineering handle</h2>
+<!-- 3 DELIVERY -->
+<h2 id="s3"><span class="n">3</span>How the effector actually gets inside</h2>
+<p class="sub">Two completely different delivery routes. Your project spans <b>bacterial, fungal, oomycete and other</b> pathogens, so you need both — this is not a case of picking one.</p>
+
+<div class="card scroll">
+<svg viewBox="0 0 900 350" width="100%" role="img" aria-label="Bacterial T3SS route versus fungal haustorium route for effector delivery">
+  <!-- bands -->
+  <rect x="10" y="10" width="880" height="330" rx="14" fill="none" stroke="var(--line)"/>
+  <text x="24" y="30" font-size="12" class="m">APOPLAST (outside the plant cell)</text>
+  <rect x="11" y="120" width="878" height="22" fill="var(--c-bg)" stroke="var(--c)"/>
+  <text x="450" y="135" font-size="10" text-anchor="middle" class="m">PLANT CELL WALL — the barrier animal pathogens never face</text>
+  <rect x="11" y="142" width="878" height="14" fill="var(--d-bg)" stroke="var(--d)"/>
+  <text x="450" y="153" font-size="10" text-anchor="middle" class="m">plasma membrane</text>
+  <text x="24" y="176" font-size="12" class="m">CYTOPLASM (where the NLR waits)</text>
+  <line x1="450" y1="58" x2="450" y2="116" stroke="var(--line)" stroke-dasharray="4 4"/>
+
+  <g font-size="13" text-anchor="middle">
+    <text x="230" y="52" font-weight="700" fill="var(--a)">BACTERIA · Type III secretion (T3SS)</text>
+    <text x="672" y="52" font-weight="700" fill="var(--b)">FUNGI / OOMYCETES · no T3SS at all</text>
+
+    <!-- bacterial -->
+    <rect x="150" y="64" width="160" height="46" rx="8" fill="var(--a-bg)" stroke="var(--a)" stroke-width="1.5"/>
+    <text x="230" y="83">Bacterium</text><text x="230" y="99" font-size="11" class="m">effectors folded inside</text>
+    <!-- pilus through wall -->
+    <rect x="222" y="110" width="16" height="34" fill="var(--a-bg)" stroke="var(--a)" stroke-width="1.5"/>
+    <text x="214" y="131" font-size="11" class="m" text-anchor="end">Hrp pilus</text>
+    <!-- translocon -->
+    <rect x="214" y="142" width="32" height="14" fill="var(--a)" stroke="var(--a)"/>
+    <text x="258" y="176" font-size="11" class="m" text-anchor="start">translocon pore</text>
+    <rect x="150" y="196" width="160" height="46" rx="8" fill="var(--a-bg)" stroke="var(--a)" stroke-width="1.5"/>
+    <text x="230" y="215">Effector refolds</text><text x="230" y="231" font-size="11" class="m">travels unfolded, folds here</text>
+
+    <!-- fungal -->
+    <rect x="590" y="64" width="164" height="46" rx="8" fill="var(--b-bg)" stroke="var(--b)" stroke-width="1.5"/>
+    <text x="672" y="83">Hypha → haustorium</text><text x="672" y="99" font-size="11" class="m">invaginates, never breaches</text>
+    <path d="M652 110 q20 26 0 46" fill="none" stroke="var(--b)" stroke-width="1.5"/>
+    <path d="M692 110 q-20 26 0 46" fill="none" stroke="var(--b)" stroke-width="1.5"/>
+    <rect x="636" y="196" width="72" height="34" rx="8" fill="var(--b-bg)" stroke="var(--b)" stroke-width="1.5"/>
+    <text x="672" y="217" font-size="12">BIC</text>
+    <text x="718" y="217" font-size="11" class="m" text-anchor="start">focal secretion</text>
+    <rect x="590" y="262" width="164" height="42" rx="8" fill="var(--b-bg)" stroke="var(--b)" stroke-width="1.5"/>
+    <text x="672" y="279">Host endocytosis</text><text x="672" y="295" font-size="11" class="m">plant's own machinery</text>
+
+    <rect x="150" y="262" width="160" height="42" rx="8" fill="var(--d-bg)" stroke="var(--d)" stroke-width="1.5"/>
+    <text x="230" y="288">Effector in cytoplasm</text>
+  </g>
+
+  <g stroke="var(--mute)" stroke-width="1.5" fill="none" marker-end="url(#ar)">
+    <line x1="230" y1="244" x2="230" y2="258"/>
+    <line x1="672" y1="232" x2="672" y2="258"/>
+    <line x1="586" y1="283" x2="316" y2="283"/>
+  </g>
+</svg>
+</div>
+
+<div class="callout">
+<b>Correction 1 — there is no "receptor X" that opens the T3SS.</b> This is the single most common beginner misconception, and it comes from reading about <i>animal</i> pathogens. In <i>Salmonella</i> and <i>Yersinia</i>, physical contact with the host cell surface does trigger secretion. In <b>plant</b> pathogens no such plant receptor has been established. The T3SS is switched on <i>before</i> contact, by the chemistry of the apoplast: low pH (~5.5), low osmolarity, low nitrogen and carbon, plus plant sugars and phenolic acids. The bacterium is reading "I am in a leaf", not "I am touching a receptor". A sensor at the plant plasma membrane that helps translocon assembly has been <i>proposed</i>, but it is a hypothesis, not a named receptor — so do not build your model around one.
+</div>
+
+<div class="callout">
+<b>Correction 2 — infection does not switch on your synthetic receptor.</b> The order in your project is the other way round. The synthetic receptor is a <b>transgene that is already expressed</b>, with the protein sitting in the cytoplasm before the pathogen ever arrives — it has to be, or detection would always be too late. What infection triggers is everything <i>downstream</i>: binding → conformational change → resistosome → Ca²⁺ influx → defence gene transcription and HR. The plant genome's response is the <i>output</i>, not the receptor's on-switch.
+</div>
+
+<div class="card">
+<div class="big">The sequence of events, correctly ordered</div>
+<div class="row" style="margin-top:10px">
+  <div class="box D">Receptor already present<small>transgene expressed constitutively</small></div><div class="sep">→</div>
+  <div class="box A">Pathogen arrives<small>reads apoplast cues</small></div><div class="sep">→</div>
+  <div class="box A">Delivery machinery built<small>pilus / haustorium</small></div><div class="sep">→</div>
+  <div class="box C">Effector enters, refolds<small>unfolded in transit</small></div><div class="sep">→</div>
+  <div class="box D">Receptor binds it<small>detection event</small></div><div class="sep">→</div>
+  <div class="box D">Defence genes fire<small>the plant's response</small></div>
+</div>
+</div>
+
+<div class="card scroll">
+<table>
+<tr><th>&nbsp;</th><th>Bacteria</th><th>Fungi &amp; oomycetes</th></tr>
+<tr><td><b>Machine</b></td><td>T3SS: basal body + Hrp pilus + translocon pore</td><td>Haustorium / invasive hypha; <b>no T3SS</b></td></tr>
+<tr><td><b>What triggers it</b></td><td>Apoplast chemistry (pH, osmolarity, starvation, plant metabolites)</td><td>Host contact and developmental stage of infection</td></tr>
+<tr><td><b>Crossing the wall</b></td><td>Pilus physically spans the cell wall</td><td>Hypha penetrates wall; membrane stays invaginated, not broken</td></tr>
+<tr><td><b>Final step into cytoplasm</b></td><td>Translocon pore in the plasma membrane</td><td>Focal secretion into the <b>BIC</b>, then the plant's own clathrin-mediated endocytosis</td></tr>
+<tr><td><b>Effector state in transit</b></td><td><b>Unfolded</b>, threaded through a ~2–3 nm channel</td><td>Secreted folded into the interface, then taken up</td></tr>
+<tr><td><b>Examples</b></td><td><i>Pseudomonas syringae</i>, <i>Xanthomonas</i>, <i>Ralstonia</i></td><td><i>Magnaporthe oryzae</i>, <i>Fusarium oxysporum</i>, <i>Phytophthora</i></td></tr>
+<tr><td><b>Relevance to you</b></td><td class="yes">In scope — bacterial effectors are part of the reference set</td><td class="yes">In scope — and the source of the proof-of-concept work (FoSSP17, AVR-Pik)</td></tr>
+</table>
+<p class="sub" style="margin:10px 0 0">Both columns matter. Half 1 of the project builds a structural reference set spanning bacterial, fungal, oomycete and other pathogens, precisely because a SUSS family can turn out to contain effectors from pathogens that are not closely related. Narrowing to one pathogen class up front would throw away the breadth the whole strategy depends on. The practical reason to know both routes: the <i>delivery</i> machinery differs completely, but the <i>design problem</i> — a folded effector surface in the plant cytoplasm — ends up the same.</p>
+</div>
+
+<div class="key">
+<b>What both routes share, and why it matters for design:</b> whichever way an effector arrives, the form your binder has to recognise is the <i>mature, folded protein sitting in the plant cytoplasm</i> — not the form it travelled in. Bacteria make this vivid: a T3SS effector is threaded through a ~2–3 nm channel unfolded and only refolds once inside, so the surface you are designing against does not exist during transit. Fungal effectors are secreted folded, but still end up in the same place. The design consequence is the same for both: when you build the conformational ensemble in section 8, the states that count are the intracellular ones, including the effector bound to its plant target.
+</div>
+
+<!-- 4 EFFECTOR CHOICE -->
+<h2 id="s4"><span class="n">4</span>One pathogen, many effectors — which one, when?</h2>
+<p class="sub"><i>P. syringae</i> carries roughly 30 effectors; some rust fungi carry hundreds to over a thousand. They are not all fired at once. Three layers decide what gets deployed.</p>
+
+<div class="card scroll">
+<svg viewBox="0 0 900 250" width="100%" role="img" aria-label="Bacterial hrp regulatory cascade fanning out to many effector genes">
+  <g font-size="13" text-anchor="middle">
+    <rect x="14" y="76" width="140" height="52" rx="8" fill="var(--c-bg)" stroke="var(--c)" stroke-width="1.5"/>
+    <text x="84" y="96">Apoplast cues</text><text x="84" y="112" font-size="11" class="m">low pH · starvation</text>
+
+    <rect x="192" y="76" width="130" height="52" rx="8" fill="var(--a-bg)" stroke="var(--a)" stroke-width="1.5"/>
+    <text x="257" y="96">HrpR / HrpS</text><text x="257" y="112" font-size="11" class="m">σ54 activators</text>
+
+    <rect x="360" y="76" width="130" height="52" rx="8" fill="var(--a-bg)" stroke="var(--a)" stroke-width="1.5"/>
+    <text x="425" y="96">HrpL</text><text x="425" y="112" font-size="11" class="m">master σ factor</text>
+
+    <text x="250" y="162" font-size="11" class="m">brake: HrpV binds HrpS · released by HrpG</text>
+
+    <rect x="556" y="20" width="166" height="34" rx="7" fill="var(--d-bg)" stroke="var(--d)" stroke-width="1.5"/>
+    <text x="639" y="42" font-size="12">T3SS structural genes</text>
+    <rect x="556" y="68" width="166" height="34" rx="7" fill="var(--d-bg)" stroke="var(--d)" stroke-width="1.5"/>
+    <text x="639" y="90" font-size="12">Early effectors</text>
+    <rect x="556" y="116" width="166" height="34" rx="7" fill="var(--d-bg)" stroke="var(--d)" stroke-width="1.5"/>
+    <text x="639" y="138" font-size="12">Late effectors</text>
+    <rect x="556" y="164" width="166" height="34" rx="7" fill="var(--d-bg)" stroke="var(--d)" stroke-width="1.5"/>
+    <text x="639" y="186" font-size="12">Helpers / chaperones</text>
+
+    <text x="800" y="90" font-size="11" class="m">each promoter carries</text>
+    <text x="800" y="106" font-size="11" class="m">a <tspan font-weight="700">hrp box</tspan></text>
+    <text x="800" y="128" font-size="10" class="m">GGAACC…CCAC…</text>
+  </g>
+  <g stroke="var(--mute)" stroke-width="1.5" fill="none" marker-end="url(#ar)">
+    <line x1="156" y1="102" x2="188" y2="102"/>
+    <line x1="324" y1="102" x2="356" y2="102"/>
+    <line x1="492" y1="98" x2="550" y2="40"/>
+    <line x1="492" y1="102" x2="550" y2="86"/>
+    <line x1="492" y1="106" x2="550" y2="132"/>
+    <line x1="492" y1="110" x2="550" y2="180"/>
+  </g>
+  <text x="425" y="228" font-size="13" text-anchor="middle" class="m">One master switch, one shared promoter signature → the whole arsenal is co-regulated as a <tspan font-weight="700">regulon</tspan></text>
+</svg>
+</div>
+
+<div class="card">
+<div class="big">Layer 1 · Environment decides <i>whether</i> to deploy at all</div>
+<p style="margin:8px 0 0">The pathogen does not waste energy building an injection machine in soil or water. In bacteria the cascade above converts "I am inside a leaf" into transcription of the whole T3SS arsenal at once. Because every gene in the set shares one promoter signature — the <b>hrp box</b> — a single sigma factor turns on the machine and its cargo together. <i>Xanthomonas</i> uses the same logic with different parts: HrpG (a response regulator) → HrpX (an AraC-type activator) → <b>PIP box</b> promoters.</p>
+<p class="sub" style="margin:8px 0 0">Practical consequence: the hrp box / PIP box is itself a discovery tool. Scanning a genome for these promoter motifs predicts which genes are effectors — a trick you will see in papers that expanded effector catalogues.</p>
+</div>
+
+<div class="card">
+<div class="big">Layer 2 · Order and timing decide <i>which one first</i></div>
+<p style="margin:8px 0 0">Transcribing everything together does not mean injecting everything together. The channel is a single narrow conduit and becomes a bottleneck, so cargo is prioritised:</p>
+<div class="row" style="margin-top:10px">
+  <div class="box A">1 · Structural parts<small>pilus and translocon must exist before any cargo moves</small></div><div class="sep">→</div>
+  <div class="box B">2 · Early effectors<small>shut down PTI, buy time, block defence signalling</small></div><div class="sep">→</div>
+  <div class="box C">3 · Late effectors<small>reprogram metabolism, release nutrients, manage cell death</small></div>
+</div>
+<p style="margin:10px 0 0">The ranking is set by each effector's N-terminal secretion signal and by dedicated <b>chaperones</b> that hold it ready at the base of the machine. Stronger signal plus a chaperone equals earlier delivery. So "which effector" is partly a transcription question and partly a queueing question.</p>
+</div>
+
+<div class="card">
+<div class="big">Layer 3 · For fungi, the stage of infection decides</div>
+<p style="margin:8px 0 0">Your pathogens do not use the cascade above. Instead, effector genes are tied to <b>developmental stage</b>, and the sets barely overlap:</p>
+<table style="margin-top:10px">
+<tr><th>Stage</th><th>What the fungus is doing</th><th>Effectors expressed</th></tr>
+<tr><td><b>Spore / appressorium</b></td><td>Landing, building penetration pressure</td><td>Few; surface and cuticle-acting</td></tr>
+<tr><td><b>Early biotrophic</b></td><td>Living inside without killing</td><td class="yes">Peak cytoplasmic effectors — immunity suppression. <b>The window your receptor must catch.</b></td></tr>
+<tr><td><b>Established biotrophic</b></td><td>Extracting nutrients, spreading</td><td>Apoplastic effectors, enzyme inhibitors</td></tr>
+<tr><td><b>Necrotrophic (if applicable)</b></td><td>Killing tissue, sporulating</td><td>Toxins, degrading enzymes</td></tr>
+</table>
+<p class="sub" style="margin:10px 0 0">Note the split in destination as well as timing: <b>apoplastic</b> effectors stay outside and are cysteine-rich; <b>cytoplasmic</b> effectors go through the BIC into the cell and are enriched in positively charged residues. This compositional difference is exactly what effector-prediction software exploits — see section 7.</p>
+</div>
+
+<div class="card">
+<div class="big">Why two strains of the same pathogen carry different effectors</div>
+<p style="margin:8px 0 0">Effector repertoires are under constant selection, and this is the single most important fact for your design choices:</p>
+<ul style="margin:8px 0 0">
+<li><b>Recognition is a liability.</b> An effector the plant can detect is an <i>avirulence</i> factor — it gets the pathogen killed. Strains under pressure from a matching resistance gene mutate that effector or delete it outright.</li>
+<li><b>Redundancy makes deletion cheap.</b> Several effectors often target the same plant pathway, so dropping one costs little fitness. This is why targeting a single dispensable effector fails in the field.</li>
+<li><b>Host range follows the repertoire.</b> Which plants a strain can infect is largely determined by which effectors it carries.</li>
+</ul>
+</div>
+
+<div class="card scroll">
+<div class="big">So which effector should you target?</div>
+<table style="margin-top:8px">
+<tr><th>Prefer an effector that is…</th><th>Why</th></tr>
+<tr><td><b>Core</b> — present in every sequenced strain</td><td>Cannot be deleted to escape you</td></tr>
+<tr><td><b>Non-redundant / fitness-critical</b></td><td>Losing it costs real virulence, so escape has a price</td></tr>
+<tr><td><b>Expressed early, cytoplasmic</b></td><td>Detected before immunity is dismantled, and in the compartment where the NLR sits</td></tr>
+<tr><td><b>A member of a structurally conserved family</b></td><td>One binder can cover many relatives — the whole SUSS premise</td></tr>
+<tr><td class="no">Avoid: strain-specific, redundant, late, apoplast-only</td><td>Easy to lose, or never meets an intracellular receptor</td></tr>
+</table>
+</div>
+
+<h2 id="s5"><span class="n">5</span>NLR anatomy → the engineering handle</h2>
 <p class="sub">Natural paired NLR (Pik-1 / Pik-2) already uses an <b>integrated domain</b> as bait. We swap it for a designed binder.</p>
 <div class="card">
   <div class="cols">
@@ -258,7 +446,7 @@ svg .m{fill:var(--mute)}
 </div>
 
 <!-- 4 MASTER WORKFLOW -->
-<h2 id="s4"><span class="n">4</span>The full workflow, start to finish</h2>
+<h2 id="s6"><span class="n">6</span>The full workflow, start to finish</h2>
 <p class="sub">Four phases: discover → design → validate in vitro → validate in plants.</p>
 <div class="legend" style="margin-bottom:10px">
   <span class="A"><i></i>Map effector space</span><span class="B"><i></i>In silico design</span><span class="C"><i></i>Wet lab / structure</span><span class="D"><i></i>Plant function</span>
@@ -308,7 +496,203 @@ svg .m{fill:var(--mute)}
 </div>
 
 <!-- 5 DESIGN ZOOM -->
-<h2 id="s5"><span class="n">5</span>Zoom: one design, effector structure → binder sequence</h2>
+<!-- 7 FINDING EFFECTORS -->
+<h2 id="s7"><span class="n">7</span>Finding real effectors: what to actually type</h2>
+<p class="sub">Written for a complete beginner. Every query below was run against the live UniProt API before being put here, so they return real rows.</p>
+
+<div class="callout">
+<b>Start here, because it will save you a wasted afternoon:</b> searching UniProt for the word <code>effector</code> does not work. There is <b>no UniProt keyword for "effector"</b> — the closest is <i>Virulence</i> (<code>KW-0843</code>). Worse, the great majority of real effectors are annotated only as "uncharacterised protein", because they have no recognisable domains. Effectors are defined by <i>what they do</i>, which databases cannot infer from sequence. So you never "search for effectors" — you either look up the handful that are already <b>known</b>, or you <b>predict</b> new ones from a whole proteome.
+</div>
+
+<div class="card">
+<div class="big">The two jobs, kept separate</div>
+<div class="cols" style="margin-top:10px">
+  <div class="box A" style="text-align:left"><b>Job A · Learn from known effectors</b><small>A few hundred effectors are experimentally confirmed. These are your training set, your positive controls, and where you find AVR-Pik and friends. UniProt and PHI-base are the right tools.</small></div>
+  <div class="box B" style="text-align:left"><b>Job B · Predict new ones</b><small>You want whole families, not single proteins. Start from a complete proteome and filter down. UniProt alone cannot do this — you need the secretome funnel below.</small></div>
+</div>
+</div>
+
+<div class="card scroll">
+<div class="big">Job A · Tested UniProt queries, ready to paste</div>
+<p class="sub" style="margin:4px 0 10px">Paste into the search box at <code>uniprot.org</code>. <code>reviewed:true</code> restricts to hand-curated entries — always include it when you want trustworthy examples.</p>
+<table>
+<tr><th>Goal</th><th>Query</th></tr>
+<tr><td>Confirmed virulence proteins of <i>P. syringae</i> (returns HopZ1a, HopBF1, HopBA1, HrpZ…)</td><td><code>(keyword:KW-0843) AND (reviewed:true) AND (taxonomy_id:317)</code></td></tr>
+<tr><td>Avirulence proteins by name — the classic recognised effectors</td><td><code>(protein_name:avirulence) AND (reviewed:true)</code></td></tr>
+<tr><td>A specific effector you read about in a paper</td><td><code>(gene:avrpik) OR (protein_name:"AVR-Pik")</code></td></tr>
+<tr><td>Small secreted proteins of rice blast — the classic effector shape</td><td><code>(taxonomy_id:318829) AND (ft_signal:*) AND (length:[1 TO 300])</code></td></tr>
+<tr><td>Everything secreted in <i>Fusarium oxysporum</i></td><td><code>(taxonomy_id:5507) AND (keyword:KW-0964)</code></td></tr>
+<tr><td>A complete, non-redundant proteome to start Job B from</td><td><code>(proteome:UP000009058)</code> <span class="sub">— that one is rice blast's reference proteome, 12,811 proteins. Find the UP number for any other organism at <code>uniprot.org/proteomes</code></span></td></tr>
+</table>
+<p class="sub" style="margin:10px 0 0"><b>Finding a taxon ID:</b> search the organism at <code>uniprot.org/taxonomy</code>. Verified ones you will need: <i>Pseudomonas syringae</i> <code>317</code>, <i>Pyricularia (Magnaporthe) oryzae</i> <code>318829</code>, <i>Fusarium oxysporum</i> <code>5507</code>. Note rice blast was renamed <i>Pyricularia</i> — search both names or you will miss entries.</p>
+</div>
+
+<div class="card">
+<div class="big">Downloading in bulk instead of clicking</div>
+<p style="margin:8px 0 0">Every search has a URL you can script. The pattern never changes:</p>
+<p style="margin:8px 0 0"><code>https://rest.uniprot.org/uniprotkb/search?query=YOUR_QUERY&amp;format=tsv&amp;fields=accession,protein_name,length</code></p>
+<p class="sub" style="margin:8px 0 0">Swap <code>format=tsv</code> for <code>format=fasta</code> to feed the next tool, and add <code>&amp;size=500</code> for larger pages. This is how you get from "a query" to "a FASTA file the pipeline can chew on".</p>
+</div>
+
+<div class="card scroll">
+<div class="big">Job B · The secretome funnel</div>
+<p class="sub" style="margin:4px 0 10px">This is how effector catalogues are actually built. Each step throws away most of what came in. <b>The funnel below is the fungal / oomycete version</b> — see the bacterial branch underneath it, because the tools are not interchangeable.</p>
+<div class="stack">
+  <div class="box A">Whole proteome<small>~12,000–18,000 proteins for a typical fungus</small></div><div class="arrow">↓</div>
+  <div class="box A">Has a secretion signal? · <b>SignalP 6.0</b><small>effectors must be exported — no signal, not a candidate</small></div><div class="arrow">↓</div>
+  <div class="box A">Drop membrane-anchored proteins · <b>DeepTMHMM</b><small>a transmembrane helix means it stays in the membrane, not released</small></div><div class="arrow">↓ ~800–1,500 left: the secretome</div>
+  <div class="box B">Effector or just a secreted enzyme? · <b>EffectorP 3.0</b><small>also splits apoplastic vs cytoplasmic — the distinction from section 4</small></div><div class="arrow">↓ ~150–400 candidates</div>
+  <div class="box B">Group near-identical sequences · <b>MMseqs2</b> / <b>CD-HIT</b><small>collapse redundancy before you spend compute on structures</small></div><div class="arrow">↓</div>
+  <div class="box C">Predict every structure · <b>AlphaFold</b> / fetch from <b>AlphaFold DB</b><small>free if a model already exists — check first</small></div><div class="arrow">↓</div>
+  <div class="box D">Cluster by <i>shape</i>, not sequence · <b>Foldseek</b><small>this is the step that reveals SUSS families</small></div>
+</div>
+<div class="callout" style="margin-top:14px"><b>The whole point of the last step:</b> sequence clustering splits a real effector family into dozens of unrelated-looking singletons, because family members can share under 20% identity. Structural clustering puts them back together. Everything your project rests on — one binder covering a whole family — only becomes visible after Foldseek.</div>
+</div>
+
+<div class="card scroll">
+<div class="big">The bacterial branch — different signals, different tools</div>
+<div class="callout" style="margin-top:8px"><b>Do not run EffectorP on a bacterium.</b> Its authors state plainly that it was never trained on bacterial data and will not predict bacterial effectors accurately. The same goes for the SignalP step: T3SS effectors are <b>not</b> exported through the classical secretion pathway, so most of them carry <i>no</i> signal peptide at all. Run the fungal funnel on <i>Pseudomonas</i> and you will throw away nearly every real effector in the first two steps.</div>
+<table style="margin-top:10px">
+<tr><th>Step</th><th>Fungi &amp; oomycetes</th><th>Bacteria (T3SS)</th></tr>
+<tr><td><b>Export signal</b></td><td>Classical signal peptide · <b>SignalP</b></td><td>No signal peptide. An unstructured N-terminal ~50 residues with biased amino-acid composition</td></tr>
+<tr><td><b>Effector call</b></td><td><b>EffectorP 3.0</b></td><td><b>EffectiveT3</b>, <b>T3SEpp</b>, <b>BastionX</b></td></tr>
+<tr><td><b>Genomic clue</b></td><td>Often in fast-evolving, repeat-rich genome regions</td><td class="yes"><b>hrp box / PIP box</b> in the promoter — scan the genome for the motif from section 4</td></tr>
+<tr><td><b>Extra evidence</b></td><td>Stage-specific expression in planta</td><td>Chaperone-binding region; located in pathogenicity islands</td></tr>
+</table>
+<p class="sub" style="margin:10px 0 0">After this point the two branches rejoin: predict structures, cluster with Foldseek, look for SUSS families. The <i>finding</i> differs by pathogen class; the <i>structural comparison</i> does not — which is exactly why the project can pool all of them into one reference set.</p>
+</div>
+
+<div class="card scroll">
+<div class="big">Beyond UniProt: where the field keeps its effector knowledge</div>
+<table style="margin-top:8px">
+<tr><th>Resource</th><th>What it is for</th></tr>
+<tr><td><b>PHI-base</b></td><td>Experimentally verified pathogenicity and virulence genes, with the phenotype of each mutant. The best source of <i>confirmed</i> effectors; UniProt will not tell you a deletion reduced virulence.</td></tr>
+<tr><td><b>FungiDB</b> / <b>Ensembl Fungi</b></td><td>Genomes, proteomes and expression data per strain. Use these for "is this effector present in all strains?" and "when is it expressed?" — the core and timing criteria from section 4.</td></tr>
+<tr><td><b>AlphaFold DB</b></td><td>Pre-computed structures by UniProt accession. In ChimeraX: <code>alphafold fetch P12345</code>.</td></tr>
+<tr><td><b>PDB</b></td><td>Experimental structures. Always prefer one of these over a prediction when it exists.</td></tr>
+<tr><td><b>InterPro</b> / <b>Pfam</b></td><td>Domain family assignment. Most effectors hit nothing — a blank InterPro result is itself weak evidence for an effector.</td></tr>
+<tr><td><b>Foldseek</b></td><td>Search by structure against the whole AlphaFold DB. Your main discovery instrument.</td></tr>
+</table>
+</div>
+
+<div class="card">
+<div class="big">Structural families worth knowing by name</div>
+<p style="margin:8px 0 0">These are the published cases of sequence-unrelated, structurally similar effectors. They prove the premise your project depends on, and they are the obvious first test sets:</p>
+<table style="margin-top:8px">
+<tr><td style="width:22%"><b>MAX</b></td><td><i>Magnaporthe</i> Avrs and ToxB-like: a β-sandwich fold shared across effectors with almost no sequence similarity, including AVR-Pik. Already in your glossary — this is the textbook SUSS family and the right place to start.</td></tr>
+<tr><td style="width:22%"><b>RxLR / WY–LWY</b></td><td>Oomycete effectors built from repeated helical bundles. Named for the RxLR motif that marks them for host entry.</td></tr>
+<tr><td style="width:22%"><b>LysM</b></td><td>Chitin-binding effectors that mask the fungus from surface immune receptors.</td></tr>
+<tr><td style="width:22%"><b>ToxA-like</b></td><td>Another β-sandwich group, structurally close to MAX despite separate origins.</td></tr>
+</table>
+</div>
+
+<div class="key">
+<b>Do this first, today:</b> search <code>(protein_name:"AVR-Pik") AND (reviewed:true)</code> in UniProt, note the accession, run <code>alphafold fetch &lt;accession&gt;</code> in ChimeraX, then submit that structure to Foldseek. The hits that come back with low sequence identity but high structural similarity <i>are</i> a SUSS family. That single exercise connects every concept in sections 3, 4, 7 and 8 to real files on your screen.
+</div>
+
+<!-- 8 INVARIANT FACE -->
+<h2 id="s8"><span class="n">8</span>The one face that is never hidden</h2>
+<p class="sub">How you pick a target surface that works no matter which family member you meet, or which shape it happens to be in. This is the scientific core of the project.</p>
+
+<div class="card scroll">
+<svg viewBox="0 0 900 326" width="100%" role="img" aria-label="Three conformations of an effector sharing one constantly exposed face, with a binder docking to it">
+  <g font-size="12" text-anchor="middle">
+    <!-- conformer 1 -->
+    <rect x="60" y="56" width="150" height="86" rx="18" fill="var(--c-bg)" stroke="var(--c)" stroke-width="1.5"/>
+    <path d="M70 56 q18 -26 38 -6 q20 20 40 -4 q16 -18 32 10" fill="none" stroke="var(--c)" stroke-width="2"/>
+    <line x1="62" y1="142" x2="208" y2="142" stroke="var(--a)" stroke-width="6" stroke-linecap="round"/>
+    <text x="135" y="28" class="m">conformer 1</text>
+
+    <!-- conformer 2 -->
+    <rect x="375" y="56" width="150" height="86" rx="18" fill="var(--c-bg)" stroke="var(--c)" stroke-width="1.5"/>
+    <path d="M385 56 q10 -30 34 -2 q24 26 34 -12 q12 -14 30 16" fill="none" stroke="var(--c)" stroke-width="2"/>
+    <line x1="377" y1="142" x2="523" y2="142" stroke="var(--a)" stroke-width="6" stroke-linecap="round"/>
+    <text x="450" y="28" class="m">conformer 2 · loops moved</text>
+
+    <!-- conformer 3 -->
+    <rect x="690" y="56" width="150" height="86" rx="18" fill="var(--c-bg)" stroke="var(--c)" stroke-width="1.5"/>
+    <path d="M700 56 q22 -14 36 8 q18 24 42 -14 q14 -12 26 4" fill="none" stroke="var(--c)" stroke-width="2"/>
+    <line x1="692" y1="142" x2="838" y2="142" stroke="var(--a)" stroke-width="6" stroke-linecap="round"/>
+    <text x="765" y="28" class="m">family member · 18% identity</text>
+
+    <text x="450" y="316" font-size="13" fill="var(--c)">loops, termini and side chains differ everywhere <tspan font-weight="700">except</tspan> the green face</text>
+
+    <!-- intersection -->
+    <rect x="300" y="196" width="300" height="38" rx="9" fill="var(--a-bg)" stroke="var(--a)" stroke-width="1.5"/>
+    <text x="450" y="220" font-size="13" font-weight="700" fill="var(--a)">Exposed in all three → the target</text>
+
+    <!-- binder -->
+    <rect x="330" y="256" width="240" height="34" rx="9" fill="var(--b-bg)" stroke="var(--b)" stroke-width="1.5"/>
+    <text x="450" y="278" font-size="13">Designed binder docks here only</text>
+  </g>
+  <g stroke="var(--mute)" stroke-width="1.5" fill="none" marker-end="url(#ar)">
+    <line x1="135" y1="150" x2="320" y2="192"/>
+    <line x1="450" y1="150" x2="450" y2="192"/>
+    <line x1="765" y1="150" x2="580" y2="192"/>
+    <line x1="450" y1="236" x2="450" y2="252"/>
+  </g>
+</svg>
+</div>
+
+<div class="card">
+<div class="big">Three separate problems, often confused</div>
+<p style="margin:8px 0 0">"Target a conserved surface" sounds simple until you notice it has to survive three different kinds of variation at once:</p>
+<table style="margin-top:10px">
+<tr><th>Problem</th><th>What varies</th><th>Why a naive target fails</th></tr>
+<tr><td><b>1 · Family diversity</b></td><td>Different effectors, same fold, as little as 15–20% sequence identity</td><td>A binder keyed to specific side chains binds one member and ignores its relatives</td></tr>
+<tr><td><b>2 · Flexibility</b></td><td>Loops, tails and termini of a <i>single</i> effector move constantly</td><td>A patch that looks exposed in one AlphaFold model can be covered in the next</td></tr>
+<tr><td><b>3 · State changes</b></td><td>Free vs bound to its plant target; monomer vs oligomer; before vs after processing</td><td>Your binder may be designed against a surface that is occupied in the cell</td></tr>
+</table>
+<p class="sub" style="margin:10px 0 0">A single predicted structure hides all three problems, because it shows you one member in one state. That is the trap.</p>
+</div>
+
+<div class="key">
+<b>The idea in one sentence:</b> instead of asking "what does this effector look like?", you ask <b>"which patch of surface is still exposed in every member of the family and in every shape each one adopts?"</b> — and you aim only at that. Because that patch is present whatever you meet, a binder against it cannot be dodged by folding differently or by swapping in a relative.
+</div>
+
+<div class="card">
+<div class="big">Finding it: the method, step by step</div>
+<ol style="margin:10px 0 0;padding-left:22px">
+<li style="margin-bottom:9px"><b>Build an ensemble, never one model.</b> Run AlphaFold with several random seeds and with subsampled alignments, add short molecular-dynamics snapshots, and include every experimental structure that exists. You now have many plausible shapes per protein instead of one. <i>This step is what makes the rest possible.</i></li>
+<li style="margin-bottom:9px"><b>Align the family by structure, not sequence.</b> Foldseek or TM-align gives you a residue-to-residue map between members whose sequences are too different to align normally. Without this you cannot even say "the same patch" across the family.</li>
+<li style="margin-bottom:9px"><b>Measure exposure per residue, everywhere.</b> Compute solvent-accessible surface area (SASA) for every residue in every conformer of every member. You now have a big table: residue × conformer × member.</li>
+<li style="margin-bottom:9px"><b>Take the minimum, not the average.</b> Keep only residues whose SASA stays above threshold in <i>every single</i> conformer and member. Averaging would let a residue that is buried half the time look fine; the minimum is the honest test of "never hidden". <b>This intersection is the invariant face.</b></li>
+<li style="margin-bottom:9px"><b>Keep only what is also structurally conserved.</b> Of the always-exposed residues, favour those sitting on the conserved structural core rather than on variable loops that merely happen to be exposed.</li>
+<li style="margin-bottom:9px"><b>Overlay functional constraint.</b> Best of all is a patch the pathogen cannot afford to change: active-site rims, the surface it uses to grip its plant target, residues required for the fold to be stable at all.</li>
+<li style="margin-bottom:9px"><b>Subtract the disqualified.</b> Remove glycosylation and other modification sites, oligomerisation interfaces, membrane-facing patches, and anything resembling a plant protein surface — the last one is negative design, and skipping it risks a receptor that fires on the plant's own proteins.</li>
+<li><b>Check the patch is physically usable.</b> It must be contiguous and roughly 400–900 Å² of contact area. A scattering of exposed residues across opposite ends of the protein is not an epitope.</li>
+</ol>
+</div>
+
+<div class="card">
+<div class="big">"Challenging" the effectors: the validation matrix</div>
+<p style="margin:8px 0 0">Finding a candidate face is a hypothesis. You then attack it deliberately, and this is where most candidates die:</p>
+<div class="stack" style="margin-top:10px">
+  <div class="box B">Cross-conformer test<small>re-dock the binder against every conformer in the ensemble — not just the one you designed on</small></div><div class="arrow">↓</div>
+  <div class="box B">Cross-member test<small>predict against every family member; this measures the breadth you are claiming</small></div><div class="arrow">↓</div>
+  <div class="box C">Escape test<small>mutate each epitope residue in silico. If one point mutation kills binding, the epitope is too fragile — reject it</small></div><div class="arrow">↓</div>
+  <div class="box D">Specificity test<small>screen against the plant proteome. Any cross-reaction is an autoimmunity risk, which kills the plant line</small></div>
+</div>
+<p style="margin:10px 0 0">Only a binder that passes the whole matrix is worth making in the lab. The scoring is ruthless on purpose: you keep the candidates that work against <i>everything</i>, not the ones that score best against your favourite model.</p>
+</div>
+
+<div class="card">
+<div class="big">Why this buys durability</div>
+<p style="margin:8px 0 0">Section 4 explained that pathogens escape recognition by mutating or deleting the detected effector. The invariant face is chosen specifically to close both exits:</p>
+<table style="margin-top:8px">
+<tr><th>Escape route</th><th>Why it is blocked</th></tr>
+<tr><td>Mutate the recognised surface</td><td>The patch is functionally constrained — changing it costs virulence, so escape has a fitness price rather than being free</td></tr>
+<tr><td>Delete the effector</td><td>You chose a core, non-redundant effector, so losing it is expensive</td></tr>
+<tr><td>Swap in a different family member</td><td>The binder was validated against the whole family, so relatives are recognised too</td></tr>
+<tr><td>Fold or flex differently</td><td>The face is exposed in every conformer in the ensemble, by construction</td></tr>
+</table>
+</div>
+
+<div class="callout">
+<b>The honest limits.</b> The ensemble is only as good as its sampling — AlphaFold seeds explore far less than real conformational space, so "exposed in all conformers" means "in all the conformers you generated". The functional-constraint step depends on knowing what the effector does, and for most effectors nobody knows. And an invariant face can still be a poor binding site: flat, featureless, or too polar to grip. Expect to lose most candidate epitopes here, and treat the lab as the real arbiter — which is what sections 14 and 15 are about.
+</div>
+
+<h2 id="s9"><span class="n">9</span>Zoom: one design, effector structure → binder sequence</h2>
 <p class="sub">Day 2 target: follow this chain with real files in ChimeraX.</p>
 <div class="card scroll">
 <svg viewBox="0 0 900 190" width="100%" role="img" aria-label="Design chain">
@@ -336,7 +720,7 @@ svg .m{fill:var(--mute)}
 </div>
 
 <!-- SOFTWARE GUIDE -->
-<h2 id="s6"><span class="n">6</span>Software guide: ChimeraX · RFdiffusion · ProteinMPNN</h2>
+<h2 id="s10"><span class="n">10</span>Software guide: ChimeraX · RFdiffusion · ProteinMPNN</h2>
 <p class="sub">No prior experience needed. Three tools, three jobs: <b>look</b> (ChimeraX), <b>invent a shape</b> (RFdiffusion), <b>write the sequence</b> (ProteinMPNN).</p>
 
 <div class="card scroll">
@@ -500,7 +884,7 @@ svg .m{fill:var(--mute)}
 </div>
 
 <!-- PIPELINE -->
-<h2 id="s7"><span class="n">7</span>The automated pipeline: stages, bridges and gates</h2>
+<h2 id="s11"><span class="n">11</span>The automated pipeline: stages, bridges and gates</h2>
 <p class="sub">Each stage hands files and parameters to the next. A <b>gate</b> is an automatic pass/fail check between stages. <b>H</b> marks where a human must decide.</p>
 
 <div class="legend" style="margin-bottom:8px">
@@ -578,7 +962,7 @@ target:
   source: alphafold | pdb          # which structure
   chain: A
   trim_range: A1-120               # after pLDDT / domain check
-  hotspots: [A30, A33, A34]        # HUMAN decision (see section 8)
+  hotspots: [A30, A33, A34]        # HUMAN decision (see section 12)
 rfdiffusion:
   binder_length: 70-100
   num_designs: ____                # e.g. hundreds to thousands
@@ -610,7 +994,7 @@ logging:
 </div>
 
 <!-- AUTOMATION ASSESSMENT -->
-<h2 id="s8"><span class="n">8</span>What can and cannot be automated</h2>
+<h2 id="s12"><span class="n">12</span>What can and cannot be automated</h2>
 <p class="sub">No step is fully automatic. Three levels: <span class="pill A">Full</span> a script does it · <span class="pill C">Rules</span> a script does it once you define the criteria · <span class="pill D" style="color:var(--bad);border-color:var(--bad)">Manual</span> needs a human decision. Based on my knowledge of the tools; I have not run them, so check flags and defaults against each README.</p>
 
 <div class="card scroll">
@@ -695,7 +1079,7 @@ logging:
 </div>
 
 <!-- AI -->
-<h2 id="s9"><span class="n">9</span>Adding AI agents (Claude, Codex) for decisions</h2>
+<h2 id="s13"><span class="n">13</span>Adding AI agents (Claude, Codex) for decisions</h2>
 <p class="sub">Useful, if the AI is used for what it is good at. Goal: best and most accurate output.</p>
 
 <div class="card scroll">
@@ -742,7 +1126,7 @@ logging:
 </div>
 
 <!-- 6 BINDING != SIGNALLING -->
-<h2 id="s10"><span class="n">10</span>Binding ≠ signalling: four levels of evidence</h2>
+<h2 id="s14"><span class="n">14</span>Binding ≠ signalling: four levels of evidence</h2>
 <p class="sub">Each level is a harder test than the one beneath.</p>
 <div class="card">
 <div class="levels">
@@ -797,7 +1181,7 @@ logging:
 </div>
 
 <!-- 7 CALCIUM -->
-<h2 id="s11"><span class="n">11</span>Why calcium is the early read-out</h2>
+<h2 id="s15"><span class="n">15</span>Why calcium is the early read-out</h2>
 <p class="sub">Activated NLR resistosomes form Ca²⁺-permeable channels in the membrane.</p>
 <div class="card scroll">
 <svg viewBox="0 0 900 260" width="100%" role="img" aria-label="Resting versus activated cell">
@@ -849,7 +1233,7 @@ logging:
 <div class="callout"><b>Distinguish signalling from simple death:</b> pair Ca²⁺ and cell-death assays with defence marker genes (RT-qPCR). A cell can die without a clean, receptor-driven immune programme.</div>
 
 <!-- 8 STUDY MODULES -->
-<h2 id="s12"><span class="n">12</span>What to understand — 18 modules, by depth</h2>
+<h2 id="s16"><span class="n">16</span>What to understand — 18 modules, by depth</h2>
 <p class="sub">Group by workflow phase; stars = depth needed before applying.</p>
 <div class="card scroll">
 <table>
@@ -880,13 +1264,13 @@ logging:
 </div>
 
 <!-- GLOSSARY -->
-<h2 id="s13"><span class="n">13</span>Glossary: every term in plain words</h2>
-<p class="sub">93 terms in five groups. Type in the box to filter.</p>
+<h2 id="s17"><span class="n">17</span>Glossary: every term in plain words</h2>
+<p class="sub">118 terms in five groups. Type in the box to filter.</p>
 <input id="gq" type="search" placeholder="Search a term (e.g. effector, pLDDT, KD)…" aria-label="Search glossary" style="width:100%;padding:10px 14px;font-size:15px;border:1px solid var(--line);border-radius:10px;background:var(--card);color:var(--ink);margin-bottom:6px">
 <div id="gcount" class="sub"></div>
-<h3 class="gh" data-g>Plant immunity & pathogens</h3><div class="card scroll gt"><table><tr><td class="gt-t"><b>Pathogen</b></td><td>A microbe that causes disease: bacteria, fungi, oomycetes, viruses, etc.</td></tr><tr><td class="gt-t"><b>Oomycete</b></td><td>Fungus-like microbe (“water mould”). Example: <i>Phytophthora infestans</i>, which causes potato blight.</td></tr><tr><td class="gt-t"><b>Effector</b></td><td>A protein a pathogen releases into (or around) plant cells to switch off defences and help it infect. Think of it as the pathogen’s burglary tool. Effectors change fast in sequence, so plants struggle to keep recognising them.</td></tr><tr><td class="gt-t"><b>Host</b></td><td>The plant being infected.</td></tr><tr><td class="gt-t"><b>Virulence</b></td><td>How well a pathogen causes disease.</td></tr><tr><td class="gt-t"><b>Avirulence (Avr) effector</b></td><td>An effector the plant <i>can</i> recognise via an NLR. Recognition stops the infection, so the pathogen becomes “avirulent”. Example: AVR-Pik in rice blast.</td></tr><tr><td class="gt-t"><b>PAMP</b></td><td>Pathogen-associated molecular pattern: a molecular signature shared by many microbes (e.g. bacterial flagellin, fungal chitin).</td></tr><tr><td class="gt-t"><b>PRR</b></td><td>Pattern recognition receptor: a receptor on the plant cell surface that detects PAMPs.</td></tr><tr><td class="gt-t"><b>PTI</b></td><td>PAMP-triggered immunity. First, broad defence layer started by surface PRRs.</td></tr><tr><td class="gt-t"><b>ETI</b></td><td>Effector-triggered immunity. Second, stronger layer started when an NLR recognises an effector inside the cell.</td></tr><tr><td class="gt-t"><b>NLR</b></td><td>Nucleotide-binding leucine-rich-repeat receptor. Intracellular immune receptor that detects effectors and triggers strong defence. This project’s central object.</td></tr><tr><td class="gt-t"><b>R gene</b></td><td>Resistance gene: the gene that encodes an NLR (or other receptor) giving resistance.</td></tr><tr><td class="gt-t"><b>Hypersensitive response (HR)</b></td><td>Fast, localised cell death at the infection site that walls off the pathogen.</td></tr><tr><td class="gt-t"><b>Apoplast</b></td><td>The space outside plant cells, where PTI starts.</td></tr><tr><td class="gt-t"><b>Cytoplasm / cytosol</b></td><td>The inside of the cell, where NLRs sit.</td></tr><tr><td class="gt-t"><b>Resistosome</b></td><td>Ring-shaped complex that activated NLRs assemble into. In several NLRs it acts as a Ca²⁺ channel in the membrane.</td></tr><tr><td class="gt-t"><b>Sensor / helper NLR</b></td><td>Sensor NLRs detect the effector; helper NLRs carry out the downstream signalling.</td></tr><tr><td class="gt-t"><b>Paired NLR</b></td><td>Two NLRs that work together, one as sensor and one as helper (e.g. Pik-1 + Pik-2).</td></tr><tr><td class="gt-t"><b>CC / TIR / RPW8</b></td><td>Three possible N-terminal signalling domains of NLRs (coiled-coil, Toll/interleukin-1 receptor, RPW8-like).</td></tr><tr><td class="gt-t"><b>NB-ARC</b></td><td>Central NLR domain that works as a molecular switch (ADP-bound = off, ATP-bound = on).</td></tr><tr><td class="gt-t"><b>LRR</b></td><td>Leucine-rich repeat: C-terminal NLR domain, helps keep the receptor off until triggered.</td></tr><tr><td class="gt-t"><b>Integrated domain (ID)</b></td><td>Extra domain fused into an NLR that mimics an effector’s host target, so the effector binds it and triggers the NLR. Also called a bait or decoy.</td></tr><tr><td class="gt-t"><b>HMA domain</b></td><td>Heavy-metal-associated domain. The integrated bait domain in Pik-1; binds the AVR-Pik effector.</td></tr><tr><td class="gt-t"><b>Pik-1 / Pik-2 / Pikm-1</b></td><td>Rice NLR pair against rice blast fungus. Pik-1 is the sensor (has the HMA bait), Pik-2 the helper. Pikm is one natural variant.</td></tr><tr><td class="gt-t"><b>FoSSP17</b></td><td>An effector (small secreted protein) used in the earlier work: a designed binder placed in Pikm-1 recognised it. Check the paper for its source organism.</td></tr><tr><td class="gt-t"><b>Autoactivity</b></td><td>The receptor signals even without an effector (constitutively active). Harmful to the plant.</td></tr><tr><td class="gt-t"><b>Dead receptor</b></td><td>The receptor binds its target but fails to signal.</td></tr><tr><td class="gt-t"><b>SUSS</b></td><td>Sequence-unrelated, structurally similar: effector families whose sequences look unrelated but whose 3D folds match.</td></tr><tr><td class="gt-t"><b>MAX effectors</b></td><td>A known example of a structurally related effector family in the rice blast fungus (<i>Magnaporthe</i> Avrs and ToxB-like).</td></tr></table></div>
+<h3 class="gh" data-g>Plant immunity & pathogens</h3><div class="card scroll gt"><table><tr><td class="gt-t"><b>Pathogen</b></td><td>A microbe that causes disease: bacteria, fungi, oomycetes, viruses, etc.</td></tr><tr><td class="gt-t"><b>Oomycete</b></td><td>Fungus-like microbe (“water mould”). Example: <i>Phytophthora infestans</i>, which causes potato blight.</td></tr><tr><td class="gt-t"><b>Effector</b></td><td>A protein a pathogen releases into (or around) plant cells to switch off defences and help it infect. Think of it as the pathogen’s burglary tool. Effectors change fast in sequence, so plants struggle to keep recognising them.</td></tr><tr><td class="gt-t"><b>Host</b></td><td>The plant being infected.</td></tr><tr><td class="gt-t"><b>Virulence</b></td><td>How well a pathogen causes disease.</td></tr><tr><td class="gt-t"><b>Avirulence (Avr) effector</b></td><td>An effector the plant <i>can</i> recognise via an NLR. Recognition stops the infection, so the pathogen becomes “avirulent”. Example: AVR-Pik in rice blast.</td></tr><tr><td class="gt-t"><b>PAMP</b></td><td>Pathogen-associated molecular pattern: a molecular signature shared by many microbes (e.g. bacterial flagellin, fungal chitin).</td></tr><tr><td class="gt-t"><b>PRR</b></td><td>Pattern recognition receptor: a receptor on the plant cell surface that detects PAMPs.</td></tr><tr><td class="gt-t"><b>PTI</b></td><td>PAMP-triggered immunity. First, broad defence layer started by surface PRRs.</td></tr><tr><td class="gt-t"><b>ETI</b></td><td>Effector-triggered immunity. Second, stronger layer started when an NLR recognises an effector inside the cell.</td></tr><tr><td class="gt-t"><b>NLR</b></td><td>Nucleotide-binding leucine-rich-repeat receptor. Intracellular immune receptor that detects effectors and triggers strong defence. This project’s central object.</td></tr><tr><td class="gt-t"><b>R gene</b></td><td>Resistance gene: the gene that encodes an NLR (or other receptor) giving resistance.</td></tr><tr><td class="gt-t"><b>Hypersensitive response (HR)</b></td><td>Fast, localised cell death at the infection site that walls off the pathogen.</td></tr><tr><td class="gt-t"><b>Apoplast</b></td><td>The space outside plant cells, where PTI starts.</td></tr><tr><td class="gt-t"><b>Cytoplasm / cytosol</b></td><td>The inside of the cell, where NLRs sit.</td></tr><tr><td class="gt-t"><b>Resistosome</b></td><td>Ring-shaped complex that activated NLRs assemble into. In several NLRs it acts as a Ca²⁺ channel in the membrane.</td></tr><tr><td class="gt-t"><b>Sensor / helper NLR</b></td><td>Sensor NLRs detect the effector; helper NLRs carry out the downstream signalling.</td></tr><tr><td class="gt-t"><b>Paired NLR</b></td><td>Two NLRs that work together, one as sensor and one as helper (e.g. Pik-1 + Pik-2).</td></tr><tr><td class="gt-t"><b>CC / TIR / RPW8</b></td><td>Three possible N-terminal signalling domains of NLRs (coiled-coil, Toll/interleukin-1 receptor, RPW8-like).</td></tr><tr><td class="gt-t"><b>NB-ARC</b></td><td>Central NLR domain that works as a molecular switch (ADP-bound = off, ATP-bound = on).</td></tr><tr><td class="gt-t"><b>LRR</b></td><td>Leucine-rich repeat: C-terminal NLR domain, helps keep the receptor off until triggered.</td></tr><tr><td class="gt-t"><b>Integrated domain (ID)</b></td><td>Extra domain fused into an NLR that mimics an effector’s host target, so the effector binds it and triggers the NLR. Also called a bait or decoy.</td></tr><tr><td class="gt-t"><b>HMA domain</b></td><td>Heavy-metal-associated domain. The integrated bait domain in Pik-1; binds the AVR-Pik effector.</td></tr><tr><td class="gt-t"><b>Pik-1 / Pik-2 / Pikm-1</b></td><td>Rice NLR pair against rice blast fungus. Pik-1 is the sensor (has the HMA bait), Pik-2 the helper. Pikm is one natural variant.</td></tr><tr><td class="gt-t"><b>FoSSP17</b></td><td>An effector (small secreted protein) used in the earlier work: a designed binder placed in Pikm-1 recognised it. Check the paper for its source organism.</td></tr><tr><td class="gt-t"><b>Autoactivity</b></td><td>The receptor signals even without an effector (constitutively active). Harmful to the plant.</td></tr><tr><td class="gt-t"><b>Dead receptor</b></td><td>The receptor binds its target but fails to signal.</td></tr><tr><td class="gt-t"><b>SUSS</b></td><td>Sequence-unrelated, structurally similar: effector families whose sequences look unrelated but whose 3D folds match.</td></tr><tr><td class="gt-t"><b>MAX effectors</b></td><td>A known example of a structurally related effector family in the rice blast fungus (<i>Magnaporthe</i> Avrs and ToxB-like).</td></tr><tr><td class="gt-t"><b>T3SS (type III secretion system)</b></td><td>The needle-and-syringe machine bacteria use to push effectors through the plant cell wall and membrane. Bacteria only &mdash; fungi do not have one.</td></tr><tr><td class="gt-t"><b>Hrp pilus</b></td><td>The long hollow filament of a plant-pathogen T3SS. Its job is to span the plant cell wall, a barrier animal pathogens never face.</td></tr><tr><td class="gt-t"><b>Translocon</b></td><td>The pore the T3SS inserts into the plant plasma membrane; the last door the effector passes through.</td></tr><tr><td class="gt-t"><b>T3SS chaperone</b></td><td>A bacterial protein that holds an effector ready at the base of the machine. Having one makes an effector get delivered earlier.</td></tr><tr><td class="gt-t"><b>Haustorium</b></td><td>The feeding structure a fungus pushes into a plant cell. The plant membrane wraps around it rather than being broken.</td></tr><tr><td class="gt-t"><b>BIC</b></td><td>Biotrophic interfacial complex: the spot beside an invading fungal hypha where cytoplasmic effectors are concentrated before the plant’s own endocytosis carries them inside.</td></tr><tr><td class="gt-t"><b>hrp box / PIP box</b></td><td>A shared promoter signature in front of T3SS and effector genes. One sigma factor reads it, so the whole arsenal switches on together. Also a way to find effector genes in a genome.</td></tr><tr><td class="gt-t"><b>HrpL</b></td><td>The master sigma factor of the bacterial T3SS. Activated by apoplast conditions; turns on every gene carrying a hrp box.</td></tr><tr><td class="gt-t"><b>Regulon</b></td><td>A group of genes controlled by one regulator, so they turn on and off as a set.</td></tr><tr><td class="gt-t"><b>Core effector</b></td><td>An effector present in every sequenced strain of a pathogen. The best target, because it cannot simply be deleted to escape detection.</td></tr><tr><td class="gt-t"><b>Effector redundancy</b></td><td>Several effectors doing the same job, so the pathogen can lose one cheaply. The reason targeting a single dispensable effector fails in the field.</td></tr><tr><td class="gt-t"><b>Secretome</b></td><td>All the proteins an organism exports. Effector hunting starts by narrowing a whole proteome down to this set.</td></tr><tr><td class="gt-t"><b>Apoplastic vs cytoplasmic effector</b></td><td>Apoplastic ones stay outside the cell and are cysteine-rich; cytoplasmic ones go inside and carry more positive charge. Only cytoplasmic ones can meet an intracellular NLR.</td></tr></table></div>
 <h3 class="gh" data-g>Protein structure basics</h3><div class="card scroll gt"><table><tr><td class="gt-t"><b>Amino acid / residue</b></td><td>Building block of proteins (20 types). In a structure, each amino acid in the chain is called a residue.</td></tr><tr><td class="gt-t"><b>Sequence</b></td><td>The order of amino acids in a protein (written as letters, e.g. MKVLA…).</td></tr><tr><td class="gt-t"><b>Fold</b></td><td>The overall 3D shape of a protein.</td></tr><tr><td class="gt-t"><b>α-helix / β-sheet / loop</b></td><td>The common local shapes: a coil, a flat strand-based sheet, and flexible connecting stretches.</td></tr><tr><td class="gt-t"><b>Domain</b></td><td>A part of a protein that folds into its own compact unit and often has its own job.</td></tr><tr><td class="gt-t"><b>Backbone / side chain</b></td><td>Backbone: the repeating N–Cα–C–O chain that sets the fold. Side chains: the different groups hanging off it that set chemistry and sequence.</td></tr><tr><td class="gt-t"><b>N-terminus / C-terminus</b></td><td>The two ends of a protein chain. Their positions matter when fusing a binder into a receptor.</td></tr><tr><td class="gt-t"><b>Linker</b></td><td>Short flexible stretch joining two domains.</td></tr><tr><td class="gt-t"><b>Surface / interface</b></td><td>Surface: the outside of a protein. Interface: the patch where two proteins touch.</td></tr><tr><td class="gt-t"><b>Hotspot</b></td><td>Target residue(s) you ask the binder to contact; chosen from exposed, conserved patches.</td></tr><tr><td class="gt-t"><b>Hydrogen bond (H-bond)</b></td><td>Weak but important attraction between atoms; one of the contacts that holds an interface together.</td></tr><tr><td class="gt-t"><b>Hydrophobic contact</b></td><td>Oily side chains packing together away from water; usually the largest contributor to binding.</td></tr><tr><td class="gt-t"><b>Electrostatics</b></td><td>Attraction and repulsion between charged groups (+/−).</td></tr><tr><td class="gt-t"><b>Steric clash</b></td><td>Two atoms placed impossibly close. A clash means the model is physically wrong.</td></tr><tr><td class="gt-t"><b>Conformational change</b></td><td>A protein changing shape, such as an NLR switching from off to on after effector binding.</td></tr><tr><td class="gt-t"><b>Oligomer</b></td><td>Several protein chains assembled together (dimer = 2, resistosome = ring of many).</td></tr><tr><td class="gt-t"><b>Å (ångström)</b></td><td>Unit of atomic distance: 0.1 nm. Structural errors are quoted in Å.</td></tr><tr><td class="gt-t"><b>PDB / PDB file</b></td><td>Protein Data Bank: public database of experimental structures. A <code>.pdb</code> file is the text file of atom coordinates.</td></tr><tr><td class="gt-t"><b>Chain ID</b></td><td>Letter (A, B…) naming each protein chain in a PDB file. Mixing these up is a common pipeline error.</td></tr></table></div>
-<h3 class="gh" data-g>Computational tools & metrics</h3><div class="card scroll gt"><table><tr><td class="gt-t"><b>AlphaFold</b></td><td>AI that predicts a protein’s 3D structure from its sequence.</td></tr><tr><td class="gt-t"><b>ColabFold</b></td><td>Faster, easier-to-run version of AlphaFold-style prediction.</td></tr><tr><td class="gt-t"><b>pLDDT</b></td><td>AlphaFold’s per-residue confidence (0–100). High is reliable; low is often a disordered or uncertain region.</td></tr><tr><td class="gt-t"><b>PAE</b></td><td>Predicted aligned error: AlphaFold’s expected error in the relative position of two parts. Low between binder and target means a confident interface.</td></tr><tr><td class="gt-t"><b>RMSD</b></td><td>Root-mean-square deviation: average distance (Å) between matching atoms in two structures. Lower means more similar.</td></tr><tr><td class="gt-t"><b>De novo design</b></td><td>Designing a protein from scratch, not by editing a natural one.</td></tr><tr><td class="gt-t"><b>Binder</b></td><td>A protein designed to stick to a chosen target.</td></tr><tr><td class="gt-t"><b>Diffusion model</b></td><td>AI that starts from noise and refines it step by step into a structure (like image generators).</td></tr><tr><td class="gt-t"><b>RFdiffusion</b></td><td>Diffusion model that generates new protein backbones, e.g. binders to a target and hotspots.</td></tr><tr><td class="gt-t"><b>ProteinMPNN</b></td><td>AI that proposes amino-acid sequences for a given backbone (inverse folding).</td></tr><tr><td class="gt-t"><b>Inverse folding</b></td><td>Going from a 3D structure to sequences that would fold into it (opposite of AlphaFold).</td></tr><tr><td class="gt-t"><b>BindCraft</b></td><td>Binder-design pipeline that optimises directly against AlphaFold’s predictions, doing design and filtering in one loop.</td></tr><tr><td class="gt-t"><b>Contig</b></td><td>RFdiffusion’s string describing which target residues to keep and how long a binder to generate (e.g. <code>A1-120/0 70-100</code>).</td></tr><tr><td class="gt-t"><b>ChimeraX</b></td><td>Free 3D viewer for protein structures from UCSF. Used to inspect, measure and compare.</td></tr><tr><td class="gt-t"><b>Foldseek</b></td><td>Fast tool for searching and comparing protein <i>structures</i> in large collections.</td></tr><tr><td class="gt-t"><b>Structural alignment</b></td><td>Overlaying two structures to measure how similar their folds are.</td></tr><tr><td class="gt-t"><b>Clustering</b></td><td>Grouping similar structures (or sequences) automatically.</td></tr><tr><td class="gt-t"><b>Conservation</b></td><td>How unchanged a residue or surface is across related proteins.</td></tr><tr><td class="gt-t"><b>SASA</b></td><td>Solvent-accessible surface area: how exposed a residue is to the outside.</td></tr><tr><td class="gt-t"><b>UniProt</b></td><td>Public protein sequence database; IDs look like P12345.</td></tr><tr><td class="gt-t"><b>FASTA</b></td><td>Simple text format for sequences.</td></tr><tr><td class="gt-t"><b>GPU / SLURM</b></td><td>GPU: graphics chip used to run AI models fast. SLURM: job scheduler used on computing clusters.</td></tr><tr><td class="gt-t"><b>Seed</b></td><td>Number that fixes the randomness of a run, so results can be reproduced.</td></tr><tr><td class="gt-t"><b>Gate (pipeline)</b></td><td>An automatic pass/fail check between pipeline stages (as used in section 7).</td></tr></table></div>
+<h3 class="gh" data-g>Computational tools & metrics</h3><div class="card scroll gt"><table><tr><td class="gt-t"><b>AlphaFold</b></td><td>AI that predicts a protein’s 3D structure from its sequence.</td></tr><tr><td class="gt-t"><b>ColabFold</b></td><td>Faster, easier-to-run version of AlphaFold-style prediction.</td></tr><tr><td class="gt-t"><b>pLDDT</b></td><td>AlphaFold’s per-residue confidence (0–100). High is reliable; low is often a disordered or uncertain region.</td></tr><tr><td class="gt-t"><b>PAE</b></td><td>Predicted aligned error: AlphaFold’s expected error in the relative position of two parts. Low between binder and target means a confident interface.</td></tr><tr><td class="gt-t"><b>RMSD</b></td><td>Root-mean-square deviation: average distance (Å) between matching atoms in two structures. Lower means more similar.</td></tr><tr><td class="gt-t"><b>De novo design</b></td><td>Designing a protein from scratch, not by editing a natural one.</td></tr><tr><td class="gt-t"><b>Binder</b></td><td>A protein designed to stick to a chosen target.</td></tr><tr><td class="gt-t"><b>Diffusion model</b></td><td>AI that starts from noise and refines it step by step into a structure (like image generators).</td></tr><tr><td class="gt-t"><b>RFdiffusion</b></td><td>Diffusion model that generates new protein backbones, e.g. binders to a target and hotspots.</td></tr><tr><td class="gt-t"><b>ProteinMPNN</b></td><td>AI that proposes amino-acid sequences for a given backbone (inverse folding).</td></tr><tr><td class="gt-t"><b>Inverse folding</b></td><td>Going from a 3D structure to sequences that would fold into it (opposite of AlphaFold).</td></tr><tr><td class="gt-t"><b>BindCraft</b></td><td>Binder-design pipeline that optimises directly against AlphaFold’s predictions, doing design and filtering in one loop.</td></tr><tr><td class="gt-t"><b>Contig</b></td><td>RFdiffusion’s string describing which target residues to keep and how long a binder to generate (e.g. <code>A1-120/0 70-100</code>).</td></tr><tr><td class="gt-t"><b>ChimeraX</b></td><td>Free 3D viewer for protein structures from UCSF. Used to inspect, measure and compare.</td></tr><tr><td class="gt-t"><b>Foldseek</b></td><td>Fast tool for searching and comparing protein <i>structures</i> in large collections.</td></tr><tr><td class="gt-t"><b>Structural alignment</b></td><td>Overlaying two structures to measure how similar their folds are.</td></tr><tr><td class="gt-t"><b>Clustering</b></td><td>Grouping similar structures (or sequences) automatically.</td></tr><tr><td class="gt-t"><b>Conservation</b></td><td>How unchanged a residue or surface is across related proteins.</td></tr><tr><td class="gt-t"><b>SASA</b></td><td>Solvent-accessible surface area: how exposed a residue is to the outside.</td></tr><tr><td class="gt-t"><b>UniProt</b></td><td>Public protein sequence database; IDs look like P12345.</td></tr><tr><td class="gt-t"><b>FASTA</b></td><td>Simple text format for sequences.</td></tr><tr><td class="gt-t"><b>GPU / SLURM</b></td><td>GPU: graphics chip used to run AI models fast. SLURM: job scheduler used on computing clusters.</td></tr><tr><td class="gt-t"><b>Seed</b></td><td>Number that fixes the randomness of a run, so results can be reproduced.</td></tr><tr><td class="gt-t"><b>Gate (pipeline)</b></td><td>An automatic pass/fail check between pipeline stages (as used in section 11).</td></tr><tr><td class="gt-t"><b>Epitope</b></td><td>The specific patch of surface a binder actually touches.</td></tr><tr><td class="gt-t"><b>Conformer</b></td><td>One of the several shapes the same protein can adopt.</td></tr><tr><td class="gt-t"><b>Structural ensemble</b></td><td>A collection of conformers rather than one model &mdash; generated from several AlphaFold seeds, subsampled alignments or MD snapshots. Needed before you can claim a surface is “always exposed”.</td></tr><tr><td class="gt-t"><b>Minimum SASA</b></td><td>The lowest exposure a residue shows across the whole ensemble. Using the minimum rather than the average is what makes “never hidden” an honest test.</td></tr><tr><td class="gt-t"><b>Invariant face</b></td><td>The patch left after keeping only residues exposed in every conformer and every family member. The target surface of the whole project.</td></tr><tr><td class="gt-t"><b>Negative design</b></td><td>Deliberately checking a binder does <i>not</i> stick to plant proteins. Skipping it risks a receptor that attacks its own plant.</td></tr><tr><td class="gt-t"><b>SignalP</b></td><td>Predicts whether a protein carries a secretion signal. First filter in the effector funnel.</td></tr><tr><td class="gt-t"><b>DeepTMHMM</b></td><td>Predicts transmembrane helices, used to discard proteins that stay stuck in the membrane.</td></tr><tr><td class="gt-t"><b>EffectorP</b></td><td>Machine-learning tool that picks likely effectors out of a secretome and labels them apoplastic or cytoplasmic. <b>Fungi and oomycetes only</b> &mdash; for bacteria use EffectiveT3, T3SEpp or BastionX instead.</td></tr><tr><td class="gt-t"><b>PHI-base</b></td><td>Database of experimentally confirmed pathogenicity and virulence genes, with mutant phenotypes. Where you check an effector really matters.</td></tr><tr><td class="gt-t"><b>Proteome (UniProt)</b></td><td>The complete protein set of one organism, with a <code>UP…</code> identifier. The starting point for effector prediction.</td></tr><tr><td class="gt-t"><b>Taxon ID</b></td><td>A number identifying an organism in databases, e.g. 318829 for rice blast. Searching by number avoids problems when species get renamed.</td></tr></table></div>
 <h3 class="gh" data-g>Lab: protein production & structure</h3><div class="card scroll gt"><table><tr><td class="gt-t"><b>Plasmid / vector</b></td><td>Circular DNA used to carry a gene into cells for expression.</td></tr><tr><td class="gt-t"><b>Expression</b></td><td>Making a protein in host cells (commonly <i>E. coli</i>, insect or plant cells).</td></tr><tr><td class="gt-t"><b>Soluble</b></td><td>Dissolved and properly folded in water, as opposed to clumped. Needed for most experiments.</td></tr><tr><td class="gt-t"><b>Purification</b></td><td>Separating one protein from all the others, often with an affinity tag (e.g. His-tag) then size-exclusion chromatography.</td></tr><tr><td class="gt-t"><b>BLI / SPR</b></td><td>Bio-layer interferometry / surface plasmon resonance: label-free ways of measuring binding between two proteins in real time.</td></tr><tr><td class="gt-t"><b>KD, kon, koff</b></td><td>KD: binding strength (lower = tighter). kon: how fast they bind. koff: how fast they come apart.</td></tr><tr><td class="gt-t"><b>X-ray crystallography</b></td><td>Growing protein crystals, firing X-rays, and building an atomic model from the diffraction pattern.</td></tr><tr><td class="gt-t"><b>Electron density</b></td><td>The map from crystallography that shows where atoms are; the model must fit it.</td></tr><tr><td class="gt-t"><b>Co-crystal structure</b></td><td>Crystal structure of two proteins bound together, e.g. binder + effector.</td></tr><tr><td class="gt-t"><b>Cryo-EM</b></td><td>Cryo-electron microscopy: imaging flash-frozen single particles and averaging them into a 3D structure. Good for large complexes like NLRs.</td></tr><tr><td class="gt-t"><b>Resolution</b></td><td>How fine the detail in a structure is (smaller Å = sharper).</td></tr></table></div>
 <h3 class="gh" data-g>Lab: plant assays & readouts</h3><div class="card scroll gt"><table><tr><td class="gt-t"><b><i>Agrobacterium</i></b></td><td>Bacterium used as a delivery vehicle to put genes into plant cells.</td></tr><tr><td class="gt-t"><b><i>N. benthamiana</i></b></td><td>Tobacco relative widely used for quick gene tests in leaves.</td></tr><tr><td class="gt-t"><b>Transient expression</b></td><td>Temporary expression of a gene in leaves, usually read within days.</td></tr><tr><td class="gt-t"><b>Cell-death assay</b></td><td>Checking for visible leaf death as a sign of NLR activation (HR).</td></tr><tr><td class="gt-t"><b>Ca²⁺ signalling</b></td><td>Rise of calcium in the cell after NLR activation; an early, quantifiable readout.</td></tr><tr><td class="gt-t"><b>Ca²⁺ reporter</b></td><td>Protein that glows or changes fluorescence when Ca²⁺ binds (e.g. luminescent aequorin-type or fluorescent GCaMP-type sensors).</td></tr><tr><td class="gt-t"><b>RT-qPCR</b></td><td>Measures how much a gene is switched on by converting RNA to DNA and counting it.</td></tr><tr><td class="gt-t"><b>Defence marker genes</b></td><td>Genes reliably switched on in immune responses; used to confirm a real defence response, not just cell death.</td></tr><tr><td class="gt-t"><b>Resistance assay</b></td><td>Challenging the plant with pathogen and measuring how much the pathogen grows or how much disease results. The final proof.</td></tr><tr><td class="gt-t"><b>Binding ≠ signalling</b></td><td>A receptor can bind its target without activating. Binding, Ca²⁺, defence genes and resistance are separate levels of evidence.</td></tr></table></div>
 
