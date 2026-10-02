@@ -1,0 +1,336 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Validate Before the Lab – Synthetic Receptor Plan</title>
+<style>
+:root{
+  --bg:#f6f7f4; --card:#fff; --ink:#1d2a24; --mute:#5d6b63; --line:#d6dcd6;
+  --a:#2f7d5b; --a-bg:#e3f2ea; --b:#2d6cb5; --b-bg:#e2edf9;
+  --c:#b0701c; --c-bg:#fbefd9; --d:#7a4bb0; --d-bg:#eee6f8;
+  --good:#2f7d5b; --bad:#b83a3a; --warn:#b0701c;
+}
+@media (prefers-color-scheme:dark){
+:root{
+  --bg:#121714; --card:#1b231e; --ink:#e6ece8; --mute:#9aa8a0; --line:#33403a;
+  --a:#5fc08f; --a-bg:#1c3328; --b:#6aa7ea; --b-bg:#1b2b40;
+  --c:#e0a049; --c-bg:#3a2c16; --d:#b58be6; --d-bg:#2b2040;
+  --good:#5fc08f; --bad:#ee7b7b; --warn:#e0a049;
+}}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 system-ui,-apple-system,Segoe UI,Roboto,sans-serif;padding:0 18px}
+main{max-width:1000px;margin:0 auto;padding:24px 0 64px}
+nav#toc{position:sticky;top:0;z-index:10;display:flex;gap:6px;overflow-x:auto;padding:8px 18px;margin:0 -18px;background:var(--bg);border-bottom:1px solid var(--line)}
+nav#toc a{flex:0 0 auto;font-size:13px;color:var(--mute);text-decoration:none;border:1px solid var(--line);border-radius:99px;padding:3px 11px;background:var(--card);white-space:nowrap}
+nav#toc a:hover{border-color:var(--ink);color:var(--ink)}
+h1{font-size:28px;margin:18px 0 6px;letter-spacing:-.5px}
+h2{font-size:21px;margin:44px 0 4px;scroll-margin-top:56px}
+h2 .n{display:inline-block;background:var(--ink);color:var(--bg);border-radius:6px;font-size:13px;padding:1px 8px;margin-right:8px;vertical-align:3px}
+h3{font-size:15px;margin:16px 0 4px}
+p.sub{color:var(--mute);margin:0 0 14px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px;margin:14px 0}
+.scroll{overflow-x:auto}
+.callout{border-left:4px solid var(--warn);background:var(--c-bg);padding:10px 14px;border-radius:0 8px 8px 0;margin:14px 0}
+.key{border-left:4px solid var(--d);background:var(--d-bg);padding:12px 16px;border-radius:0 8px 8px 0;font-size:16px;margin:14px 0}
+table{border-collapse:collapse;width:100%;font-size:14px}
+th,td{border-bottom:1px solid var(--line);padding:7px 9px;text-align:left;vertical-align:top}
+th{font-size:12px;text-transform:uppercase;letter-spacing:.5px;color:var(--mute)}
+.yes{color:var(--good);font-weight:600}.no{color:var(--bad);font-weight:600}.warn{color:var(--warn);font-weight:600}
+.pill{display:inline-block;border-radius:99px;padding:1px 10px;font-size:12px;font-weight:600;border:1px solid var(--line)}
+.p-ok{background:var(--a-bg);color:var(--a);border-color:var(--a)}
+.p-dry{background:var(--b-bg);color:var(--b);border-color:var(--b)}
+.p-wet{background:var(--c-bg);color:var(--c);border-color:var(--c)}
+.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px}
+.mono{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:13px}
+a{color:var(--b)}
+small,.mute{color:var(--mute)}
+.bar{height:14px;border-radius:7px;background:var(--line);overflow:hidden;display:flex}
+.bar i{display:block;height:100%}
+.back{font-size:13px}
+</style>
+</head>
+<body>
+<nav id="toc" aria-label="Sections">
+<a href="syntheticprotein.html">&larr; Workflow map</a>
+<a href="#v1"><b>1</b> Evidence</a><a href="#v2"><b>2</b> Group comparison</a><a href="#vb"><b>B</b> Biology</a><a href="#vm"><b>M</b> Mechanism</a><a href="#v3"><b>3</b> What drives failure</a><a href="#v4"><b>4</b> Rules</a><a href="#v5"><b>5</b> Ladder</a><a href="#v6"><b>6</b> Data</a><a href="#v7"><b>7</b> Limits</a>
+</nav>
+<main>
+<h1>Validate Before the Lab</h1>
+<p class="sub">How to raise the chance a synthetic NLR works, and cut wasted experiments, using published data. Companion to the <a href="syntheticprotein.html">workflow map</a> (sections 11&ndash;14). Compiled 2 Oct 2026 from the literature; items marked <span class="warn">unverified</span> still need a check against the source.</p>
+
+<div class="card"><h3 style="margin-top:0">How to read the evidence</h3>
+<p style="margin:0 0 6px">Every statement on this page is only as strong as its support. Grades follow an audit of 79 statements against the source texts (before the fixes below: 25 read directly in a primary source, 21 from abstracts or secondary sources, 29 my inference, 4 unsupported or contradicted; the 4 are corrected).</p>
+<p style="margin:0"><span class="pill p-ok">A</span> read in a primary source and matches &nbsp; <span class="pill p-dry">B</span> abstract or secondary source &nbsp; <span class="pill p-wet">C</span> my inference, plausible but untested &nbsp; <b>Unproven means not trusted:</b> C items are hypotheses to test, not findings. Raw audit and claim tables are in the session scratchpad.</p></div>
+
+<div class="card">
+<h3 style="margin-top:0">Is there a determinant of success?</h3>
+<p><b>Yes for autoactivity (the 67% failure); no for being functional (the ~4%).</b></p>
+<table>
+<tr><th>Level of evidence</th><th>Determinant</th></tr>
+<tr><td><span class="yes">Backed by published studies</span><br><small>other Pik-1 engineering work</small></td><td>
+<b>Helper allele:</b> Pikm-2 is autoactive-prone; Pikp-2 is more permissive than Pikm-2 (not a guarantee), and Pikps-2 and Pike-2 (Asp230) also suppress autoactivity. Pik-2 residue 230 (Asp vs Glu) is the main switch; a role for residue 754 is <span class="warn">unverified</span>. Rescue is partial.<br>
+<b>Integrated-domain structure:</b> deleting Gly186, P252D, grafting Pikp elements into Pikm HMA, or using non-co-evolved HMAs all cause autoactivity.<br>
+<b>Expression level:</b> Pik-2 accumulates more in autoactive pairs (no direct dose test of nanobody fusions found).<br>
+<b>Charge and residues after the ID:</b> in RGA5 a Lys-rich C-terminal stretch after the integrated domain was needed for function (Zhang 2024).<br>
+<b>Not a determinant:</b> binding affinity.</td></tr>
+<tr><td><span class="warn">Possible, hypothesis only</span><br><small>n = 12 binders, 2 functional</small></td><td>
+<b>Net charge:</b> 3 of 4 repressed binders are near-neutral while most others are acidic (9 of 12 are &le;&minus;4); the one strongly basic binder (Fobinder9) gave no response. Weak: n = 12, one basic binder, and Fobinder7 (&minus;10) is repressed.<br>
+<b>Epitope face:</b> Fobinder1, 5, 6 and 9 sit on the effector&rsquo;s free face, 8 others on the face occluded by its dimer interface. This predicts binding behaviour but does not cleanly separate functional from autoactive (functional F4 is on the occluded face).<br>
+<b>Fusion geometry and expression per binder:</b> not reported for the FoSSP17 binders (no linker sequences, no per-binder expression), so untestable for now.</td></tr>
+<tr><td><span class="no">Established for &ldquo;functional&rdquo;</span></td><td>None. The two functional binders look like the autoactive ones in sequence, and n is too small for statistics.</td></tr>
+</table>
+<p style="margin:10px 0 0"><b>Contradiction:</b> the FoSSP17 scoring used Pikp-2, the tolerant helper, yet 67&ndash;72% of binders were still autoactive, so the helper alone does not explain it for de novo binders. The paper gives no explanation beyond precedent.</p>
+<p style="margin:6px 0 0"><b>Next step:</b> get the full 46-binder table from the authors and test charge, polarity, epitope and termini geometry on all 46; the public Pik-1/Pik-2 allele scores (Xi 2026, Table S4) can already test the helper effect. Until then: test both helpers early, keep the HMA&rsquo;s size and junction geometry, use low-dose expression, and do not rank by affinity.</p>
+</div>
+
+<div class="key"><b>Bottom line.</b> In the closest precedent, de novo binders put into Pik-1 almost never worked: only <b>2 of 46</b> (FoSSP17) and <b>0 of 44</b> (AVR-PikF) were functional and about <b>67&ndash;72%</b> were autoactive. Binding strength did not predict which ones worked. So the effort should go into filtering out autoactivity and choosing the helper and expression conditions, not into ranking by affinity. Computation can cut the wet-lab count; it cannot show signalling.</div>
+
+<h2 id="v1"><span class="n">1</span>The precedent: 46 de novo binders in Pik-1</h2>
+<p class="sub">Xi et al. 2026, bioRxiv 10.64898/2026.07.10.737686. Binders to FoSSP17, designed with RFdiffusion + ProteinMPNN (AF2 confidence metrics were used, but no thresholds or per-binder values are reported for FoSSP17; the 0.85/0.80/5 filter was stated for the AVR-Pii designs), replaced the Pikm-1 HMA domain (partial N- and C-terminal HMA sequence was kept in a new &ldquo;LV2&rdquo; Pikm-1 chassis, built to reduce autoactivity). The 46 came out of a large funnel: 19,200 backbones &rarr; about 192,000 sequences per target; top 5,000 by pAE went to partial diffusion (about 100,000 variants); about 10,000 to yeast display; then selection. Yeast display means the tested pool was already enriched for binding; the order of filters is not reported. The target was the AF2 monomer, but FoSSP17 is a homodimer.</p>
+<div class="card">
+<div class="bar" role="img" aria-label="Outcome shares of 46 binders: 2 functional, 2 enhanced and autoactive, 9 repressed, 22 autoactive and not repressed, 11 no response (Fig S2C)">
+<i style="width:4.3%;background:var(--good)"></i><i style="width:4.3%;background:var(--d)"></i><i style="width:19.6%;background:var(--b)"></i><i style="width:47.8%;background:var(--bad)"></i><i style="width:23.9%;background:var(--mute)"></i>
+</div>
+<table style="margin-top:10px">
+<tr><th>Outcome</th><th>n (of 46)</th><th>Meaning</th></tr>
+<tr><td><span class="yes">Functional</span></td><td>2</td><td>Cell death only with FoSSP17 (Fobinder1, 4)</td></tr>
+<tr><td>Enhanced + autoactive</td><td>2</td><td>Stronger with effector but also on its own (Fobinder2, 3)</td></tr>
+<tr><td>Autoactive, repressed by effector</td><td>9 (only Fobinder5&ndash;8 named)</td><td>Cell death with no effector, quieted when FoSSP17 is present</td></tr>
+<tr><td><span class="no">Autoactive, not repressed</span></td><td>22 (Fobinder11, 12 named)</td><td>Cell death with no effector, no change with it</td></tr>
+<tr><td>No response</td><td>11</td><td>Dead receptor</td></tr>
+</table>
+<p class="mute" style="margin:8px 0 0">Source: Fig S2C. The text&rsquo;s &ldquo;31 autoactive&rdquo; = 9 repressed + 22 not repressed; the 2 enhanced binders are autoactive too, so the true total is 33 of 46 (72%). Only Fobinder5&ndash;8 are named among the repressed because only they were carried forward. Of 46 binders, the paper reports 2 as recognition: Fobinder1 weak, Fobinder4 strong.</p>
+</div>
+
+<h2 id="v2"><span class="n">2</span>What is shared within each group, and what differs</h2>
+<p class="sub">Only 12 of the 46 binders (Fobinder1&ndash;12) have per-binder data in the paper. Sequences were translated from the DNA in Table S3. <b>n = 12 with 2 functional: these are leads for testing, not statistics.</b></p>
+<div class="card scroll">
+<table>
+<tr><th>Binder</th><th>Outcome</th><th>Length</th><th>Net charge</th><th>pI</th><th>Hydro&shy;phobic %</th><th>KD (&micro;M)</th><th>SEC complex</th></tr>
+<tr><td>Fobinder1</td><td class="yes">functional</td><td>96</td><td>&minus;1</td><td>6.1</td><td>44</td><td>1.29</td><td>yes</td></tr>
+<tr><td>Fobinder4</td><td class="yes">functional</td><td>87</td><td>&minus;6</td><td>4.9</td><td>48</td><td>13.9</td><td>no</td></tr>
+<tr><td>Fobinder2</td><td>enhanced + auto</td><td>87</td><td>&minus;5</td><td>4.6</td><td>60</td><td>&ndash;</td><td>no</td></tr>
+<tr><td>Fobinder3</td><td>enhanced + auto</td><td>92</td><td>&minus;5</td><td>4.9</td><td>45</td><td>&ndash;</td><td>no</td></tr>
+<tr><td>Fobinder5</td><td>repressed</td><td>101</td><td>+1</td><td>7.7</td><td>37</td><td>0.484</td><td>yes</td></tr>
+<tr><td>Fobinder6</td><td>repressed</td><td>107</td><td>0</td><td>6.6</td><td>45</td><td>&ndash;</td><td>&ndash; (unstable)</td></tr>
+<tr><td>Fobinder7</td><td>repressed</td><td>107</td><td>&minus;10</td><td>4.6</td><td>52</td><td>&ndash;</td><td>no</td></tr>
+<tr><td>Fobinder8</td><td>repressed</td><td>88</td><td>&minus;1</td><td>5.8</td><td>32</td><td>&ndash;</td><td>no</td></tr>
+<tr><td>Fobinder9</td><td>no response</td><td>89</td><td>+5</td><td>9.4</td><td>49</td><td>13.5</td><td>yes</td></tr>
+<tr><td>Fobinder10</td><td>no response</td><td>86</td><td>&minus;8</td><td>4.7</td><td>41</td><td>&ndash;</td><td>no</td></tr>
+<tr><td>Fobinder11</td><td class="no">autoactive</td><td>89</td><td>&minus;7</td><td>4.8</td><td>43</td><td>&ndash;</td><td>no</td></tr>
+<tr><td>Fobinder12</td><td class="no">autoactive</td><td>100</td><td>&minus;4</td><td>4.9</td><td>45</td><td>60.9</td><td>no</td></tr>
+</table>
+<p class="mute" style="margin:8px 0 0">Net charge = (K+R) &minus; (D+E); hydrophobic % = A,V,I,L,M,F,W,C. All 12 are 86&ndash;107 aa helical bundles and all 12 associated with FoSSP17 by co-IP (none with Pwl2). 11 of 12 expressed well in <i>E. coli</i> (Fobinder6 was unstable). Only 3 of 11 formed a complex on SEC.</p>
+</div>
+<div class="cols">
+<div class="card"><h3>Shared by all groups</h3><p>Small helical bundles, nearly all acidic (net &minus;1 to &minus;10), 11 of 12 expressed in <i>E. coli</i>, all associate with the effector by co-IP. So <b>binding, length and fold do not separate the outcomes.</b></p></div>
+<div class="card"><h3>Functional (2)</h3><p>Moderate KD (1.3 and 13.9 &micro;M), mid hydrophobicity. Fobinder1 contacts the effector&rsquo;s &alpha;3/&alpha;5 helices, away from the dimer interface. Nothing else sets them apart from the autoactive binders in sequence terms.</p></div>
+<div class="card"><h3>Repressed (9; 4 named)</h3><p>Three of the four named are near-neutral (net +1, 0, &minus;1), unlike most others, and the group includes the tightest binder (0.48 &micro;M). But Fobinder7 is &minus;10, and Fobinder6&rsquo;s hydrophobic % equals functional Fobinder1&rsquo;s, so no clean pattern. <b>Hypothesis only</b> (n = 4).</p></div>
+<div class="card"><h3>No response (2)</h3><p>Fobinder9 is the only strongly basic binder (pI 9.4, +5) and still binds with a KD of 13.5 &micro;M, the same as functional Fobinder4. Binding without signalling is the &ldquo;dead&rdquo; case of workflow section 14.</p></div>
+</div>
+<div class="card"><h3 style="margin-top:0">Epitope face: a possible determinant, but not clean</h3>
+<p>AF2 models (Fig S13) put Fobinder1, 5, 6 and 9 on the effector&rsquo;s <b>free face</b>, and Fobinder2, 3, 4, 7, 8, 10, 11 and 12 on the face <b>occluded by the FoSSP17 dimer interface</b>. The authors suggest this may account for why only the free-face binders (and F4, which is on the occluded face) behaved in SEC. Against signalling it does not separate the groups: functional F1 is free-face but functional F4 is occluded; repressed binders are on both faces; the no-response binder F9 is free-face. Fig S12 lists 20 Fobinder1 side chains in contact with FoSSP17; design vs crystal RMSD is 0.46 &Aring; (F1) and 1.12 &Aring; (F9). Lesson: design against the biological dimer, not the monomer.</p></div>
+<div class="callout"><b>What this tells us.</b> At sequence level the groups overlap too much to build a filter. The missing information is structural: where the binder sits on the effector, how its termini sit in the fusion, and expression level. Those are what the extra data from the authors (section 6) would test.</div>
+
+<h2 id="vb"><span class="n">B</span>What a working receptor is supposed to be, and where de novo fusions fall short</h2>
+<p class="sub">Built from primary literature on well-studied receptors (ZAR1, Sr35, NRC2/NRC4, RGA5/RGA4, Pik-1/Pik-2). Grades as in the legend: <span class="pill p-ok">A</span> read in text, <span class="pill p-dry">B</span> abstract or review only, <span class="pill p-wet">C</span> my inference. Where nothing was found, it says so.</p>
+
+<h3>1. The receptor at rest</h3>
+<div class="card scroll">
+<table>
+<tr><th>Property</th><th>Evidence</th><th>Grade</th></tr>
+<tr><td>Three-part core: the NB-ARC (NBD + HD1 + WHD) works as a nucleotide switch, ADP-bound = off, ATP-bound = on; the LRR helps autoinhibition; the CC domain signals.</td><td>Review Plant J 2026 (10.1111/tpj.70702); Zdrza&lstrok;ek 2020: &ldquo;C-terminal LRR domain has a role in auto-inhibition&rdquo;</td><td><span class="pill p-dry">B</span>/<span class="pill p-ok">A</span></td></tr>
+<tr><td>Held inactive by contacts between its own domains: &ldquo;In healthy plants, NLRs are bound to ADP and kept inactive through intradomain interactions.&rdquo; In ZAR1 the LRR is positioned &ldquo;to sequester ZAR1 in an inactive state&rdquo;; in NRC2, dimers and oligomers stabilise the inactive state, and dimer-interface mutations enhance cell death.</td><td>Ma 2024 Nature (10.1038/s41586-024-07668-7); Wang 2019 Science (10.1126/science.aav5868, abstract)</td><td><span class="pill p-ok">A</span></td></tr>
+<tr><td>Pik pair is built differently from RGA5/RGA4. In Pik, every domain of both Pik-1 and Pik-2 is needed, the two associate at rest, and the authors call it &ldquo;receptor cooperation rather than negative regulation&rdquo;. In RGA5/RGA4 the helper is autoactive and the sensor represses it.</td><td>Zdrza&lstrok;ek 2020 (10.1371/journal.pone.0238616); Cesari 2014 (10.15252/embj.201487923, abstract)</td><td><span class="pill p-ok">A</span></td></tr>
+<tr><td>In Pik-1 the HMA sits between the CC and NB-ARC (residues 186&ndash;258 in Pikp). Natural integrated domains make up about 10% of NLR genes.</td><td>Maqbool 2015; F&ouml;rderer 2022 (10.1038/s41586-022-05231-w)</td><td><span class="pill p-ok">A</span></td></tr>
+<tr><td>Kept at low levels on purpose: loss of the HSP90&ndash;RAR1&ndash;SGT1 chaperone depletes NLR protein; ubiquitin ligases such as CPR1 degrade SNC1 and RPS2; &ldquo;excessive NLR expression can lead to unintended autoimmunity&rdquo;. An integrated domain can itself be a turnover handle (RRS1 WRKY ubiquitinated by RARE).</td><td>Ma 2024; reviews PMC6032283, PMC11865428; Nat Commun 2025 (10.1038/s41467-025-57231-9). Pik-specific chaperone and turnover data: <b>not found</b></td><td><span class="pill p-ok">A</span>/<span class="pill p-dry">B</span></td></tr>
+</table>
+</div>
+
+<h3>2. Activation</h3>
+<div class="card scroll">
+<table>
+<tr><th>Step</th><th>Evidence</th><th>Grade</th></tr>
+<tr><td>Recognition: direct (Sr35 binds AvrSr35 through its LRR), indirect (ZAR1 via RKS1/PBL2), or through an integrated decoy (Pik-1 HMA binds AVR-Pik).</td><td>F&ouml;rderer 2022; Wang 2019; Maqbool 2015</td><td><span class="pill p-ok">A</span></td></tr>
+<tr><td>Conversion: in Sr35 the effector clashes with the NBD and primes the receptor; full activation then needs ADP release, ATP binding and rearrangement of the NB-ARC and CC modules. In Pik, effector binding causes no large change in the HMA itself and the transduction is only <i>hypothesised</i>.</td><td>F&ouml;rderer 2022; Maqbool 2015</td><td><span class="pill p-ok">A</span> (Pik: hypothesis)</td></tr>
+<tr><td>Output: oligomer (pentamer in ZAR1 and Sr35, hexamer in NRC4; octamer rests on a preprint) whose released N-terminal helix forms a membrane funnel and a Ca&sup2;&#8314;-permeable channel.</td><td>Wang 2019 (abstract); Bi 2021 Cell (abstract); review PMC12856790</td><td><span class="pill p-dry">B</span></td></tr>
+<tr><td>Sensor and helper: in the NRC network an activated sensor does not stay in the helper oligomer (&ldquo;activation-and-release&rdquo;). For Pik-1/Pik-2 the stoichiometry, any resistosome and Pik-2 channel activity are <b>not known</b>.</td><td>Contreras 2023 EMBO J (10.15252/embj.2022111519)</td><td><span class="pill p-ok">A</span></td></tr>
+</table>
+</div>
+
+<h3>3. The environment, including how the test works</h3>
+<div class="card scroll">
+<table>
+<tr><th>Factor</th><th>Evidence</th><th>Grade</th></tr>
+<tr><td>Location: unactivated NRC4 is cytoplasmic and excluded from the nucleus; activated NRC2 moves to plasma-membrane puncta; RGA4/RGA5 are cytosolic. Pikm-1/Pikm-2 are reported at the membrane at rest (preprint only).</td><td>PNAS 2021 (10.1073/pnas.2104997118); Contreras 2023; Cesari 2014; bioRxiv 10.64898/2025.11.30.691369</td><td><span class="pill p-ok">A</span> (Pik: preprint)</td></tr>
+<tr><td>Assay dose is set by hand: typical Pik assays use OD600 0.4 for the NLR, 0.6 for the effector and 0.1 for the silencing suppressor P19, in 4-week-old leaves read at 5 dpi on a 0&ndash;6 visual scale (FoSSP17 paper: 0.5/0.5/0.1). The effector is therefore expressed above the NLR. A reviewer of one engineering paper wrote that a native promoter should ideally be used instead of 35S.</td><td>De la Concepcion 2019; Xi 2026 Nov. Phytol. (10.1111/nph.70864); Maidment 2023 (review section)</td><td><span class="pill p-ok">A</span></td></tr>
+<tr><td>The assay is only a proxy: authors state overexpression in a heterologous host &ldquo;may not always enable complete resistance&rdquo; in the real host. Cell death is semi-quantitative and depends on humidity, leaf position and temperature (shown for RPS4/RRS1; N and SNC1 are temperature-sensitive).</td><td>Zhang 2024; PMC9063123; PLoS Pathog 2010 (10.1371/journal.ppat.1000844)</td><td><span class="pill p-ok">A</span></td></tr>
+<tr><td>&ldquo;Autoactive&rdquo; is defined operationally: cell death without the effector under transient overexpression. Whether it also occurs at native levels was <b>not tested</b> in any text read. No same-construct comparison of transient vs native-promoter stable plants was found.</td><td>Assay definitions in Maidment 2023, Bialas 2021, Xi 2026. Bialas 2021 says the ancestral-HMA autoactivity was &ldquo;not due to protein instability or low protein abundance&rdquo;</td><td><span class="pill p-ok">A</span> (gap)</td></tr>
+<tr><td>Fate of a de novo protein in the plant cytoplasm (redox, protease susceptibility, host off-targets), and effect of temperature on Pik: <b>no primary text found</b>.</td><td>&ndash;</td><td>unsupported</td></tr>
+</table>
+</div>
+
+<h3>4. Why natural integrated domains work</h3>
+<div class="card scroll">
+<table>
+<tr><th>Property</th><th>Evidence</th><th>Grade</th></tr>
+<tr><td>They are baits: fused domains &ldquo;overlap with previously identified pathogen targets&rdquo;; integrated HMAs mimic host targets of effectors (OsHIPP19).</td><td>Sarris 2016 (10.1186/s12915-016-0228-7, abstract); Bialas 2021</td><td><span class="pill p-ok">A</span></td></tr>
+<tr><td>Natural binding is tight: AVR-PikD binds Pikp-HMA at 31 &plusmn; 2 nM (SPR); weaker alleles gave apparent values of hundreds of nM and little or no response; AVR-PikC did not bind. All AVR-Pik alleles bind OsHIPP19-HMA at nanomolar affinity.</td><td>Maqbool 2015; review PMC13331592 for OsHIPP19</td><td><span class="pill p-ok">A</span>/<span class="pill p-dry">B</span></td></tr>
+<tr><td>They are tuned to the rest of the receptor: the HMA &ldquo;likely coevolved with other NLR domains to maintain immune homeostasis&rdquo;. Several natural integrated domains have lost the ability to signal alone. Size and shape are critical: &ldquo;It was important to make sure the size of the HMA &hellip; was identical &hellip; removal of a single residue (&Delta;G186) resulted in strong autoactivity&rdquo;; a Pro252 change did the same. HMA &beta;1, &alpha;2 and &beta;4 residues affect helper compatibility, not only effector binding.</td><td>Bentham 2023; Bialas 2021</td><td><span class="pill p-ok">A</span></td></tr>
+<tr><td>Where natural scaffolds were re-surfaced, effector recognition could be restored (e.g. Pik-1 HMA mimicking OsHIPP19 restores recognition of AVR-PikC/F). Per-construct success rates for such studies were <b>not collected</b>, so they cannot be compared quantitatively with 2 of 46.</td><td>Maidment 2023; PNAS 2024 (10.1073/pnas.2402872121)</td><td><span class="pill p-dry">B</span></td></tr>
+</table>
+</div>
+
+<h3>5. Connecting the biology to the success rate</h3>
+<p class="sub">Each row is a requirement of a working receptor, what a de novo binder fusion brings, and what that predicts. All &ldquo;predictions&rdquo; are inferences (C) unless stated; none has been tested for de novo binders.</p>
+<div class="card scroll">
+<table>
+<tr><th>Requirement (from the biology)</th><th>De novo binder fusion</th><th>Prediction for success</th><th>Strength</th></tr>
+<tr><td><b>1. Stay inactive without effector:</b> the integrated domain sits inside a co-evolved set of contacts that keep the receptor off.</td><td>Never selected for this; a new surface in the slot.</td><td>Autoactivity is the default failure. Matches 31 of 46 and 30 of 44 autoactive, and the Pik literature: every non-co-evolved domain tested (OsHIPP19, RGA5-HMA, ancestral HMAs, 4 of 5 pikobodies with Pikm-2) was autoactive.</td><td><span class="pill p-dry">strongest</span></td></tr>
+<tr><td><b>2. Match size and geometry of the slot:</b> &Delta;G186 deletion or a Pro252 change gives strong autoactivity; HMA is 71&ndash;77 aa with termini 6&ndash;13 &Aring; apart.</td><td>Binders are 86&ndash;107 aa helical bundles; the chassis keeps partial HMA ends but the junctions are unpublished.</td><td>If a one-residue change in the HMA flips the receptor, a different-sized, different-shaped domain is likely to perturb it too. Termini geometry of the binders is unmeasured here, so this is a hypothesis (H2).</td><td><span class="pill p-wet">plausible, untested</span></td></tr>
+<tr><td><b>3. Be compatible with the helper:</b> HMA &beta;1, &alpha;2, &beta;4 and Pik-2 residue 230 set compatibility.</td><td>No HMA elements; compatibility is by chance. Pikp-2 (permissive) was used.</td><td>Helper choice shifts but cannot fix the outcome: Pikp-2 was used and 67&ndash;72% were still autoactive; mismatch rescue is partial (LaM3 not rescued).</td><td><span class="pill p-dry">consistent</span></td></tr>
+<tr><td><b>4. Bind the effector tightly enough:</b> natural pairs are tens to hundreds of nM and binding tracks response in Pik series.</td><td>0.48&ndash;61 &micro;M (about 16 to 2,000 times weaker than 31 nM), by spectral shift not SPR, so not directly comparable.</td><td>Binding is necessary but not enough here: the tightest binder was repressed, a binder at 13.5 &micro;M gave no response, and functional ones were at 1.29 and 13.9 &micro;M. A chimera that sits near the autoactive edge may respond to weak binding, but that is only a hypothesis.</td><td><span class="pill p-dry">consistent</span> / <span class="pill p-wet">C</span></td></tr>
+<tr><td><b>5. Relay the binding event to the NB-ARC:</b> in Sr35 the effector displaces the NBD; in Pik the mechanism is unknown.</td><td>Binder contacts only the effector; nothing designed for the relay.</td><td>Binding without relay gives a dead receptor, as RGA5 HMAs with a single interface bound but did not activate. Fits the 11 no-response binders, but no direct test.</td><td><span class="pill p-wet">weak</span></td></tr>
+<tr><td><b>6. Stay at low abundance and well folded:</b> NLRs are kept low by chaperones and turnover; excess causes autoimmunity.</td><td>Tested under 35S + Agrobacterium + P19, which gives high expression.</td><td>The assay may inflate autoactivity, so the 67&ndash;72% may overstate behaviour at native levels (not measured). Also means a &ldquo;functional&rdquo; call is only as good as the dose.</td><td><span class="pill p-wet">plausible; the assay conditions are A</span></td></tr>
+<tr><td><b>7. Assemble the resistosome and open the channel:</b> oligomer, N-terminal funnel, Ca&sup2;&#8314;.</td><td>Unknown for Pik; a foreign domain could favour or block assembly.</td><td>No prediction possible: no Pik resistosome structure exists.</td><td>unknown</td></tr>
+</table>
+</div>
+<div class="key"><b>Putting it together.</b> A functional fusion has to pass several requirements at once: stay quiet alone (1), fit the slot (2) and the helper (3), bind (4), relay the change (5), at tolerable dose (6). Natural integrated domains pass them because they were selected over evolution. De novo binders were designed only for requirement 4, and the data show that is the one that mattered least. Illustration, not data: if four independent requirements were each met with probability p, the chance of all four would be p&#8308;, and 2 of 46 (about 4%) would correspond to p of about 0.45 each.</div>
+<div class="callout"><b>What this does not show.</b> The requirements were not measured per binder, the requirements are not independent, and the weights are unknown. The strongest link is requirement 1, because it matches the data in two independent binder panels and in every other non-co-evolved domain studied. The rest are consistent with the data but untested. The practical lesson that follows, and is itself an inference: design for requirements 1&ndash;3 and 5, not only for binding (for example by keeping the natural HMA scaffold and re-surfacing it, matching size and termini, and testing helper alleles).</div>
+
+<h2 id="vm"><span class="n">M</span>Mechanism: how the real receptor works, and what that implies for the binder results</h2>
+<p class="sub">Each link in the chain is graded. Links 1&ndash;12 are literature (quotes read in full text unless marked abstract-only); R1&ndash;R6 connect them to the FoSSP17 results and are <b>inferences</b> unless stated. Nothing here proves why the binders failed: no paper has tested it.</p>
+<div class="card scroll">
+<table>
+<tr><th>#</th><th>Statement</th><th>Evidence</th><th>Grade</th></tr>
+<tr><td>1</td><td>The Pik-1 HMA is integrated between the CC and NB-ARC domains (in RGA5 it is after the LRR).</td><td>Maqbool 2015 eLife (10.7554/eLife.08709): &ldquo;integrated between the CC and NB-ARC regions of Pik-1&rdquo;; Bentham 2023</td><td><span class="pill p-ok">A</span></td></tr>
+<tr><td>2</td><td>The HMA is a small &alpha;/&beta; sandwich (four-strand &beta;-sheet, two helices; 71&ndash;77 aa resolved). In the crystal structures the termini are 6&ndash;13 &Aring; apart on one face and the effector binds the &beta;-sheet about 15 &Aring; away.</td><td>Fold: Maqbool 2015. Distances: my measurement from 5A6W and 6FUD (effector-bound; unbound geometry unmeasured)</td><td><span class="pill p-ok">A</span> / measured</td></tr>
+<tr><td>3</td><td>AVR-Pik binds one HMA monomer (1:1), burying 1031 &Aring;&sup2; and pairing the HMA C-terminal &beta;-strand with an effector &beta;-strand into a continuous antiparallel sheet.</td><td>Maqbool 2015</td><td><span class="pill p-ok">A</span></td></tr>
+<tr><td>4</td><td>The HMA shows no large conformational change on binding, so effector binding is <i>hypothesised</i> to promote domain re-arrangement. No structure shows how.</td><td>Maqbool 2015: &ldquo;a lack of large conformation changes &hellip; supports the hypothesis that effector binding promotes domain re-arrangements&rdquo;</td><td><span class="pill p-ok">A</span> (as a stated hypothesis)</td></tr>
+<tr><td>5</td><td>Pik-1 and Pik-2 need every domain, and both P-loops and MHD motifs, for cell death. They associate before and after activation. MHD-like mutants lost function and were <i>not</i> autoactive, so the usual &ldquo;MHD gain of function&rdquo; logic does not transfer cleanly to Pik.</td><td>Zdrza&lstrok;ek 2020 PLoS One (10.1371/journal.pone.0238616): &ldquo;receptor cooperation rather than negative regulation&rdquo;</td><td><span class="pill p-ok">A</span></td></tr>
+<tr><td>6</td><td>Removing the HMA does not stop signalling: Pikp-1 with the HMA replaced is constitutively active with Pikm-2 but quiet with Pikp-2. So the HMA is not required for signalling.</td><td>Bentham 2023 Plant Cell (10.1093/plcell/koad204)</td><td><span class="pill p-ok">A</span></td></tr>
+<tr><td>7</td><td>Autoactivity of swapped HMAs is genuine NLR signalling: it needs an intact Pik-2 P-loop and MHD.</td><td>Maidment 2023 eLife (10.7554/eLife.81123)</td><td><span class="pill p-ok">A</span></td></tr>
+<tr><td>8</td><td>Autoactivity can be mapped to HMA loops (&beta;1&ndash;&alpha;1 and &alpha;2&ndash;&beta;4); every reconstructed ancestral HMA in Pikp-1 was autoactive; the AMEGNND substitution removed it.</td><td>Bialas 2021 eLife (10.7554/eLife.66961)</td><td><span class="pill p-ok">A</span></td></tr>
+<tr><td>9</td><td>Mismatched Pik-1/Pik-2 alleles are autoimmune; one Pik-2 residue (Glu230) drives it, and association is not abolished.</td><td>De la Concepcion 2021 eLife (10.7554/eLife.71662)</td><td><span class="pill p-ok">A</span></td></tr>
+<tr><td>10</td><td>The HMA &ldquo;likely coevolved with other NLR domains to maintain immune homeostasis&rdquo;, which the authors say &ldquo;explains why changes in integrated domains can lead to autoactivation&rdquo;. This is the authors&rsquo; interpretation, supported by 6&ndash;9, not a direct test.</td><td>Bentham 2023</td><td><span class="pill p-ok">A</span> as quoted; interpretation <span class="pill p-wet">C</span></td></tr>
+<tr><td>11</td><td>High-affinity binding is needed for a response in Pik, and binding strength tracks response strength in several series; but gain-of-binding in vitro did not always track cell death in planta.</td><td>Bialas 2021; Maidment 2023; De la Concepcion 2019 eLife (10.7554/eLife.47713)</td><td><span class="pill p-ok">A</span></td></tr>
+<tr><td>12</td><td>Binding is not sufficient: in RGA5, engineered HMAs with a single interface for AVR-PikD bound but did not trigger RGA4-dependent cell death; activation needed interfaces inside and outside the HMA.</td><td>Zhang 2024 Nat Commun (10.1038/s41467-024-45380-2). Not shown for Pik.</td><td><span class="pill p-ok">A</span> (RGA5)</td></tr>
+</table>
+</div>
+
+<h3>Connecting the chain to the FoSSP17 and other results</h3>
+<div class="card scroll">
+<table>
+<tr><th>#</th><th>Result</th><th>Link to mechanism</th><th>Strength</th></tr>
+<tr><td>R1</td><td>About 70% of de novo binders were autoactive, in two independent panels (FoSSP17 31 of 46; AVR-PikF 30 of 44), even with the permissive Pikp-2.</td><td>Links 6&ndash;10: every non-co-evolved domain tested in Pik-1 (OsHIPP19, RGA5-HMA, ancestral HMAs, 4 of 5 pikobodies with Pikm-2) was also autoactive. So autoactivity looks like the <b>default outcome</b> of putting a non-co-evolved domain in this slot, not a flaw of particular binders. This is the strongest connection: it fits every piece of evidence.</td><td><span class="pill p-dry">strong, consistent</span> (inference <span class="pill p-wet">C</span>)</td></tr>
+<tr><td>R2</td><td>Binding did not predict outcome: the tightest binder (0.48 &micro;M) was repressed; Fobinder9 bound (13.5 &micro;M) with no response; functional binders were at 1.29 and 13.9 &micro;M.</td><td>Links 11&ndash;12: binding is necessary but, in RGA5, not sufficient. Also consistent with the paper&rsquo;s own statement that outcome depends on &ldquo;additional properties of the binder&rdquo;.</td><td><span class="pill p-dry">consistent</span></td></tr>
+<tr><td>R3</td><td>Nine binders were autoactive but repressed when the effector was present (Fobinder5&ndash;8 named).</td><td>Link 4: effector binding does change how the domain acts on the rest of the receptor. Here it quiets the pair, the opposite of the native direction. The authors propose two models; the mechanism is unknown.</td><td><span class="pill p-wet">weak</span> (C)</td></tr>
+<tr><td>R4</td><td>Eleven binders gave no response despite binding (all 12 named associated by co-IP).</td><td>Links 4 and 12: binding without a relay of the change to the NB-ARC would give a dead receptor. No direct test.</td><td><span class="pill p-wet">weak</span> (C)</td></tr>
+<tr><td>R5</td><td>Only 2 of 46 were effector-dependent.</td><td>A functional fusion needs two things at once: stay quiet without the effector (against R1) and relay the change when bound (R4). Both are rare for a non-co-evolved domain, so the product is small. No data on the joint probability.</td><td><span class="pill p-wet">weak</span> (C)</td></tr>
+<tr><td>R6</td><td>Helper mismatch helped only partly (LaM3 stayed autoactive; Pikp-2 was used for FoSSP17 and 67&ndash;72% were autoactive).</td><td>Link 9: the helper residue tunes sensitivity but cannot fix an ID that does not suit the NB-ARC.</td><td><span class="pill p-dry">consistent</span></td></tr>
+</table>
+</div>
+
+<h3>What therefore probably determines success: ranked hypotheses, each testable</h3>
+<div class="card scroll">
+<table>
+<tr><th>Hypothesis</th><th>Why (evidence)</th><th>Test that could reject it</th></tr>
+<tr><td><b>H1. Compatibility of the swapped domain with the rest of the receptor</b> (surface and loops facing the NB-ARC/Pik-2), not the effector-binding face</td><td>Links 6&ndash;10; autoactivity maps to HMA loops (8). R1.</td><td>Transplant the HMA loops that cause autoactivity onto a binder; or compare autoactive vs quiet binders by predicted contacts with the NB-ARC. Needs a chimera structure model; none available here.</td></tr>
+<tr><td><b>H2. Domain size, topology and termini geometry</b> (HMA 71&ndash;77 aa, termini 6&ndash;13 &Aring; apart; binders are 86&ndash;107 aa helical bundles)</td><td>Only a design rationale (the chassis keeps partial HMA ends &ldquo;to reduce autoactivity&rdquo;, not tested in the paper). The paper itself says the mechanism of signal relay is poorly understood.</td><td>Predict termini distance and direction for all 12 binders and compare across outcome classes; vary linkers on one binder. Not done: no prediction tool was available and junction sequences are unpublished.</td></tr>
+<tr><td><b>H3. Expression level and helper allele</b></td><td>Pik-2 accumulates more in autoactive pairs (De la Concepcion 2021, correlation); helper allele effects (9).</td><td>Dose titration with the same fusion; helper panel including Asp230 variants.</td></tr>
+<tr><td><b>H4. Whether effector binding moves the NB-ARC</b> (needed for the signal; not just any contact)</td><td>Links 4 and 12; R4.</td><td>Requires structures or cross-linking of a fusion with and without effector; none exists.</td></tr>
+</table>
+</div>
+<div class="callout"><b>What is not known (do not rely on any of these).</b> There is no structure of a Pik-1/Pik-2 complex, no measured contact between the HMA and the NB-ARC or CC, no Pik Ca&sup2;&#8314; data, no residue boundaries of the Pik-1 CC/NB-ARC/LRR in the sources read, no minimum affinity for a response, and no study of why <i>de novo</i> binders are autoactive. The &ldquo;metastable sensor&rdquo; idea and any temperature or p19 effect on autoactivity are unsupported. The resistosome background (ZAR1 pentamer and Ca&sup2;&#8314; channel, Bi 2021; NRC2 and NRC4 oligomers) was read from abstracts only and is not shown for Pik.</div>
+
+<h2 id="v3"><span class="n">3</span>What published work says drives autoactivity</h2>
+<p class="sub">From other Pik-1 and RGA5 engineering studies (Bentham 2023 <span class="mono">10.1093/plcell/koad204</span>; De la Concepcion 2021 and 2019 eLife; Maidment 2023 <span class="mono">10.7554/eLife.81123</span>; Kourelis 2023 <span class="mono">10.1126/science.abn4116</span>; Xi 2026 <span class="mono">10.1111/nph.70864</span>; Zhang 2024; Zdrzałek 2024 <span class="mono">10.1073/pnas.2402872121</span>). Text-level evidence from abstracts and full text where reachable; per-construct tables were mostly not downloaded.</p>
+<div class="card scroll">
+<table>
+<tr><th>Determinant</th><th>Evidence</th><th>Use</th></tr>
+<tr><td><b>Helper allele</b></td><td>Pikm-2 is autoactive-prone; Pikp-2 is more permissive than Pikm-2 (it failed for the LaM3 pikobody), and it is not the only rescuer: Pikps-2 and Pike-2 (Asp230) also suppress autoactivity (Xi 2026, <span class="mono">10.1111/nph.70864</span>). Pik-2 residue 230 (D vs E) is the main switch; residue 754 also modulates it. Of 5 Kourelis pikobodies, 4 were autoactive with Pikm-2 and Pikp-2 rescued 3 (Bentham 2023). Rescue is partial and can reduce real signalling.</td><td>Test two or three Asp230 helpers early, for every fusion</td></tr>
+<tr><td><b>Charge and C-terminal stretch (RGA5 only)</b></td><td>For RGA5 engineering, three interfaces were needed for AVR-PikD recognition: two in the HMA and one in the Lys-rich C-terminal stretch after the integrated domain. Replacing all Lys with Glu abolished activation of RGA4 (Zhang 2024 Nat Commun, <span class="mono">10.1038/s41467-024-45380-2</span>).</td><td>Shown in designer RGA5-HMA5 in rice protoplasts. The Pik-1 HMA lacks this stretch, so relevance to Pik-1 is untested</td></tr>
+<tr><td><b>Integrated-domain structure</b></td><td>Deleting Gly186 or P252D gives strong autoactivity. Grafting Pikp &beta;1/&alpha;2/&beta;4 elements into Pikm HMA does too. Non-co-evolved HMAs (RGA5, OsHIPP19, OsHIPP43) are autoactive; restoring the metal-binding loop removes it.</td><td>Keep the HMA&rsquo;s size and termini geometry; avoid deletions at the junction</td></tr>
+<tr><td><b>Genuine signalling</b></td><td>Needs Pik-2 P-loop and MHD motifs.</td><td>Autoactivity is real NLR output, not artefact</td></tr>
+<tr><td><b>Expression level</b></td><td>Pik-2 accumulates more in autoactive pairs. No direct dose test of nanobody fusions found.</td><td>Use the lowest dose that still shows signal</td></tr>
+<tr><td><b>Binding affinity</b></td><td>No KD-vs-autoactivity relationship reported. Cell death tracks in vitro binding only for the effector-dependent response.</td><td>Do not rank by affinity</td></tr>
+</table>
+</div>
+<div class="callout"><b>An unresolved tension.</b> The FoSSP17 cell death was scored with Pikp-2, the tolerant helper, yet 67&ndash;72% of binders were still autoactive. The paper gives no reason beyond precedent and says affinity does not track phenotype. The cause is unmeasured here; candidates are in the mechanism section. So the helper cannot be the whole story for de novo binders. Binder-intrinsic properties or expression are the more likely cause, and neither is measured per binder in the paper.</div>
+
+<h2 id="v4"><span class="n">4</span>Rules to raise success and cut waste</h2>
+<div class="card">
+<ol>
+<li><b>Plan for low single-digit success.</b> 2 of 46 (FoSSP17) and 0 of 44 (AVR-PikF), about 2% pooled with a wide interval. Budget dozens of designs per target; at 2&ndash;4% that gives roughly even odds of one hit, not a guarantee (my arithmetic, not from a source).</li>
+<li><b>Do not assume binding metrics predict signalling.</b> In the data available, binding did not predict outcome (Fobinder5, tightest, was repressed; Fobinder9 bound with no response). Per-binder ipTM/ipAE values are not published for FoSSP17, so their predictive value cannot be tested here. A KD of about 1&ndash;15 &micro;M is a plausibility bound taken from the two functional binders (1.29 and 13.9 &micro;M), not a validated gate.</li>
+<li><b>Screen the helper first.</b> Test Pikm-2, Pikp-2 and at least one more Asp230 helper (Pikps-2 or Pike-2) with every fusion before spending effort on structures.</li>
+<li><b>Fusion geometry gate.</b> Model the full chimera; require the binder termini to sit at roughly the HMA termini spacing, keep the HMA flanking residues, and reject clashes with CC/NB-ARC.</li>
+<li><b>Epitope gate.</b> Design against the biological state of the target. FoSSP17 is a dimer, and 8 of the 12 characterised binders sit on the face its dimer interface occludes. Prefer free-face epitopes, but expect this to fix binding and SEC behaviour, not signalling.</li>
+<li><b>Low-dose, controlled assays.</b> The precedent used OD600 0.5 for NLR and effector, 0.1 for p19, 4-week-old plants, 5 dpi, a 0&ndash;6 score, 3 biological replicates (Myc:FoSSP17 and AVR-PikD were lowered to 0.1 for westerns). Controls in the paper: empty vector, AVR-PikD, Pwl2. Suggested additions: wild-type Pikm-1 + AVR-PikD, a non-binding mutant, an empty-ID fusion, and a western for expression, so autoactivity is not read as success.</li>
+<li><b>Treat charge as a weak hypothesis.</b> Track net charge and hydrophobicity of every tested binder so it can be tested on more than 12 (section 2).</li>
+<li><b>Log every outcome against every score</b> (workflow section 12), so the filters improve with each round.</li>
+</ol>
+</div>
+
+<h2 id="v5"><span class="n">5</span>Validation ladder</h2>
+<p class="sub">Cheapest first. Each tier has a go/no-go. <b>All go/no-go values below are my proposals, not sourced thresholds:</b> calibrate them on known cases first (section 6) and fix them before looking at new results.</p>
+<div class="card scroll">
+<table>
+<tr><th>Tier</th><th>Step</th><th>Go / no-go</th><th></th></tr>
+<tr><td>0</td><td>Back-test the pipeline on published positives and negatives (FoSSP17 set, Pik-HMA/AVR-Pik variants, Adaptyv EGFR competition, BenchBB, Overath data and scoring code)</td><td>Report ROC/PR-AUC with bootstrap CI; drop any gate whose lower bound is uninformative</td><td><span class="pill p-dry">dry</span></td></tr>
+<tr><td>1</td><td>Complex confidence: AF3 + a second predictor + AF2 initial-guess, 3&ndash;5 seeds. Lead gate <b>ipSAE_min</b>, then ipAE and pLDDT; Rosetta terms as a secondary check (Overath reports ipSAE beats ipAE and ipTM, and that adding Rosetta terms improves performance). Overath tested Boltz-1, not Chai-1 or Boltz-2.</td><td>Mean over seeds passes frozen gates; predictors agree</td><td><span class="pill p-dry">dry</span></td></tr>
+<tr><td>2</td><td>Breadth and specificity: SUSS family members, escape mutations, plant-proteome negative design</td><td>Pass the whole matrix (workflow section 8)</td><td><span class="pill p-dry">dry</span></td></tr>
+<tr><td>3</td><td>MD of the complex, 3 &times; 100&ndash;200 ns</td><td>Interface kept in 2 of 3 replicas</td><td><span class="pill p-dry">dry</span></td></tr>
+<tr><td>4</td><td>Chimera model: termini spacing, clashes, inactive-state fit, junction check</td><td>No clashes; plausible inactive fold; no broken CC/NB/LRR motifs at the junction (NLRexpress); oligomer confidence not above the wild-type model (unvalidated as an autoactivity flag)</td><td><span class="pill p-dry">dry</span></td></tr>
+<tr><td>5</td><td>Rank, cluster for diversity, shortlist 25+, pair with both helpers</td><td>Human sign-off</td><td><span class="pill p-ok">decide</span></td></tr>
+<tr><td>6</td><td>Binder alone: BLI/SPR, yeast display or co-IP</td><td>Binds (KD up to about 15 &micro;M) vs a non-binding control</td><td><span class="pill p-wet">wet</span></td></tr>
+<tr><td>7</td><td><i>N. benthamiana</i> agroinfiltration, low dose, &plusmn; effector, both helpers, western blot</td><td>Cell death only with effector; score by fluorescence imaging as well as the 0&ndash;6 visual scale</td><td><span class="pill p-wet">wet</span></td></tr>
+<tr><td>8</td><td>Survivors only: Ca&sup2;&#8314; reporter, RT-qPCR, structure, resistance assay</td><td>Workflow section 14</td><td><span class="pill p-wet">wet</span></td></tr>
+</table>
+</div>
+
+<h2 id="v6"><span class="n">6</span>Data and sources</h2>
+<div class="card scroll">
+<table>
+<tr><th>Resource</th><th>What it gives</th><th>Status</th></tr>
+<tr><td>Xi et al. 2026 preprint + supplement</td><td>Fobinder1&ndash;12 outcomes, DNA sequences, KDs for 5, co-IP/SEC/expression for 12; 3 structures reported (PDB IDs 32EX, 32EY, 32EW as given in the paper; they return 404 on RCSB and PDBe: unreleased or unverified, so no coordinates yet)</td><td>Authors say further data are available on request. Fobinder5 complex (4.0 &Aring;) not refined.</td></tr>
+<tr><td>Xi et al. 2026, Nov. Phytol. <span class="mono">10.1111/nph.70864</span></td><td>&ldquo;Mismatch screening&rdquo;: 9 allelic Pik-1/Pik-2 pairs plus mismatches with RGA5-HMA swaps; Table S4 holds all cell-death scores (6 technical &times; 3 biological replicates). <b>Best downloadable scored dataset found.</b></td><td>Not yet downloaded (read via PMC12917457 summary)</td></tr>
+<tr><td>Bentham 2023 Plant Cell supplement</td><td>At least 45 scores per sample for Pik-1/Pik-2 pairs and HMA mutants; PDB 8B2R</td><td>Supplementary tables only; not downloaded</td></tr>
+<tr><td>Bucknell 2025 poster, Zenodo <span class="mono">10.5281/zenodo.15880524</span></td><td>Earlier de novo binders to AVR-Pii, AVR-PikF and APikL2; some trigger responses in planta (poster PDF)</td><td>Counts not seen</td></tr>
+<tr><td>Posbeyikian 2025 poster, Zenodo <span class="mono">10.5281/zenodo.15847966</span></td><td>Anti-AVRcap1b pikobodies in transgenic <i>N. benthamiana</i> resisted <i>P. infestans</i>; nanobody panel screened for Pik-1 compatibility</td><td>Poster only, per-nanobody outcomes unread; no paper found</td></tr>
+<tr><td>Saado 2026 Plant Cell <span class="mono">10.1093/plcell/koag168</span></td><td>Structure-guided Exo70 integrated domain of a barley NLR: three binding-site mutations raised affinity and cell death</td><td>Abstract only</td></tr>
+<tr><td>Pikobody and HMA/helper tables</td><td>Qualitative outcomes for about 21 nanobody-fusion and 26 HMA-chimera rows</td><td>No scores, KDs, linkers or doses; Table S1/S2 of Kourelis 2023 not retrieved</td></tr>
+<tr><td>Adaptyv EGFR competition</td><td>1,800+ submissions, 601 characterised by BLI, with designers&rsquo; metrics</td><td>One target; check licence. Hit rates conflict between sources (53 bound / 14% vs 5 of 201 strong binders / 2.5%): <span class="warn">unconfirmed</span>, check the paper</td></tr>
+<tr><td>Overath et al. 2025 <span class="mono">10.1101/2025.08.14.670059</span></td><td>3,766 tested binders, 15 targets, to pick gate metrics</td><td>Preprint</td></tr>
+<tr><td>Structures</td><td>ZAR1 6J5T (resistosome); 6J5V/6J5W (states, aav5868); Sr35 7XC2; ROQ1 7JLU; RPP1 7CRC; NRC2 8RFH, 8XUO/8XUQ/8XUV; NRC4 9CC8/9CC9; Pikp-HMA/AVR-PikD 5A6W; Pikm-HMA/AVR-PikA 6FUD</td><td>Checked against RCSB. Note 7B1I is AVR-PikF/OsHIPP19, 7A8W is AVR-PikC/engineered Pikp-1 HMA, 7QPX/7QZD are Pikp-SNK-EKE HMA with AVR-PikC/PikF, 5ZNE/5ZNG are RGA5 HMA</td></tr>
+<tr><td>Overath code and data</td><td>github.com/DigBioLab/de_novo_binder_scoring; Zenodo 15722219. Re-scoring of 3,766 binders with AF2-IG, ColabFold, AF3 and Boltz-1</td><td>Reuse their scoring for the tier 0 prior</td></tr>
+<tr><td>BenchBB (Adaptyv)</td><td>7 targets; reports that ESM3/ESMC length-normalised likelihood correlates with KD while ipAE, ipTM and ESM2 only weakly</td><td>Candidate extra gate; secondary source</td></tr>
+<tr><td>AF3 resistosome models, Toghani/Kamoun (bioRxiv 10.1101/2024.11.24.625045; Zenodo 10.5281/zenodo.11546021)</td><td>AF3 models for 29 NLRs; helpers score higher than sensors in oligomer confidence</td><td>Model reference for tier 4</td></tr>
+<tr><td>RefPlantNLR</td><td>481 validated NLR sequences, Zenodo 3936022</td><td>Sequences only</td></tr>
+</table>
+</div>
+<h3>To request from the authors (Bentham, Banfield)</h3>
+<ul>
+<li>A table for all 46 designs: sequences, ipTM/ipAE/pLDDT, RFdiffusion settings.</li>
+<li>Per-binder cell-death scores for each helper (Pikp-2, Pikm-2) and expression levels.</li>
+<li>The design-model PDBs and source data for Fig 2, 3 and S2.</li>
+<li>Clarification of the repressed count (4 in the text, 9 in Fig S2C). Constructs need an MTA.</li>
+</ul>
+<p class="mute">With that table, the group comparison in section 2 can be rerun on all 46 binders, and the same descriptors added for structure (epitope, termini distance, interface area).</p>
+
+<h2 id="v7"><span class="n">7</span>What cannot be validated on a computer</h2>
+<div class="card">
+<ul>
+<li>Whether a given fusion is autoactive: no validated predictor exists. Public cell-death scores exist for Pik-1/Pik-2 allele pairs and HMA variants (Table S4 of Xi 2026, Bentham 2023), but none was found for de novo binder fusions beyond the 12 named FoSSP17 binders.</li>
+<li>Effector-triggered signalling, Ca&sup2;&#8314; flux and resistance in planta.</li>
+<li>The effect of expression dose and the right helper for each fusion.</li>
+</ul>
+<p>All 12 characterised Fobinders associated with FoSSP17 in co-IP (selected from 46), while only 2 of 46 signalled correctly. That suggests binding is not the limiting step here, but it is an observation on one target, not a general rule.</p>
+<p>Computation raises the odds and shrinks the wet-lab count; tiers 6&ndash;8 stay. Caveat on sourcing: figures were taken from the preprint text and supplement and from other agents&rsquo; reads of papers; DOIs and PDB IDs were checked for resolution, but threshold values quoted from the literature are starting points, not guarantees.</p>
+</div>
+<p class="back"><a href="syntheticprotein.html">&larr; Back to the workflow map</a></p>
+</main>
+</body>
+</html>
