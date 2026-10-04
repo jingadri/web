@@ -12,7 +12,10 @@
 @media(max-width:650px){html,body{max-width:100%;overflow-x:hidden}body{font-size:14px}.content{width:100%;min-width:0;max-width:100%;padding:14px 11px 48px}.hero,.section,.diagram,.tablewrap{min-width:0;max-width:100%}.hero{padding:25px 19px}.toolbar input{width:100%;min-width:0;flex-basis:100%}.section-head{align-items:flex-start;flex-wrap:wrap}.grid2,.grid3,.refs,.glossary{grid-template-columns:minmax(0,1fr)}.flow{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.evidence{grid-template-columns:minmax(0,1fr);gap:8px}.evidence>div:after{display:none}.section-head h2{font-size:21px}}
 @media print{body{background:#fff;font-size:11px}.app{display:block}.sidebar,.toolbar{display:none!important}.content{width:100%;padding:0}.hero{padding:0 0 12px;border-bottom:3px solid #164e56;border-radius:0;background:#fff;color:#111}.hero h1,.hero p,.hero .eyebrow{color:#111}.section{padding-top:16px}.card,.callout,.diagram,details,.tablewrap{break-inside:avoid}details>div{display:block!important}.grid3{grid-template-columns:repeat(3,1fr)}.grid2,.refs{grid-template-columns:repeat(2,1fr)}a{color:#153f57;text-decoration:none}}
 .workflow-step{margin:12px 0;border:1px solid var(--line);border-radius:12px;background:#fff;overflow:hidden}.workflow-step>header{display:flex;align-items:center;gap:10px;padding:11px 14px;background:#e8f0f1}.workflow-step>header .stepno{display:grid;place-items:center;flex:0 0 28px;height:28px;border-radius:50%;background:var(--teal);color:#fff;font-size:12px;font-weight:800}.workflow-step>header h3{margin:0;flex:1}.workflow-step>header .phase{font-size:10px;font-weight:800;letter-spacing:.08em;color:var(--blue);text-transform:uppercase}.step-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}.step-grid>div{padding:10px 13px;border-top:1px solid #e7edef}.step-grid>div:nth-child(odd){border-right:1px solid #e7edef}.step-grid b{display:block;margin-bottom:3px;color:#294b58;font-size:11px;letter-spacing:.05em;text-transform:uppercase}.step-grid code{white-space:normal}.step-grid .good{background:#f2faf7}.step-grid .bad{background:#fff6f3}.step-grid .wide{grid-column:1/-1;border-right:0}.workflow-legend{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}.workflow-legend span{padding:4px 9px;border-radius:99px;background:#fff;border:1px solid var(--line);font-size:11px;font-weight:700}.workflow-legend .human{border-color:var(--orange);color:var(--orange)}.workflow-legend .compute{border-color:var(--blue);color:var(--blue)}.workflow-legend .lab{border-color:var(--violet);color:var(--violet)}
+.target-filter{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:28px;margin-top:12px}.target-filter>div{position:relative;padding:14px;border:1px solid var(--line);border-top:4px solid var(--blue);border-radius:10px;background:#fff}.target-filter>div:nth-child(2){border-top-color:var(--teal)}.target-filter>div:nth-child(3){border-top-color:var(--orange)}.target-filter>div:nth-child(4){border-top-color:var(--violet);background:var(--violet-bg)}.target-filter>div:not(:last-child):after{content:"→";position:absolute;right:-22px;top:45%;color:#78909a;font-size:23px;font-weight:800}.target-filter .filter-no{display:grid;place-items:center;width:27px;height:27px;margin-bottom:8px;border-radius:50%;background:var(--ink);color:#fff;font-size:12px;font-weight:800}.target-filter h4{margin:0 0 7px;font-size:14px;line-height:1.3}.target-filter p{margin:0 0 8px;color:var(--muted);font-size:12px}.target-filter .filter-rule{padding-top:8px;border-top:1px solid var(--line);font-size:12px}.target-filter .filter-rule b{display:block;color:var(--teal)}
+@media(max-width:980px){.target-filter{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.target-filter>div:after{display:none}}
 @media(max-width:650px){.step-grid{grid-template-columns:1fr}.step-grid>div:nth-child(odd){border-right:0}.workflow-step>header{align-items:flex-start}.workflow-step>header .phase{display:none}}
+@media(max-width:650px){.target-filter{grid-template-columns:minmax(0,1fr)}}
 </style>
 </head>
 <body>
@@ -114,20 +117,20 @@
   </div>
   <div class="diagram" id="effector-entry">
     <h3>How bacterial and fungal effectors cross into the plant cell</h3>
-    <svg viewBox="0 0 940 430" role="img" aria-label="Bacterial type III secretion compared directly with fungal or oomycete haustorium and BIC delivery; both routes end with an effector in the plant cytoplasm where an NLR can recognise it">
+    <svg viewBox="0 0 940 580" role="img" aria-label="Bacterial type III secretion and fungal or oomycete secretion compared from host contact through cytoplasmic NLR recognition, calcium signalling, defence and restricted infection">
       <defs><marker id="route-arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0L8 4L0 8Z" fill="#718892"/></marker></defs>
-      <rect x="10" y="10" width="920" height="410" rx="14" fill="#fff" stroke="#d8e3e6"/>
+      <rect x="10" y="10" width="920" height="560" rx="14" fill="#fff" stroke="#d8e3e6"/>
       <text x="25" y="31" font-family="system-ui,Arial" font-size="12" fill="#536776">APOPLAST — outside the plant cell</text>
       <rect x="11" y="127" width="918" height="25" fill="#fff4e4" stroke="#a9601f"/><text x="470" y="144" font-family="system-ui,Arial" font-size="11" text-anchor="middle" fill="#536776">PLANT CELL WALL — the barrier animal pathogens do not face</text>
       <rect x="11" y="152" width="918" height="16" fill="#f3eef9" stroke="#694b92"/><text x="470" y="164" font-family="system-ui,Arial" font-size="10" text-anchor="middle" fill="#536776">PLASMA MEMBRANE</text>
-      <text x="25" y="190" font-family="system-ui,Arial" font-size="12" fill="#536776">CYTOPLASM — where the engineered NLR is already waiting</text>
-      <line x1="470" y1="51" x2="470" y2="410" stroke="#d8e3e6" stroke-dasharray="5 5"/>
+      <text x="25" y="190" font-family="system-ui,Arial" font-size="12" fill="#536776">PLANT CYTOPLASM</text>
+      <line x1="470" y1="51" x2="470" y2="420" stroke="#d8e3e6" stroke-dasharray="5 5"/>
       <g font-family="system-ui,Arial" text-anchor="middle" fill="#172a38">
         <text x="238" y="54" font-size="15" font-weight="800" fill="#13766d">BACTERIA · TYPE III SECRETION</text>
         <rect x="148" y="70" width="180" height="48" rx="8" fill="#e8f5f2" stroke="#13766d" stroke-width="1.5"/><text x="238" y="91" font-weight="700">Bacterium</text><text x="238" y="108" font-size="11" fill="#536776">effector held ready by chaperone</text>
         <rect x="229" y="118" width="18" height="35" fill="#e8f5f2" stroke="#13766d" stroke-width="1.5"/><text x="217" y="141" font-size="11" text-anchor="end" fill="#536776">Hrp pilus</text>
-        <rect x="221" y="152" width="34" height="16" fill="#13766d"/><text x="269" y="183" font-size="11" text-anchor="start" fill="#536776">translocon pore</text>
-        <path d="M238 171V217" stroke="#718892" stroke-width="2" marker-end="url(#route-arrow)"/><text x="254" y="205" font-size="11" text-anchor="start" fill="#536776">threaded through unfolded</text>
+        <rect x="221" y="152" width="34" height="16" fill="#13766d"/><text x="269" y="181" font-size="11" text-anchor="start" fill="#536776">translocon</text>
+        <path d="M238 171V217" stroke="#718892" stroke-width="2" marker-end="url(#route-arrow)"/><text x="254" y="207" font-size="11" text-anchor="start" fill="#536776">effector passes unfolded</text>
         <rect x="148" y="222" width="180" height="49" rx="8" fill="#e8f5f2" stroke="#13766d"/><text x="238" y="243" font-weight="700">Effector refolds</text><text x="238" y="260" font-size="11" fill="#536776">mature recognition surface forms here</text>
         <path d="M238 274V359" stroke="#718892" stroke-width="2" marker-end="url(#route-arrow)"/>
         <rect x="148" y="365" width="180" height="42" rx="8" fill="#edf4fb" stroke="#305f94"/><text x="238" y="391" font-weight="700">NLR can recognise it</text>
@@ -141,6 +144,12 @@
         <rect x="608" y="290" width="184" height="47" rx="8" fill="#edf4fb" stroke="#305f94"/><text x="700" y="310" font-weight="700">Host-cell entry</text><text x="700" y="327" font-size="11" fill="#536776">route varies; often unresolved</text>
         <path d="M700 340V359" stroke="#718892" stroke-width="2" marker-end="url(#route-arrow)"/>
         <rect x="608" y="365" width="184" height="42" rx="8" fill="#edf4fb" stroke="#305f94"/><text x="700" y="391" font-weight="700">NLR can recognise it</text>
+
+        <path d="M238 410L420 442" stroke="#718892" stroke-width="2" marker-end="url(#route-arrow)"/>
+        <path d="M700 410L520 442" stroke="#718892" stroke-width="2" marker-end="url(#route-arrow)"/>
+        <rect x="320" y="447" width="300" height="52" rx="9" fill="#f3eef9" stroke="#694b92" stroke-width="1.5"/><text x="470" y="469" font-weight="700">NLR activation</text><text x="470" y="488" font-size="12" fill="#536776">Ca²⁺ signal + defence-gene activation</text>
+        <path d="M470 502V519" stroke="#718892" stroke-width="2" marker-end="url(#route-arrow)"/>
+        <rect x="370" y="525" width="200" height="34" rx="8" fill="#e8f5f2" stroke="#13766d" stroke-width="1.5"/><text x="470" y="547" font-weight="700">Infection is restricted</text>
       </g>
     </svg>
     <div class="tablewrap"><table>
@@ -154,10 +163,7 @@
         <tr><td>What this project targets</td><td colspan="2">The mature, folded cytoplasmic effector—not its secretion signal or transit state.</td></tr>
       </tbody>
     </table></div>
-    <div class="flow" aria-label="Correct order of infection and receptor activation">
-      <div>Receptor already<br>present</div><div>Pathogen<br>arrives</div><div>Delivery system<br>activates</div><div>Effector enters<br>and folds</div><div>Receptor<br>binds it</div><div>Ca²⁺ and defence<br>activate</div><div>Infection is<br>restricted</div>
-    </div>
-    <p class="caption"><b>Critical distinction:</b> infection does not create or switch on the transgenic receptor. The receptor is already present. Infection supplies the effector; effector recognition switches the receptor from OFF to ON.</p>
+    <p class="caption"><b>Shared logic:</b> the engineered NLR is already present. Bacteria and fungi/oomycetes deliver effectors differently, but cytoplasmic recognition can activate Ca²⁺ signalling, defence genes and resistance.</p>
   </div>
   <div class="diagram" hidden aria-hidden="true">
     <h3>Infection compared directly: bacterium versus fungus</h3>
@@ -196,46 +202,41 @@
       <tr><td>Member of a conserved structural family</td><td>One recognition strategy may cover several sequence-divergent effectors.</td><td>A unique fold with a highly variable surface.</td></tr>
     </tbody>
   </table></div>
-  <p>Bacterial <i>hrp</i> or PIP promoter motifs can help find co-regulated secretion genes; fungal expression instead follows infection stage. These signals support prioritisation, but experimental delivery and virulence evidence remain stronger than motif or sequence prediction alone.</p>
-  <h3>What an NLR does</h3>
-  <p>An NLR is an intracellular immune receptor with a central nucleotide-binding switch and regulatory domains. Some NLRs act alone; others work as sensor/helper pairs. The sensor detects the effector. The helper carries or amplifies the signal. Inactive receptors must be held in a precise OFF state, because spontaneous activation damages the plant.</p>
-  <p>Activated NLRs can form resistosomes. ZAR1, the best-defined example, forms a membrane-associated calcium-conducting complex. That mechanism must not be assumed for every NLR, but calcium remains a useful early readout of immune activation. GCaMP reports calcium by fluorescence; aequorin reports it by luminescence. Onset, amplitude and duration are more informative than a single endpoint.</p>
-  <h3>Why cell death is not enough</h3>
-  <p>The hypersensitive response rapidly kills infected cells and can deny living tissue to biotrophic pathogens. It is visible, but it is not specific: overexpression, misfolding and toxicity also kill cells. Necrotrophs may even benefit from dead tissue. A credible receptor should show controlled calcium signalling, defence-gene induction and resistance—not only a dead leaf patch.</p>
+  <h3>Three interpretation rules</h3>
+  <div class="tablewrap"><table>
+    <thead><tr><th>Topic</th><th>Use it for</th><th>Do not conclude</th></tr></thead>
+    <tbody>
+      <tr><td><b>Effector clues</b></td><td>Bacterial <i>hrp</i>/PIP motifs and fungal infection-stage expression help rank candidates.</td><td>Prediction alone proves delivery or importance; prefer experimental translocation and virulence evidence.</td></tr>
+      <tr><td><b>NLR activation</b></td><td>The sensor recognises; a helper may signal. Test a low OFF state and an effector-dependent ON state using calcium kinetics and defence genes.</td><td>Every NLR uses the ZAR1 calcium-channel mechanism. GCaMP or aequorin reports calcium; it does not prove the mechanism.</td></tr>
+      <tr><td><b>Cell death</b></td><td>Use it as one late immune readout alongside calcium, defence genes and infection resistance.</td><td>Cell death alone proves immunity: overexpression or toxicity can mimic it, and necrotrophs may benefit.</td></tr>
+    </tbody>
+  </table></div>
 </section>
 
 <section class="section searchable" id="idea">
   <div class="section-head"><h2>3 · The engineering idea</h2><span>Target the conserved; control the switch</span></div>
-  <h3>SUSS families change the target</h3>
-  <p>Normal searches group proteins by sequence. Effectors evolve so quickly that sequence similarity can disappear while the same three-dimensional fold remains. Structural comparison can therefore reveal families that sequence analysis misses. The project calls these sequence-unrelated, structurally similar families.</p>
-  <p>The goal is not simply “choose an effector and make a binder.” It is to find a surface shared across an effector family and design recognition against that common feature. Escape should then require the pathogen to alter a conserved structural surface, potentially at a higher fitness cost.</p>
-  <h3>The surface must remain available</h3>
-  <p>A good target patch must be conserved, exposed and present in the biologically relevant state. A surface visible on one predicted monomer may be buried when the effector dimerises, binds a host protein or changes conformation. Exposure should therefore be checked across family members and a structural ensemble. The useful quantity is the minimum exposure, not the average.</p>
-  <div class="callout blue"><strong>Invariant face:</strong> residues that remain exposed across relevant variants and conformations. Conservation alone is insufficient; a perfectly conserved buried surface cannot be recognised.</div>
+  <h3>From a SUSS family to a usable target</h3>
+  <p>Sequence searches may miss effectors that have diverged in sequence but retained the same 3D fold. Structural comparison groups them into sequence-unrelated, structurally similar—SUSS—families.</p>
+  <div class="callout blue"><strong>Selection rule:</strong> choose a connected surface that is conserved across the family and exposed in every relevant conformation or complex. Use the minimum exposure—not the average—because one buried state can block recognition. Targeting this constrained surface may also make pathogen escape more costly.</div>
   <div class="diagram">
     <h3>How the target surface is narrowed</h3>
-    <svg viewBox="0 0 940 210" role="img" aria-label="Filter from structural family to conserved exposed invariant surface">
-      <defs><marker id="face-arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0L8 4L0 8Z" fill="#718892"/></marker></defs>
-      <g font-family="system-ui,Arial" text-anchor="middle" fill="#172a38">
-        <rect x="15" y="47" width="175" height="105" rx="12" fill="#edf4fb" stroke="#305f94"/><text x="102" y="75" font-weight="700">Structural family</text><circle cx="72" cy="113" r="24" fill="#bad2e9"/><circle cx="103" cy="105" r="24" fill="#a9c8e3"/><circle cx="133" cy="116" r="24" fill="#c8dbed"/>
-        <rect x="255" y="47" width="175" height="105" rx="12" fill="#e8f5f2" stroke="#13766d"/><text x="342" y="75" font-weight="700">Keep conserved</text><text x="342" y="101" font-size="13">shared residues</text><text x="342" y="127" font-size="13" fill="#9b373b">remove variable sites</text>
-        <rect x="510" y="47" width="175" height="105" rx="12" fill="#fff4e4" stroke="#a9601f"/><text x="597" y="75" font-weight="700">Keep exposed</text><text x="597" y="101" font-size="13">every conformer</text><text x="597" y="127" font-size="13" fill="#9b373b">remove buried sites</text>
-        <rect x="750" y="47" width="175" height="105" rx="12" fill="#f3eef9" stroke="#694b92"/><text x="837" y="75" font-weight="700">Invariant face</text><circle cx="837" cy="113" r="27" fill="#d6c5e9" stroke="#694b92"/><circle cx="828" cy="105" r="5" fill="#694b92"/><circle cx="845" cy="116" r="5" fill="#694b92"/>
-      </g>
-      <g stroke="#718892" stroke-width="2" marker-end="url(#face-arrow)"><path d="M193 100H250"/><path d="M433 100H505"/><path d="M688 100H745"/></g>
-    </svg>
-    <p class="caption">The filter only subtracts: family → conserved residues → consistently exposed residues → a specific surface suitable for binder design.</p>
+    <div class="target-filter" role="img" aria-label="Four-step filter from an effector structural family to an invariant target face">
+      <div><span class="filter-no">1</span><h4>Start: one structural family</h4><p>Several effectors share the same 3D fold, even if their sequences differ.</p><div class="filter-rule"><b>Input</b>All surfaces on all family members.</div></div>
+      <div><span class="filter-no">2</span><h4>Keep shared residues</h4><p>Compare the family and remove positions that vary between members.</p><div class="filter-rule"><b>Question</b>Is this residue conserved across the family?</div></div>
+      <div><span class="filter-no">3</span><h4>Keep accessible residues</h4><p>Remove residues hidden by folding, movement, oligomerisation or host binding.</p><div class="filter-rule"><b>Question</b>Can a binder reach it in every relevant state?</div></div>
+      <div><span class="filter-no">4</span><h4>Output: invariant face</h4><p>A connected, conserved and exposed surface suitable for binder design.</p><div class="filter-rule"><b>Use</b>Design the binder against this patch.</div></div>
+    </div>
+    <p class="caption"><b>In one line:</b> same fold → shared residues → always accessible → one bindable target patch.</p>
   </div>
-  <p>The face must survive three kinds of variation: different family members may share little sequence identity; loops and termini move within one effector; and the biological state may change from monomer to oligomer or from free to host-bound. Challenge a proposed epitope across all three before designing around it.</p>
   <div class="tablewrap"><table>
-    <thead><tr><th>Challenge</th><th>Test</th><th>Reason to reject</th></tr></thead>
+    <thead><tr><th>Recheck after binder design</th><th>What could still fail</th><th>Test</th><th>Failure</th></tr></thead>
     <tbody>
-      <tr><td>Cross-conformer</td><td>Predict or dock against every sampled conformation.</td><td>The face becomes buried or the pose collapses in one relevant state.</td></tr>
-      <tr><td>Cross-member</td><td>Predict binding across the intended SUSS family and prevalent variants.</td><td>Recognition depends on side chains absent from key members.</td></tr>
-      <tr><td>Escape</td><td>Mutate epitope residues in silico, prioritising plausible pathogen substitutions.</td><td>One cheap mutation removes binding without likely fitness cost.</td></tr>
-      <tr><td>Specificity</td><td>Compare against structurally similar plant surfaces.</td><td>A credible host interaction creates an autoimmunity risk.</td></tr>
+      <tr><td><b>Family members</b></td><td>The binder may extend beyond the conserved patch and contact variable edge residues.</td><td>Test the designed binder against every intended member.</td><td>An important member loses binding.</td></tr>
+      <tr><td><b>Conformations</b></td><td>A valid patch may still move enough to disrupt the designed binder pose.</td><td>Test the complex against multiple relevant conformations.</td><td>The binder clashes or detaches in a plausible conformation.</td></tr>
+      <tr><td><b>Biological states</b></td><td>Oligomerisation or host binding may obstruct the binder even if the patch itself remains exposed.</td><td>Test monomeric, assembled and host-bound models where relevant.</td><td>A partner blocks the binder's approach or binding pose.</td></tr>
     </tbody>
   </table></div>
+  <p class="caption"><b>Then check escape and specificity:</b> avoid an epitope lost by one low-cost mutation, and exclude similar plant surfaces that could cause off-target activation.</p>
   <p class="note">“Invariant” is conditional on the structures sampled. AlphaFold seeds explore less than real molecular dynamics, many effector functions are unknown, and a conserved exposed face may still be too flat or polar to bind well. Laboratory testing remains the arbiter.</p>
   <h3>Binder, sensor and helper are different parts</h3>
   <div class="grid3">
@@ -258,26 +259,23 @@
     </svg>
     <p class="caption">The binder changes recognition. The sensor must still switch correctly, and the helper must remain compatible. The PhD ultimately aims beyond this graft toward a designed receptor architecture.</p>
   </div>
-  <div class="grid2">
-    <div class="card"><h3>What the domains do</h3><ul><li><b>CC:</b> N-terminal signalling region in this NLR class.</li><li><b>HMA:</b> Pik-1's integrated bait and the benchmark replacement site.</li><li><b>NB-ARC:</b> nucleotide-controlled switch between inactive and active states.</li><li><b>LRR:</b> regulatory region that helps maintain and release the OFF state.</li></ul></div>
-    <div class="card"><h3>Three fit problems</h3><ul><li><b>Binder–target fit:</b> does the designed interface form?</li><li><b>Fusion fit:</b> do binder size, termini, linkers and orientation suit the insertion site?</li><li><b>Receptor fit:</b> can the whole sensor/helper system remain OFF, then assemble and signal?</li></ul><p>Passing the first does not imply passing the other two.</p></div>
-  </div>
-  <h3>Why Pik is useful—but not the final answer</h3>
-  <p>Pik-1 is a rice sensor NLR paired with Pik-2. Pik-1 contains an integrated HMA domain: a host-protein-like bait that binds AVR-Pik effectors. Replacing the HMA with another binding domain demonstrated that NLR recognition can be reprogrammed. Pik provides structures, compatible helpers, plasmids and positive controls, so it is an excellent benchmark.</p>
-  <p>However, the HMA is not a detachable label. It participates in a co-evolved receptor architecture. A replacement changes size, termini geometry, local contacts and helper compatibility. It may disrupt the OFF state or fail to relay binding to the nucleotide-binding switch. A fluorescent tag merely reports on a receptor; a new-to-nature architecture redesigns the receptor itself.</p>
-  <p><b>New-to-nature</b> means the receptor sequence and architecture were designed rather than inherited from an organism. It should preserve the functional logic—recognition module, switch, regulation and signalling—while being engineered for controlled activation, expression, purification and structural study. Adding a tag to a natural receptor does not make it new-to-nature.</p>
-  <h3>Variables that control OFF and ON</h3>
+  <div class="card"><h3>What the domains do</h3><ul><li><b>CC:</b> N-terminal signalling region in this NLR class.</li><li><b>HMA:</b> Pik-1's integrated bait and the benchmark replacement site.</li><li><b>NB-ARC:</b> nucleotide-controlled switch between inactive and active states.</li><li><b>LRR:</b> regulatory region that helps maintain and release the OFF state.</li></ul></div>
+  <h3>Three fit problems—and when to test them</h3>
   <div class="tablewrap"><table>
-    <thead><tr><th>Variable</th><th>Question</th><th>Typical failure</th></tr></thead>
+    <thead><tr><th>Fit gate</th><th>Main variables</th><th>When and how to test</th><th>Pass condition</th></tr></thead>
     <tbody>
-      <tr><td>Insertion position</td><td>Is the recognition module accessible without destroying surrounding domains?</td><td>Misfolding or inaccessible binder.</td></tr>
-      <tr><td>Binder geometry</td><td>Does target engagement pull or stabilise the receptor in a productive direction?</td><td>Strong binding with no signalling—or binding that suppresses signalling.</td></tr>
-      <tr><td>Junction / linker</td><td>Can the fusion fold while still transmitting a change?</td><td>Too rigid: poor folding; too flexible: binding uncoupled from switching.</td></tr>
-      <tr><td>Regulatory contacts</td><td>Is the unbound receptor stable but still activation-competent?</td><td>Destabilised OFF state causes autoactivity; over-stabilisation creates a dead receptor.</td></tr>
-      <tr><td>Helper allele</td><td>Does the sensor/helper pair suppress baseline activity without losing the ON response?</td><td>Helper rescues autoactivity but also weakens desired signalling.</td></tr>
-      <tr><td>Expression level</td><td>Does the phenotype persist at comparable, moderate abundance?</td><td>Overexpression mimics activation or hides instability.</td></tr>
+      <tr><td><b>1 · Binder–target</b></td><td>Interface geometry, affinity and specificity.</td><td><b>After binder design:</b> model the complex, then measure binding to family members and off-targets.</td><td>Strong, specific binding across the intended effector family.</td></tr>
+      <tr><td><b>2 · Fusion</b></td><td>Insertion position, binder orientation, termini and linker.</td><td><b>Before and after cloning:</b> model junctions; then check expression, folding, localisation and retained binding.</td><td>A stable, correctly located fusion that still binds.</td></tr>
+      <tr><td><b>3 · Whole receptor</b></td><td>Regulatory contacts, helper allele and expression level.</td><td><b>In plant cells, before infection tests:</b> compare matched constructs without and with effector.</td><td>Low baseline when effector is absent; strong signalling when it is present.</td></tr>
     </tbody>
   </table></div>
+  <p class="caption"><b>Test in order:</b> binding → fusion quality → OFF/ON switching → pathogen resistance. Passing one gate does not guarantee the next.</p>
+  <h3>Why Pik is useful—but not the final answer</h3>
+  <div class="card"><ul>
+    <li><b>Benchmark:</b> Pik-1 is a sensor NLR whose HMA domain binds AVR-Pik; Pik-2 is its helper. Available structures, plasmids and controls make this pair useful for testing binder replacement.</li>
+    <li><b>Limitation:</b> HMA also supports receptor geometry and regulation. Replacing it can cause misfolding, constitutive activation or failure to signal.</li>
+    <li><b>New-to-nature:</b> a designed receptor architecture that still recognises, switches and signals correctly. Adding a tag to a natural receptor does not qualify.</li>
+  </ul></div>
   <div class="callout warn"><strong>The hard part is coupling.</strong> A binder can recognise its target perfectly while the receptor remains dead. It can also destabilise the OFF state and make the receptor autoactive. Design must address recognition and switching together.</div>
 </section>
 
