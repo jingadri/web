@@ -374,6 +374,7 @@
   <div class="section-head"><h2>4 · Complete workflow</h2><span>Inputs, tools, examples, gates and mistakes</span></div>
   <div class="workflow-legend"><span class="human">H · human judgement</span><span class="compute">C · computation</span><span class="lab">L · laboratory</span></div>
   <div class="callout warn"><strong>Examples show the shape of the work, not validated settings.</strong> Replace placeholder accessions, chains, residue numbers and cutoffs; follow the current tool documentation and host-lab SOPs.</div>
+  <div class="callout blue"><strong>The unit of design is a SUSS family and its shared surface, not a whole pathogen.</strong> Choose a pathogen → collect its effectors → cluster into SUSS families → pick the best family → find its shared surface → design a binder for that surface. A pathogen carries hundreds of effectors in many unrelated folds, so one binder cannot cover them all. To cover more of a pathogen, repeat the last three steps for another family: each family needs its own binder and its own receptor. You can also go the other way and follow one family across several pathogens, because SUSS families can span species; for example, MAX effectors occur in both <i>M. oryzae</i> and <i>P. tritici-repentis</i>.</div>
   <div class="diagram">
     <h3>End-to-end map</h3>
     <svg viewBox="0 0 1120 570" role="img" aria-label="Complete synthetic immune receptor workflow with software and experimental stages">
@@ -639,7 +640,7 @@
     <div class="term"><b>Autoactivity</b> — immune signalling without the target effector.</div><div class="term"><b>Binder</b> — designed protein that contacts a selected target surface.</div>
     <div class="term"><b>Effector</b> — pathogen protein delivered into or around host cells during infection.</div><div class="term"><b>Epitope / hotspot</b> — target surface / residues contacted by a binder.</div>
     <div class="term"><b>HMA</b> — Pik-1 integrated domain that binds AVR-Pik effectors.</div><div class="term"><b>Integrated domain</b> — receptor-fused bait or recognition module.</div>
-    <div class="term"><b>Minimum SASA</b> — lowest solvent exposure across a structural ensemble.</div><div class="term"><b>NB-ARC</b> — central nucleotide-binding NLR switch.</div>
+    <div class="term"><b>MAX effector</b> — fungal effector family sharing a &beta;-sandwich fold (<i>Magnaporthe</i> Avrs and ToxB) despite &lt;25% sequence identity; recognised by Pik and Pia/RGA5 through integrated HMA domains.</div><div class="term"><b>Minimum SASA</b> — lowest solvent exposure across a structural ensemble.</div><div class="term"><b>NB-ARC</b> — central nucleotide-binding NLR switch.</div>
     <div class="term"><b>Negative design</b> — selection against unwanted binding, folding or activation states.</div><div class="term"><b>NLR</b> — intracellular nucleotide-binding leucine-rich-repeat immune receptor.</div>
     <div class="term"><b>PAE / pLDDT</b> — AlphaFold relative-position / local-confidence estimates.</div><div class="term"><b>Resistosome</b> — higher-order complex formed by activated NLRs.</div>
     <div class="term"><b>RMSD</b> — structural deviation after alignment.</div><div class="term"><b>SUSS</b> — sequence-unrelated, structurally similar proteins.</div>
