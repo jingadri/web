@@ -31,6 +31,7 @@
     <a href="#evidence">6 · Evidence and limits</a>
     <a href="#automation">7 · Automation</a>
     <a href="#reference">8 · Reference</a>
+    <a href="#practice-download">9 · Practice</a>
   </nav>
 </aside>
 <main class="content">
@@ -443,7 +444,7 @@
 
   <h3>Step 4 in practice · sequence baseline, structure comparison and SUSS families</h3>
   <p>Run in the folder with <code>all_10_effectors.fasta</code> and <code>alphafold/</code>. Cutoffs are starting points: tune them on the controls.</p>
-  <div class="tablewrap"><table><thead><tr><th>#</th><th>Step</th><th>Input → command</th><th>Output</th><th>How to decide / what to consider</th></tr></thead><tbody><tr><td>6a</td><td>Sequence all-vs-all</td><td><code>all_10_effectors.fasta</code> → <code>mmseqs easy-search all.fasta all.fasta seq.m8 tmp --min-seq-id 0 -e 10 -s 7.5 --format-output query,target,fident,alnlen,evalue</code></td><td>Pairwise % identity and e-value for every pair</td><td>Pairs with identity below about 30% or e-value above 1e-3 count as sequence-unrelated. Keep this table: it is the “sequence-unrelated” half of SUSS.</td></tr><tr><td>6b</td><td>Sequence clusters</td><td><code>mmseqs easy-cluster all.fasta seqclu tmp --min-seq-id 0.3 -c 0.8</code></td><td><code>seqclu_cluster.tsv</code></td><td>Expect only near-identical pairs to group (AVR-Pik with AVR-Pikm, ToxB with toxb). The MAX effectors should stay in separate clusters.</td></tr><tr><td>7a</td><td>Structure all-vs-all</td><td><code>alphafold/*.pdb</code> → <code>foldseek easy-search alphafold/ alphafold/ str.m8 tmp --alignment-type 1 --exhaustive-search 1 -e 10 --format-output query,target,alntmscore,qtmscore,ttmscore,fident,evalue,alnlen</code></td><td>Pairwise TM-score for every pair</td><td>TM-score of at least about 0.5 means the same fold. Use <code>alntmscore</code> and check coverage (<code>alnlen</code> against protein length). Trim low-pLDDT tails first, because floppy tails lower the score.</td></tr><tr><td>7b</td><td>Structure clusters</td><td><code>foldseek easy-cluster alphafold/ strclu tmp --alignment-type 1 -c 0.8 --tmscore-threshold 0.5</code></td><td><code>strclu_cluster.tsv</code></td><td>Compare with the expected folds: the MAX effectors should cluster; AVR-Pii, AVR-Pita and AvrRpt2 should stay apart. If not, adjust thresholds and re-run before going on.</td></tr><tr><td>8</td><td>Call SUSS families</td><td>Join 6a and 7a (pandas or R)</td><td>One table: pair, % identity, TM-score, SUSS yes/no</td><td>A pair is SUSS if TM-score is at least 0.5 and identity is below 30%. A family is a connected group of SUSS pairs. Make a heatmap or tree of the TM-score matrix as a figure. Then check each member is cytoplasmic.</td></tr></tbody></table></div>
+  <div class="tablewrap"><table><thead><tr><th>#</th><th>Step</th><th>Input → command</th><th>Output</th><th>How to decide / what to consider</th></tr></thead><tbody><tr><td>6a</td><td>Sequence all-vs-all</td><td><code>all_10_effectors.fasta</code> → <code>mmseqs easy-search all_10_effectors.fasta all_10_effectors.fasta o1_mmseqs tmp --min-seq-id 0 -e 10 -s 7.5 --format-mode 4 --format-output query,target,fident,alnlen,evalue</code></td><td>Pairwise % identity and e-value for every pair</td><td>Pairs with identity below about 30% or e-value above 1e-3 count as sequence-unrelated. Keep this table: it is the “sequence-unrelated” half of SUSS.</td></tr><tr><td>6b</td><td>Sequence clusters</td><td><code>mmseqs easy-cluster all_10_effectors.fasta o15_mmseqs_clu tmp --min-seq-id 0.3 -c 0.8</code></td><td><code>o15_mmseqs_clu_cluster.tsv</code></td><td>Expect only near-identical pairs to group (AVR-Pik with AVR-Pikm, ToxB with toxb). The MAX effectors should stay in separate clusters.</td></tr><tr><td>7a</td><td>Structure all-vs-all</td><td><code>alphafold/*.pdb</code> → <code>foldseek easy-search alphafold/ alphafold/ o2_foldseek tmp --alignment-type 1 --exhaustive-search 1 -e 10 --format-mode 4 --format-output query,target,alntmscore,qtmscore,ttmscore,fident,evalue,alnlen</code></td><td>Pairwise TM-score for every pair</td><td>TM-score of at least about 0.5 means the same fold. Use <code>alntmscore</code> and check coverage (<code>alnlen</code> against protein length). Trim low-pLDDT tails first, because floppy tails lower the score.</td></tr><tr><td>7b</td><td>Structure clusters</td><td><code>foldseek easy-cluster alphafold/ o16_foldseek_clu tmp --alignment-type 1 -c 0.8 --tmscore-threshold 0.5</code></td><td><code>o16_foldseek_clu_cluster.tsv</code></td><td>Compare with the expected folds: the MAX effectors should cluster; AVR-Pii, AVR-Pita and AvrRpt2 should stay apart. If not, adjust thresholds and re-run before going on.</td></tr><tr><td>8</td><td>Call SUSS families</td><td>Join 6a and 7a (pandas or R)</td><td>One table: pair, % identity, TM-score, SUSS yes/no</td><td>A pair is SUSS if TM-score is at least 0.5 and identity is below 30%. A family is a connected group of SUSS pairs. Make a heatmap or tree of the TM-score matrix as a figure. Then check each member is cytoplasmic.</td></tr></tbody></table></div>
 
 
   <article class="workflow-step"><header><span class="stepno">5</span><h3>Find the invariant target face</h3><span class="phase">H + C · target</span></header><div class="step-grid">
@@ -453,7 +454,7 @@
   </div></article>
 
   <h3>Step 5 in practice · from alignment to a target face</h3>
-  <div class="tablewrap"><table><thead><tr><th>#</th><th>Step</th><th>Input → command</th><th>Output</th><th>How to decide / what to consider</th></tr></thead><tbody><tr><td>9a</td><td>Structure-based alignment of one family</td><td>Family members → <code>foldmason easy-msa fam/*.pdb fam_msa tmp</code> or ChimeraX <code>matchmaker #2-8 to #1</code></td><td>A residue-to-residue alignment and superimposed structures</td><td>This gives the residue correspondence. Use an experimental structure (for example AVR-Pik 6FUB) as the reference when possible. Don’t align across different families.</td></tr><tr><td>9b</td><td>Conservation per position</td><td>The alignment → score each column (Shannon entropy or ConSurf-style) and note residue type</td><td>A conservation value per residue</td><td>Conserved type (hydrophobic, charged) can matter as much as identity. Include allele variants (Pik, Pikm): they show which positions the pathogen can still mutate.</td></tr><tr><td>9c</td><td>Surface exposure</td><td>Each model, mature region only → FreeSASA or ChimeraX <code>measure sasa</code></td><td>Relative solvent accessibility per residue</td><td>Keep residues above about 25% relative accessibility. Buried conserved residues are structural and can’t be bound.</td></tr><tr><td>9d</td><td>Map onto the 3D surface</td><td>ChimeraX: colour the reference by conservation, then add <code>coulombic</code> and hydrophobicity</td><td>Images and a residue list for each face</td><td>Look for contiguous conserved, exposed patches of roughly 600–800 &Aring;&sup2; or more that are not too flat. Avoid mostly polar or charged faces.</td></tr><tr><td>10</td><td>Test the face is stable</td><td>Run 5 or more AlphaFold seeds per member, superimpose and compare the face (RMSD, side-chain positions); optionally short MD</td><td>Per-face RMSD and per-residue variation</td><td>Faces that move between seeds are poor targets. Seeds under-sample real motion, so “stable” here is a weak claim.</td></tr><tr><td>11</td><td>Rank target faces</td><td>Score each candidate face on conservation, exposure, stability, size and shape, and number of family members and isolates covered</td><td>A ranked list and one chosen face on one family</td><td>Consider whether the face is the host-target binding face: it is conserved for a reason, and the pathogen may find it hard to mutate. Choose a face the receptor can reach once fused. Check whether a known NLR already binds it (for example the HMA domain on the AVR-Pik MAX face).</td></tr></tbody></table></div>
+  <div class="tablewrap"><table><thead><tr><th>#</th><th>Step</th><th>Input → command</th><th>Output</th><th>How to decide / what to consider</th></tr></thead><tbody><tr><td>9a</td><td>Structure-based alignment of one family</td><td>Family members → <code>foldmason easy-msa fam/*.pdb o6_foldmason tmp</code> or ChimeraX <code>matchmaker #2-8 to #1</code></td><td>A residue-to-residue alignment and superimposed structures</td><td>This gives the residue correspondence. Use an experimental structure (for example AVR-Pik 6FUB) as the reference when possible. Don’t align across different families.</td></tr><tr><td>9b</td><td>Conservation per position</td><td>The alignment → score each column (Shannon entropy or ConSurf-style) and note residue type</td><td>A conservation value per residue</td><td>Conserved type (hydrophobic, charged) can matter as much as identity. Include allele variants (Pik, Pikm): they show which positions the pathogen can still mutate.</td></tr><tr><td>9c</td><td>Surface exposure</td><td>Each model, mature region only → FreeSASA or ChimeraX <code>measure sasa</code></td><td>Relative solvent accessibility per residue</td><td>Keep residues above about 25% relative accessibility. Buried conserved residues are structural and can’t be bound.</td></tr><tr><td>9d</td><td>Map onto the 3D surface</td><td>ChimeraX: colour the reference by conservation, then add <code>coulombic</code> and hydrophobicity</td><td>Images and a residue list for each face</td><td>Look for contiguous conserved, exposed patches of roughly 600–800 &Aring;&sup2; or more that are not too flat. Avoid mostly polar or charged faces.</td></tr><tr><td>10</td><td>Test the face is stable</td><td>Run 5 or more AlphaFold seeds per member, superimpose and compare the face (RMSD, side-chain positions); optionally short MD</td><td>Per-face RMSD and per-residue variation</td><td>Faces that move between seeds are poor targets. Seeds under-sample real motion, so “stable” here is a weak claim.</td></tr><tr><td>11</td><td>Rank target faces</td><td>Score each candidate face on conservation, exposure, stability, size and shape, and number of family members and isolates covered</td><td>A ranked list and one chosen face on one family</td><td>Consider whether the face is the host-target binding face: it is conserved for a reason, and the pathogen may find it hard to mutate. Choose a face the receptor can reach once fused. Check whether a known NLR already binds it (for example the HMA domain on the AVR-Pik MAX face).</td></tr></tbody></table></div>
 
 
   <article class="workflow-step"><header><span class="stepno">6</span><h3>Generate binder backbones</h3><span class="phase">C · design</span></header><div class="step-grid">
@@ -668,6 +669,552 @@
     <div class="ref"><a href="https://www.findaphd.com/phds/project/designing-immunity-from-first-principles-ai-protein-design-and-structural-biology-to-build-synthetic-plant-immune-receptors-fully-funded-4-year/?d431p198817" target="_blank" rel="noopener">Durham PhD advert ↗</a><p>Project scope: effector fold space, design, structure and plant validation.</p></div>
   </div></details>
   <details><summary>Software documentation</summary><div><p><a href="https://www.cgl.ucsf.edu/chimerax/docs/user/index.html" target="_blank" rel="noopener">ChimeraX</a> · <a href="https://github.com/RosettaCommons/RFdiffusion" target="_blank" rel="noopener">RFdiffusion</a> · <a href="https://github.com/dauparas/ProteinMPNN" target="_blank" rel="noopener">ProteinMPNN</a> · <a href="https://github.com/martinpacesa/BindCraft" target="_blank" rel="noopener">BindCraft</a>. Check current versions, licences and environment requirements before use.</p></div></details>
+</section>
+
+<section class="section searchable" id="practice-download">
+  <div class="section-head"><h2>9 · Practice</h2><span>From UniProt to the final receptor test</span></div>
+  <p class="note">These commands are starting points, not tested settings. Tune the cutoffs on the control effectors first. Each output file is named <code>o&lt;number&gt;_&lt;tool&gt;</code>, numbered in the order you create it. The folder <code>tmp</code> holds temporary files.</p>
+
+  <p style="margin:26px 0 4px;font-size:17px">Step 1. Download the sequences as FASTA files.</p>
+  <p>Tool: UniProt</p>
+  <pre style="margin:8px 0 14px;padding:12px 14px;overflow:auto;border:1px solid var(--line);border-radius:9px;background:#eef3f4;font:12px/1.5 ui-monospace,SFMono-Regular,Menlo,monospace">mkdir -p fasta &amp;&amp; cd fasta
+for id in C4B8C2 C4B8B9 B9WZW9 A0A0H4ITX1 Q9C173 Q8J0U6 G5EI71 C4B8B7 F7J183 Q6LAD6; do
+  curl -s "https://rest.uniprot.org/uniprotkb/$id.fasta" -o $id.fasta
+done
+cat *.fasta &gt; ../all_10_effectors.fasta
+grep -c '&gt;' ../all_10_effectors.fasta   # should print 10</pre>
+  <ul>
+    <li><code>mkdir -p fasta &amp;&amp; cd fasta</code>: create the folder <code>fasta</code>, then enter it. No error occurs if the folder exists.</li>
+    <li><code>for id in … ; do … done</code>: repeat the lines inside once for each UniProt ID.</li>
+    <li><code>curl -s "…/$id.fasta" -o $id.fasta</code>: download the FASTA file quietly with <code>-s</code>. Save it as <code>&lt;ID&gt;.fasta</code> with <code>-o</code>.</li>
+    <li><code>cat *.fasta &gt; ../all_10_effectors.fasta</code>: join all FASTA files into one file in the parent folder.</li>
+    <li><code>grep -c '&gt;' …</code>: count the header lines. The count should be 10.</li>
+  </ul>
+  <p>Example of a FASTA header: <code>&gt;tr|A0A0H4ITX1|A0A0H4ITX1_PYROR AvrPib protein OS=Pyricularia oryzae OX=318829 GN=AvrPib PE=1 SV=1</code></p>
+  <ul>
+    <li><code>&gt;</code> starts a new sequence. The amino acid sequence follows on the next lines.</li>
+    <li><code>tr</code> means TrEMBL, which is unreviewed. <code>sp</code> means Swiss-Prot, which is reviewed.</li>
+    <li><code>A0A0H4ITX1</code> is the UniProt ID. Use it for downloads.</li>
+    <li><code>A0A0H4ITX1_PYROR</code> is the entry name: the UniProt ID plus a species code.</li>
+    <li><code>AvrPib protein</code> is the protein name.</li>
+    <li><code>OS</code> is the organism. <code>OX</code> is the NCBI taxonomy ID. <code>GN</code> is the gene name.</li>
+    <li><code>PE=1</code> means evidence at protein level. <code>PE=5</code> means the protein is uncertain. <code>SV=1</code> is the sequence version.</li>
+  </ul>
+
+  <p style="margin:26px 0 4px;font-size:17px">Step 2. Download the AlphaFold models as mmCIF files and print the pLDDT.</p>
+  <p>Tool: UniProt and AlphaFold DB</p>
+  <pre style="margin:8px 0 14px;padding:12px 14px;overflow:auto;border:1px solid var(--line);border-radius:9px;background:#eef3f4;font:12px/1.5 ui-monospace,SFMono-Regular,Menlo,monospace">mkdir -p alphafold &amp;&amp; cd alphafold
+for id in C4B8C2 C4B8B9 B9WZW9 A0A0H4ITX1 Q9C173 Q8J0U6 G5EI71 C4B8B7 F7J183 Q6LAD6; do
+  read url plddt &lt; &lt;(curl -s "https://alphafold.ebi.ac.uk/api/prediction/$id" | python3 -c "import sys,json; d=json.load(sys.stdin)[0]; print(d['cifUrl'], d['globalMetricValue'])")
+  curl -s "$url" -o $id.cif
+  echo "$id pLDDT=$plddt"
+done
+ls -l *.cif    # should list 10 files</pre>
+  <ul>
+    <li><code>mkdir -p alphafold &amp;&amp; cd alphafold</code>: create the folder for the models, then enter it.</li>
+    <li><code>curl -s "https://alphafold.ebi.ac.uk/api/prediction/$id"</code>: ask the AlphaFold DB for the details of this UniProt ID. It returns JSON text.</li>
+    <li><code>python3 -c "…"</code>: read the JSON. Print the model file link <code>cifUrl</code> and the mean pLDDT <code>globalMetricValue</code>.</li>
+    <li><code>read url plddt &lt; &lt;( … )</code>: store the two printed values in the variables <code>url</code> and <code>plddt</code>.</li>
+    <li><code>curl -s "$url" -o $id.cif</code>: download the model. Save it as <code>&lt;ID&gt;.cif</code>.</li>
+    <li><code>echo "$id pLDDT=$plddt"</code>: print the UniProt ID and its confidence score.</li>
+    <li><code>ls -l *.cif</code>: list the files with their sizes. Check that there are 10 and that none is empty.</li>
+  </ul>
+  <p class="note">The API also returns <code>pdbUrl</code>, for tools that need PDB format. Keep one format per folder when you run Foldseek. A low mean pLDDT means the model is less reliable. Pwl2 scores 57.</p>
+
+  <p style="margin:26px 0 4px;font-size:17px">Step 3. Compare the sequences.</p>
+  <p>Tool: MMseqs2</p>
+  <pre style="margin:8px 0 14px;padding:12px 14px;overflow:auto;border:1px solid var(--line);border-radius:9px;background:#eef3f4;font:12px/1.5 ui-monospace,SFMono-Regular,Menlo,monospace">mmseqs easy-search all_10_effectors.fasta all_10_effectors.fasta o1_mmseqs tmp \
+  --min-seq-id 0 -e 10 -s 7.5 --format-mode 4 --format-output query,target,fident,alnlen,evalue</pre>
+  <ul>
+    <li><code>mmseqs easy-search</code>: run the MMseqs2 search in a single command.</li>
+    <li><code>all_10_effectors.fasta all_10_effectors.fasta</code>: the query and the target are the same file, so every sequence is compared with every other sequence.</li>
+    <li><code>o1_mmseqs</code>: the output file name you choose. It is a table separated by tabs, with one line per matching pair.</li>
+    <li><code>tmp</code>: the temporary folder. You can delete it afterwards.</li>
+    <li><code>--min-seq-id 0</code>: the minimum identity to report. The value 0 keeps even very different pairs.</li>
+    <li><code>-e 10</code>: the E-value cutoff. The value 10 is very permissive, so weak matches stay.</li>
+    <li><code>-s 7.5</code>: a high sensitivity setting. It finds distant matches and runs slower. With 10 sequences the run is short.</li>
+    <li><code>--format-mode 4</code>: write a header line with the column names as the first row.</li>
+    <li><code>--format-output query,target,fident,alnlen,evalue</code>: the columns to write. They are the two sequence IDs, the fraction identical from 0 to 1, the aligned length and the E-value.</li>
+    <li><code>\</code>: continue the command on the next line. It is not an MMseqs2 option.</li>
+  </ul>
+  <p>The file <code>o1_mmseqs</code> lists identity and E-value for every pair. Pairs with identity below 0.30 count as unrelated in sequence.</p>
+
+  <p style="margin:26px 0 4px;font-size:17px">Step 4. Compare the structures.</p>
+  <p>Tool: Foldseek</p>
+  <pre style="margin:8px 0 14px;padding:12px 14px;overflow:auto;border:1px solid var(--line);border-radius:9px;background:#eef3f4;font:12px/1.5 ui-monospace,SFMono-Regular,Menlo,monospace">foldseek easy-search alphafold/ alphafold/ o2_foldseek tmp \
+  --alignment-type 1 --exhaustive-search 1 -e 10 \
+  --format-mode 4 --format-output query,target,alntmscore,qtmscore,ttmscore,fident,evalue,alnlen</pre>
+  <ul>
+    <li><code>foldseek easy-search</code>: run the Foldseek structure search in a single command.</li>
+    <li><code>alphafold/ alphafold/</code>: the query and the target are the same folder, so every model is compared with every other model.</li>
+    <li><code>o2_foldseek</code>: the output file name you choose.</li>
+    <li><code>tmp</code>: the temporary folder. You can delete it afterwards.</li>
+    <li><code>\</code>: continue the command on the next line. It is not a Foldseek option.</li>
+    <li><code>--alignment-type 1</code>: align with TM-align. This gives the TM-scores.</li>
+    <li><code>--exhaustive-search 1</code>: compare every pair directly and skip the filtering step. This suits a small set.</li>
+    <li><code>-e 10</code>: a permissive E-value cutoff, so weak hits stay.</li>
+    <li><code>--format-mode 4</code>: write a header line with the column names as the first row.</li>
+    <li><code>--format-output …</code>: the columns to write, in this order:
+      <ul>
+        <li><code>query</code> and <code>target</code>: the two structures in the pair. They are file names.</li>
+        <li><code>alntmscore</code>: the TM-score normalised by the aligned region. It runs from 0 to 1. A value of 0.5 or more usually means the same fold.</li>
+        <li><code>qtmscore</code>: the TM-score normalised by the query length.</li>
+        <li><code>ttmscore</code>: the TM-score normalised by the target length.</li>
+        <li><code>fident</code>: the fraction of identical residues in the structural alignment, from 0 to 1.</li>
+        <li><code>evalue</code>: the statistical significance. A lower value is better.</li>
+        <li><code>alnlen</code>: the number of aligned residues.</li>
+      </ul>
+    </li>
+  </ul>
+  <p>The file <code>o2_foldseek</code> gives the TM-score for every pair. MAX effectors should score high with each other and low against AVR-Pii, AVR-Pita and AvrRpt2.</p>
+  <p class="note">If only a small region aligns, <code>alntmscore</code> can look high. Check <code>alnlen</code> against the protein lengths. You can also use <code>qtmscore</code> and <code>ttmscore</code>, which use the full protein length and are stricter.</p>
+
+  <p style="margin:26px 0 4px;font-size:17px">Step 5. Call the SUSS families.</p>
+  <p>Tool: Python with pandas</p>
+  <pre style="margin:8px 0 14px;padding:12px 14px;overflow:auto;border:1px solid var(--line);border-radius:9px;background:#eef3f4;font:12px/1.5 ui-monospace,SFMono-Regular,Menlo,monospace">import pandas as pd
+
+seq = pd.read_csv("o1_mmseqs", sep="\t", header=0, names=["q","t","seq_id","seq_len","seq_e"])
+st  = pd.read_csv("o2_foldseek", sep="\t", header=0, names=["q","t","tm","qtm","ttm","str_id","str_e","str_len"])
+
+m = st.merge(seq[["q","t","seq_id"]], on=["q","t"], how="left").fillna({"seq_id": 0})
+m = m[m.q != m.t]
+m["SUSS"] = (m.tm &gt;= 0.5) &amp; (m.seq_id &lt; 0.30)
+m[["q","t","seq_id","tm","SUSS"]].to_csv("o3_suss_pairs.tsv", sep="\t", index=False)
+tm = m.pivot(index="q", columns="t", values="tm").round(2)   # TM-score matrix
+tm.to_csv("o4_tm_matrix.tsv", sep="\t")
+print(tm)</pre>
+  <ul>
+    <li><code>pd.read_csv("o1_mmseqs", sep="\t", header=0, names=[…])</code>: load the sequence table, which uses tabs. The setting <code>header=0</code> treats the first row as the header. The setting <code>names</code> replaces it with short column names. The same applies to <code>o2_foldseek</code>.</li>
+    <li><code>st.merge(seq[…], on=["q","t"], how="left")</code>: join the structure results and the sequence results for each pair.</li>
+    <li><code>.fillna({"seq_id": 0})</code>: give pairs with no sequence hit an identity of 0.</li>
+    <li><code>m[m.q != m.t]</code>: drop each protein compared with itself.</li>
+    <li><code>m["SUSS"] = (m.tm &gt;= 0.5) &amp; (m.seq_id &lt; 0.30)</code>: mark a pair as SUSS when the TM-score is at least 0.5 and the identity is below 0.30.</li>
+    <li><code>.to_csv("o3_suss_pairs.tsv", …)</code>: save the pair table.</li>
+    <li><code>m.pivot(…).round(2)</code>: build a TM-score matrix. Rows and columns are effectors.</li>
+    <li><code>tm.to_csv("o4_tm_matrix.tsv", …)</code>: save the matrix. The command <code>print(tm)</code> shows it on screen.</li>
+  </ul>
+  <p>A family is a connected group of SUSS pairs. Check that each member is cytoplasmic.</p>
+  <p>The file <code>o3_suss_pairs.tsv</code> has the columns <code>q</code>, <code>t</code>, <code>seq_id</code>, <code>tm</code> and <code>SUSS</code>. The value in <code>SUSS</code> is <code>True</code> only when both conditions hold:</p>
+  <ul>
+    <li>The structures are similar: <code>tm</code> ≥ 0.5, in the 4th column.</li>
+    <li>The sequences are unrelated: <code>seq_id</code> &lt; 0.30, in the 3rd column.</li>
+  </ul>
+  <p class="note">A pair with a similar fold and a similar sequence is not SUSS. ToxB and toxb are an example, with <code>tm</code> 0.94 and <code>seq_id</code> 0.82. A <code>seq_id</code> of 0.0 does not mean the tool measured 0 percent identity. MMseqs2 found no hit for that pair, so the script filled in 0. The sequences are too different to detect.</p>
+  <p>Reading the matrix <code>o4_tm_matrix.tsv</code> from the 10 test effectors:</p>
+  <ul>
+    <li>The MAX effectors AVR-Pik, AVR-Pikm, AVR-Pia, AVR-Pib, ToxB and toxb score 0.66 to 0.94 with each other.</li>
+    <li>The controls AVR-Pii, AVR-Pita and AvrRpt2 score 0.32 to 0.49 against the MAX group. All are below 0.5, so they separate cleanly.</li>
+    <li>Pwl2, with UniProt ID G5EI71, scores 0.64 to 0.80 with AVR-Pib, AVR-Pia, ToxB and toxb. It scores 0.50 with AVR-Pikm and 0.29 with AVR-Pik.</li>
+    <li>The matrix is not symmetric. G5EI71 against C4B8C2, which is AVR-Pik, is 0.29 in one direction and 0.72 in the other.</li>
+    <li>Foldseek does not always align a pair the same way in both directions. The value of <code>alntmscore</code> depends on the alignment it finds.</li>
+    <li>Before you call SUSS pairs, take the larger value of the two directions, or their average. Then a pair is not missed because of its direction.</li>
+  </ul>
+
+  <p style="margin:26px 0 4px;font-size:17px">Step 6. Select the family members.</p>
+  <p>Tool: Python with pandas and Biopython</p>
+  <p>Set seed (1 chosen UniProt ID as reference). Find other family members from <code>o3_suss_pairs.tsv</code>. Excludes those with <code>seq_id</code> ≥ 0.30 (near copy) and models with pLDDT &lt; 70 (low confidence).</p>
+  <pre style="margin:8px 0 14px;padding:12px 14px;overflow:auto;border:1px solid var(--line);border-radius:9px;background:#eef3f4;font:12px/1.5 ui-monospace,SFMono-Regular,Menlo,monospace">import os, shutil
+import pandas as pd
+from Bio.PDB import MMCIFParser
+
+pairs = pd.read_csv("o3_suss_pairs.tsv", sep="\t")
+pairs = pairs[(pairs.tm &gt;= 0.5) &amp; (pairs.seq_id &lt; 0.30)]   # similar structure, unrelated sequence
+seq = pd.read_csv("o1_mmseqs", sep="\t")           # columns: query, target, fident, ...
+seed = "C4B8C2"                                    # one effector of the family
+
+family, todo = {seed}, [seed]                      # follow SUSS links outwards from the seed
+while todo:
+    x = todo.pop()
+    for y in set(pairs[pairs.q == x].t) | set(pairs[pairs.t == x].q):
+        if y not in family:
+            family.add(y); todo.append(y)
+
+def plddt(i):                                      # AlphaFold stores pLDDT in the B-factor column
+    st = MMCIFParser(QUIET=True).get_structure(i, f"alphafold/{i}.cif")
+    b = [a.bfactor for a in st.get_atoms() if a.get_id() == "CA"]
+    return sum(b) / len(b)
+
+def near_copy(a, b):                               # similar sequence, so not a new member
+    return ((seq["query"] == a) &amp; (seq["target"] == b) &amp; (seq["fident"] &gt;= 0.30)).any()
+
+keep = []
+for i in [seed] + sorted(family - {seed}):
+    if plddt(i) &gt;= 70 and not any(near_copy(i, k) or near_copy(k, i) for k in keep):
+        keep.append(i)
+
+os.makedirs("family", exist_ok=True)
+for i in keep:
+    shutil.copy(f"alphafold/{i}.cif", "family/")
+open("o5_family_members.txt", "w").write("\n".join(keep) + "\n")
+print(keep)</pre>
+  <ul>
+    <li><code>seed</code>: the UniProt ID of one effector in the family. This is the only value you set.</li>
+    <li><code>pairs[(pairs.tm &gt;= 0.5) &amp; (pairs.seq_id &lt; 0.30)]</code>: keep only the SUSS pairs. The structures are similar when <code>tm</code> is at least 0.5. The sequences are unrelated when <code>seq_id</code> is below 0.30. These are the same cutoffs as step 5.</li>
+    <li>The <code>while</code> loop: start at the seed. Add every effector linked to it by a SUSS pair. Repeat for each new member. This finds the connected family.</li>
+    <li><code>plddt(i)</code>: read the mean pLDDT of a model from the B-factor column. The cutoff 70 drops low confidence models.</li>
+    <li><code>near_copy(a, b)</code>: true when two sequences have identity of 0.30 or more in <code>o1_mmseqs</code>. The script keeps one of each near copy.</li>
+    <li><code>shutil.copy(…)</code>: copy each kept model into the folder <code>family</code>.</li>
+    <li><code>o5_family_members.txt</code>: the list of kept UniProt IDs.</li>
+  </ul>
+  <p class="note">The script ran on test files built from the matrix in step 5. It kept C4B8C2, A0A0H4ITX1, B9WZW9 and Q8J0U6. It dropped Pwl2 for low pLDDT and AVR-Pikm as a near copy of AVR-Pik. Check the list before you go on.</p>
+
+  <p style="margin:26px 0 4px;font-size:17px">Step 7. Find the shared surface of the family.</p>
+  <p>Tool: FoldMason and Biopython</p>
+  <p>Residues differ between family members, because the sequences are unrelated. So align the members by structure. Then keep aligned positions that are exposed, in a strand or helix, and have the same residue type in at least 75 percent of members. Loops are left out because they are flexible.</p>
+  <pre style="margin:8px 0 14px;padding:12px 14px;overflow:auto;border:1px solid var(--line);border-radius:9px;background:#eef3f4;font:12px/1.5 ui-monospace,SFMono-Regular,Menlo,monospace">foldmason easy-msa family/ o6_foldmason tmp</pre>
+  <ul>
+    <li><code>foldmason easy-msa family/ o6_foldmason tmp</code>: align all models in the folder <code>family</code> by structure. Step 6 filled that folder. The output files start with <code>o6_foldmason</code>. The file ending <code>_aa.fa</code> holds the aligned residues.</li>
+  </ul>
+  <pre style="margin:8px 0 14px;padding:12px 14px;overflow:auto;border:1px solid var(--line);border-radius:9px;background:#eef3f4;font:12px/1.5 ui-monospace,SFMono-Regular,Menlo,monospace">import os
+import pandas as pd
+from collections import Counter
+from Bio import SeqIO
+from Bio.PDB import MMCIFParser
+from Bio.PDB.MMCIF2Dict import MMCIF2Dict
+from Bio.PDB.SASA import ShrakeRupley
+from Bio.SeqUtils import seq1
+
+MAX = {"A":129,"R":274,"N":195,"D":193,"C":167,"Q":225,"E":223,"G":104,"H":224,"I":197,
+       "L":201,"K":236,"M":224,"F":240,"P":159,"S":155,"T":172,"W":285,"Y":263,"V":174}
+CLASS = {**dict.fromkeys("AVILMFWC", "hydrophobic"), **dict.fromkeys("STNQGPY", "polar"),
+         **dict.fromkeys("KRH", "positive"), **dict.fromkeys("DE", "negative")}
+
+def structured(path):   # residues in a strand or helix, read from the AlphaFold file
+    d = MMCIF2Dict(path)
+    out = set()
+    for t, b, e in zip(d.get("_struct_conf.conf_type_id", []), d.get("_struct_conf.beg_auth_seq_id", []),
+                       d.get("_struct_conf.end_auth_seq_id", [])):
+        if t == "STRN" or t.startswith("HELX"):
+            out.update(range(int(b), int(e) + 1))
+    return out
+
+def rsa(path):   # per residue: number, letter, relative accessibility, in strand or helix
+    ss = structured(path)
+    st = MMCIFParser(QUIET=True).get_structure("x", path)
+    ShrakeRupley().compute(st, level="R")
+    out = []
+    for r in st[0]["A"]:
+        a = seq1(r.get_resname())
+        out.append((r.id[1], a, r.sasa / MAX.get(a, 200), r.id[1] in ss))
+    return out
+
+aln = {os.path.splitext(r.id)[0]: str(r.seq) for r in SeqIO.parse("o6_foldmason_aa.fa", "fasta")}
+data = {n: rsa(f"family/{n}.cif") for n in aln}
+ref, pos, rows = list(aln)[0], {n: 0 for n in aln}, []
+
+for col in range(len(aln[ref])):
+    res = {}
+    for n, seq in aln.items():
+        if seq[col] != "-":
+            res[n] = data[n][pos[n]]; pos[n] += 1
+    if len(res) == len(aln):                      # no gap in any member
+        v = list(res.values())
+        top = Counter(CLASS.get(x[1], "other") for x in v).most_common(1)[0][1]
+        rows.append((res[ref][0], "".join(x[1] for x in v),
+                     sum(x[2] &gt;= 0.25 for x in v) / len(v), sum(x[3] for x in v) / len(v), top / len(v)))
+
+df = pd.DataFrame(rows, columns=["ref_pos", "residues", "exposed_share", "structured_share", "class_share"])
+df["shared"] = (df.exposed_share &gt;= 0.75) &amp; (df.structured_share &gt;= 0.75) &amp; (df.class_share &gt;= 0.75)
+df.insert(0, "ref", ref)                      # name of the reference model
+df.round(2).to_csv("o7_family_surface.tsv", sep="\t", index=False)
+shared = ",".join(map(str, df[df.shared].ref_pos))
+with open("o8_chimerax_family.cxc", "w") as f:        # surface view
+    f.write(f"open family/{ref}.cif\ncolor #1 lightgray\nsurface #1\n")
+    if shared: f.write(f"color #1:{shared} red\n")
+with open("o9_chimerax_family_ss.cxc", "w") as f:     # ribbon view by secondary structure
+    f.write(f"open family/{ref}.cif\ncartoon #1\n")
+    f.write("color #1 &amp; strand skyblue target c\ncolor #1 &amp; helix lightgreen target c\ncolor #1 &amp; coil lightgray target c\n")
+    if shared: f.write(f"show #1:{shared} atoms\nstyle #1 stick\ncolor #1:{shared} red target ac\n")
+print(len(shared.split(",")) if shared else 0, "shared positions")</pre>
+  <ul>
+    <li><code>MAX</code>: the theoretical maximum accessible area of each residue type. It turns an area into a relative accessibility from 0 to 1.</li>
+    <li><code>CLASS</code>: groups residues by type: hydrophobic, polar, positive and negative.</li>
+    <li><code>structured(path)</code>: read the strands and helices that AlphaFold lists in the file. Residues outside them are loops.</li>
+    <li><code>rsa(path)</code>: compute the accessible area of each residue with the Shrake Rupley method, then divide by <code>MAX</code>.</li>
+    <li><code>aln = {…}</code>: read the aligned sequences. The file name without <code>.cif</code> is the member name.</li>
+    <li><code>ref</code>: the first member in the alignment. Its residue numbers label the output.</li>
+    <li>The loop over <code>col</code>: walk along the alignment. Skip any column that has a gap in one member.</li>
+    <li><code>exposed_share</code>: the share of members where the position has a relative accessibility of at least 0.25.</li>
+    <li><code>structured_share</code>: the share of members where the position is in a strand or helix.</li>
+    <li><code>class_share</code>: the share of members that have the most common residue type at that position.</li>
+    <li><code>ref</code>: the name of the reference model. Step 11 reads it.</li>
+    <li><code>shared</code>: true when all three shares are at least 0.75. Raise or lower 0.75 to change how strict the filter is.</li>
+    <li><code>o7_family_surface.tsv</code>: the table of aligned positions with these values.</li>
+    <li><code>o8_chimerax_family.cxc</code>: a ChimeraX file for the surface view. It opens the reference model <code>ref</code> and shows its surface in grey. Then it colours the shared positions red. Colouring comes after the surface, because a new surface would erase the colours.</li>
+    <li><code>o9_chimerax_family_ss.cxc</code>: a ChimeraX file for the ribbon view. It colours strands blue, helices green and loops grey. It shows the shared positions as red sticks. Use it to check whether a position is in a strand.</li>
+  </ul>
+  <p>In ChimeraX, run <code>open o8_chimerax_family.cxc</code> for the surface view. Run <code>open o9_chimerax_family_ss.cxc</code> for the ribbon view. The red marks show the shared family positions.</p>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin:12px 0 4px">
+    <figure style="margin:0"><img src="supplements/o8_1.png" alt="AVR-Pik surface in grey with red shared positions clustered on one side of the folded domain" style="width:100%;height:auto;border:1px solid var(--line);border-radius:9px;background:#000"><figcaption class="note">View 1. The red positions cluster on one side of the folded domain. The extended chain is the tail.</figcaption></figure>
+    <figure style="margin:0"><img src="supplements/o8_2.png" alt="AVR-Pik surface in grey with red shared positions at the top of the folded domain" style="width:100%;height:auto;border:1px solid var(--line);border-radius:9px;background:#000"><figcaption class="note">View 2. The same model turned. Red positions appear at the top of the folded domain.</figcaption></figure>
+    <figure style="margin:0"><img src="supplements/o8_3.png" alt="AVR-Pik folded domain with red shared positions spread around its surface" style="width:100%;height:auto;border:1px solid var(--line);border-radius:9px;background:#000"><figcaption class="note">View 3. The folded domain alone. Red patches are spread around its surface.</figcaption></figure>
+  </div>
+  <p class="note">Figure. The AVR-Pik reference model, C4B8C2, as a grey surface. Red marks the shared family positions from <code>o7_family_surface.tsv</code>. The three views come from ChimeraX.</p>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin:12px 0 4px">
+    <figure style="margin:0"><img src="supplements/09_1.png" alt="AVR-Pik ribbon with blue strands, green helices, grey loops and red shared positions" style="width:100%;height:auto;border:1px solid var(--line);border-radius:9px;background:#000"><figcaption class="note">Ribbon view 1. Red marks the shared positions. Most red positions lie on blue strands.</figcaption></figure>
+    <figure style="margin:0"><img src="supplements/09_2.png" alt="AVR-Pik ribbon turned to a second angle with red shared positions on strands" style="width:100%;height:auto;border:1px solid var(--line);border-radius:9px;background:#000"><figcaption class="note">Ribbon view 2. The same model turned to a second angle.</figcaption></figure>
+    <figure style="margin:0"><img src="supplements/09_3.png" alt="AVR-Pik folded domain as a ribbon with red shared positions on strands" style="width:100%;height:auto;border:1px solid var(--line);border-radius:9px;background:#000"><figcaption class="note">Ribbon view 3. The folded domain alone, without the tail.</figcaption></figure>
+  </div>
+  <p class="note">Figure. The same reference model as a ribbon, from <code>o9_chimerax_family_ss.cxc</code>. Strands are blue, helices are green and loops are grey. Red marks the shared positions.</p>
+  <p class="note">Check that the member names in <code>o6_foldmason_aa.fa</code> match your file names. AlphaFold models include floppy tails with low pLDDT. Remove residues below pLDDT 50 first, or the tails can look exposed.</p>
+
+  <p style="margin:26px 0 4px;font-size:17px">Step 8. Testing different variants. This step is optional.</p>
+  <p>If you have no variants, skip steps 8 to 10 and go to step 11. Variants are versions of one effector from different strains. They show which positions differ between strains. Target positions that stay the same. This example uses the effector AVR-Pik.</p>
+  <ol>
+    <li>Search UniProt for the effector name. Type <code>gene:AVR-Pik AND taxonomy_id:318829</code> in the search box. It returns six entries: C4B8C0, C4B8C2, C4B8C1, C4B8B9, A0A1S6R4X5 and C4B8B8. Each has a different sequence, so each is a variant.</li>
+    <li>Download the sequences and the AlphaFold models of all six with the commands below. The script finds the UniProt IDs itself.</li>
+    <li>Check that <code>variants.fasta</code> has six sequences, each named by its UniProt ID. The first sequence becomes model 1 in step 10.</li>
+    <li>If UniProt lacks a variant, take it from NCBI or a strain genome. Record the strain in your evidence table.</li>
+  </ol>
+  <pre style="margin:8px 0 14px;padding:12px 14px;overflow:auto;border:1px solid var(--line);border-radius:9px;background:#eef3f4;font:12px/1.5 ui-monospace,SFMono-Regular,Menlo,monospace">mkdir -p alphafold
+for id in $(curl -s "https://rest.uniprot.org/uniprotkb/stream?query=gene:AVR-Pik+AND+taxonomy_id:318829&amp;format=list"); do
+  curl -s "https://rest.uniprot.org/uniprotkb/$id.fasta" | sed "1s/.*/&gt;$id/" &gt;&gt; variants.fasta
+  url=$(curl -s "https://alphafold.ebi.ac.uk/api/prediction/$id" | python3 -c "import sys,json; print(json.load(sys.stdin)[0]['cifUrl'])")
+  curl -s "$url" -o alphafold/$id.cif
+done
+grep -c '&gt;' variants.fasta   # should print 6</pre>
+  <ul>
+    <li><code>curl -s ".../stream?query=gene:AVR-Pik+AND+taxonomy_id:318829&amp;format=list"</code>: ask UniProt for the IDs of all AVR-Pik entries in <i>M. oryzae</i>. It returns one ID per line.</li>
+    <li><code>for id in $(…); do … done</code>: repeat the lines inside once for each ID.</li>
+    <li><code>curl -s ".../$id.fasta" | sed "1s/.*/&gt;$id/" &gt;&gt; variants.fasta</code>: download the FASTA file. Replace the long header with <code>&gt;&lt;ID&gt;</code>. Add it to <code>variants.fasta</code>.</li>
+    <li><code>url=$(curl … | python3 -c "…")</code>: ask the AlphaFold DB for the model link of this ID.</li>
+    <li><code>curl -s "$url" -o alphafold/$id.cif</code>: download the model into the folder <code>alphafold</code>.</li>
+    <li><code>grep -c '&gt;' variants.fasta</code>: count the sequences. The count should be 6.</li>
+  </ul>
+  <p>In my test, the six variants differ at five positions: 46, 47, 48, 67 and 78. Position 67 is also one of the shared family positions from step 7, so step 11 drops it.</p>
+
+  <p style="margin:26px 0 4px;font-size:17px">Step 9. Compare the variants of one effector by sequence.</p>
+  <p>We list the positions that stay identical across variants, so the binder avoids residues that differ between strains.</p>
+  <p>Tool: MAFFT and Biopython</p>
+  <pre style="margin:8px 0 14px;padding:12px 14px;overflow:auto;border:1px solid var(--line);border-radius:9px;background:#eef3f4;font:12px/1.5 ui-monospace,SFMono-Regular,Menlo,monospace"># variants.fasta holds several variants of one effector
+mafft --auto variants.fasta &gt; o10_mafft</pre>
+  <ul>
+    <li><code>variants.fasta</code>: the file with several variants of one effector.</li>
+    <li><code>mafft --auto</code>: align the sequences. MAFFT chooses the method.</li>
+    <li><code>&gt; o10_mafft</code>: save the aligned sequences. Gaps appear as <code>-</code>.</li>
+  </ul>
+  <pre style="margin:8px 0 14px;padding:12px 14px;overflow:auto;border:1px solid var(--line);border-radius:9px;background:#eef3f4;font:12px/1.5 ui-monospace,SFMono-Regular,Menlo,monospace">from Bio import AlignIO
+aln = AlignIO.read("o10_mafft", "fasta")
+ref = aln[0].seq                      # the first sequence sets the numbering
+pos, n = 0, []
+for i in range(aln.get_alignment_length()):
+    if ref[i] != "-":
+        pos += 1
+        if len({rec.seq[i] for rec in aln}) == 1:   # identical in every variant
+            n.append(pos)
+shared = ",".join(map(str, n))
+print("invariant positions:", shared)
+with open("o11_chimerax.cxc", "w") as f:           # ChimeraX file for step 10
+    for rec in aln:
+        f.write(f"open alphafold/{rec.id}.cif\n")
+    if len(aln) &gt; 1: f.write(f"matchmaker #2-{len(aln)} to #1\n")
+    f.write("color #1 lightgray\nsurface #1\n")
+    if shared: f.write(f"color #1:{shared} red\n")</pre>
+  <ul>
+    <li><code>AlignIO.read("o10_mafft", "fasta")</code>: load the alignment.</li>
+    <li><code>ref = aln[0].seq</code>: the first sequence sets the residue numbering.</li>
+    <li><code>if ref[i] != "-": pos += 1</code>: count residues along the reference and skip gaps.</li>
+    <li><code>len({rec.seq[i] for rec in aln}) == 1</code>: true when every variant has the same residue at this position.</li>
+    <li><code>print(…)</code>: list the invariant positions.</li>
+    <li><code>open alphafold/{rec.id}.cif</code>: write one line for each variant. The sequence name must match the model file name.</li>
+    <li><code>matchmaker #2-N to #1</code>: write a line that superimposes all other models onto model 1.</li>
+    <li><code>surface #1</code> then <code>color … red</code>: show the surface of model 1, then colour the invariant positions. Colouring comes after the surface, because a new surface would erase the colours.</li>
+    <li><code>o11_chimerax.cxc</code>: the ChimeraX file that step 10 runs, so you type nothing by hand.</li>
+  </ul>
+  <p>The script prints the positions that are identical in every variant, numbered along the first sequence. Variable positions show where isolates already differ. The first sequence in <code>variants.fasta</code> becomes model 1 in step 10.</p>
+
+  <p style="margin:26px 0 4px;font-size:17px">Step 10. Compare the variants of one effector by structure.</p>
+  <p>Tool: ChimeraX</p>
+  <pre style="margin:8px 0 14px;padding:12px 14px;overflow:auto;border:1px solid var(--line);border-radius:9px;background:#eef3f4;font:12px/1.5 ui-monospace,SFMono-Regular,Menlo,monospace">open o11_chimerax.cxc</pre>
+  <ul>
+    <li><code>open o11_chimerax.cxc</code>: run the file that step 9 wrote. It opens every variant, superimposes them and shows the surface of model 1. It colours the invariant positions red. Start ChimeraX in the folder that holds the file.</li>
+  </ul>
+  <p>ChimeraX prints the RMSD of each variant in the log. A low RMSD suggests the same fold. The red patches show whether the invariant positions form one exposed face. Repeat with extra AlphaFold seeds, to check that the face is stable.</p>
+
+  <p style="margin:26px 0 4px;font-size:17px">Step 11. Choose the target face.</p>
+  <ol>
+    <li>Set <code>drop</code>: positions that vary between variants. Optional.</li>
+    <li>Set <code>MAX_DIST</code> to 17 Å and <code>MIN_RSA</code> to 0.25. Both can change.</li>
+    <li>Take the shared positions from <code>o7_family_surface.tsv</code>, minus <code>drop</code>. Keep those with relative exposure ≥ <code>MIN_RSA</code>.</li>
+    <li>Group the exposed positions: every member of a group is ≤ <code>MAX_DIST</code> from every other member.</li>
+    <li>Select the largest group. If two groups tie, take the one with the larger exposed area. The hotspots are up to 6 residues from it, those with the largest exposed area.</li>
+  </ol>
+  <p>Output: <code>o12_hotspots.tsv</code> lists every candidate with its group and whether it is selected. <code>o13_chimerax_hotspots.cxc</code> colours the selected hotspots red. <code>o14_distances.tsv</code> gives the distance of each pair.</p>
+  <p>Tool: Python with Biopython, and ChimeraX</p>
+  <p>Make your candidate list. Take the 7 shared positions from step 7: 64, 65, 67, 71, 75, 83 and 96. If you ran steps 8 to 10, remove the positions that vary between variants.</p>
+  <pre style="margin:8px 0 14px;padding:12px 14px;overflow:auto;border:1px solid var(--line);border-radius:9px;background:#eef3f4;font:12px/1.5 ui-monospace,SFMono-Regular,Menlo,monospace">import numpy as np
+import pandas as pd
+from Bio.PDB import MMCIFParser
+from Bio.PDB.SASA import ShrakeRupley
+from Bio.SeqUtils import seq1
+
+drop = []          # can change. Positions that vary between variants, from step 9. Leave empty if you skipped steps 8 to 10
+MAX_DIST = 17      # can change. Every position in a group is within this distance of every other member, in angstroms
+MIN_RSA = 0.25     # can change. Minimum relative exposure of a position
+MAX = {"A":129,"R":274,"N":195,"D":193,"C":167,"Q":225,"E":223,"G":104,"H":224,"I":197,
+       "L":201,"K":236,"M":224,"F":240,"P":159,"S":155,"T":172,"W":285,"Y":263,"V":174}
+
+df = pd.read_csv("o7_family_surface.tsv", sep="\t")
+ref = df.ref[0]
+st = MMCIFParser(QUIET=True).get_structure("x", f"family/{ref}.cif")
+ShrakeRupley().compute(st, level="R")
+ch = st[0]["A"]
+
+def centre(r):         # centre of the side chain, or the CA atom for glycine
+    a = [x.coord for x in r if x.get_id() not in ("N", "C", "O", "CA")]
+    return np.mean(a, axis=0) if a else r["CA"].coord
+
+rows = [(p, ch[p].get_resname(), round(ch[p].sasa), round(ch[p].sasa / MAX[seq1(ch[p].get_resname())], 2))
+        for p in df[df.shared].ref_pos if p not in drop]
+out = pd.DataFrame(rows, columns=["pos", "residue", "sasa", "rsa"])
+out["exposed"] = out.rsa &gt;= MIN_RSA
+xyz = {p: centre(ch[p]) for p in out.pos}
+sasa = dict(zip(out.pos, out.sasa))
+d = lambda a, b: float(np.linalg.norm(xyz[a] - xyz[b]))
+
+left, groups = list(out[out.exposed].pos), []
+while left:                                     # take the best group, then repeat on the rest
+    best = []
+    for s in left:                              # grow a group around each position
+        g = [s]
+        for q in sorted(left, key=lambda q: d(s, q)):
+            if q not in g and all(d(q, m) &lt;= MAX_DIST for m in g): g.append(q)
+        if (len(g), sum(sasa[x] for x in g)) &gt; (len(best), sum(sasa[x] for x in best)):
+            best = g
+    groups.append(best); left = [q for q in left if q not in best]
+
+label = {p: i + 1 for i, g in enumerate(groups) for p in g}
+out["group"] = out.pos.map(label)               # empty for positions that are not exposed
+out["group_size"] = out.group.map(out.group.value_counts())
+hot = sorted(groups[0], key=lambda p: -sasa[p])[:6] if groups else []
+out["selected"] = out.pos.isin(hot)
+out.sort_values(["group", "pos"]).to_csv("o12_hotspots.tsv", sep="\t", index=False)
+
+dist = pd.DataFrame([(a, b, round(d(a, b), 1)) for a in out.pos for b in out.pos if a &lt; b],
+                    columns=["pos_a", "pos_b", "distance_A"])
+dist["same_group"] = [label.get(a) is not None and label.get(a) == label.get(b) for a, b in zip(dist.pos_a, dist.pos_b)]
+dist.sort_values("distance_A").to_csv("o14_distances.tsv", sep="\t", index=False)
+
+with open("o13_chimerax_hotspots.cxc", "w") as f:
+    f.write(f"open family/{ref}.cif\ncolor #1 lightgray\nsurface #1\n")
+    if hot: f.write("color #1:" + ",".join(map(str, hot)) + " red\n")
+print(out.sort_values(["group", "pos"]))</pre>
+  <ul>
+    <li><code>drop</code>: the positions that vary between variants. Type them here if you ran steps 8 to 10. Leave it empty if you skipped them.</li>
+    <li><code>MAX_DIST</code>: the largest allowed distance between two members of a group, in angstroms. 17 Å is my own choice, not an established guide. Test how the selection changes at 12, 15, 17 and 20 Å. It can change.</li>
+    <li><code>MIN_RSA</code>: the minimum relative exposure. It is the same 0.25 cutoff as step 7. Cutoffs of about 0.20 to 0.25 are common, but I did not check a source. It can change. Relative exposure is the exposed area divided by the largest possible area of that residue type, stored in <code>MAX</code>.</li>
+    <li><code>ShrakeRupley().compute(…)</code>: compute the exposed area of each residue on the reference model.</li>
+    <li><code>centre(r)</code>: the centre of a residue side chain. A side chain shows where a residue points.</li>
+    <li><code>out</code>: one row for each candidate, with its exposed area (<code>sasa</code>) and relative exposure (<code>rsa</code>).</li>
+    <li>The <code>while</code> loop: grow a group around each position by adding the nearest positions that are within <code>MAX_DIST</code> of every member. Keep the best group, remove its members, and repeat on the rest.</li>
+    <li><code>group</code> and <code>group_size</code>: the group number, largest first, and how many positions it holds. A position that is not exposed has no group.</li>
+    <li><code>hot</code>: the selected hotspots. They are up to 6 positions from group 1 with the largest exposed area.</li>
+    <li><code>o12_hotspots.tsv</code>: every candidate with residue, <code>sasa</code>, <code>rsa</code>, <code>exposed</code>, <code>group</code>, <code>group_size</code> and <code>selected</code>.</li>
+    <li><code>o13_chimerax_hotspots.cxc</code>: a ChimeraX file. It shows the surface and colours the selected hotspots red.</li>
+    <li><code>o14_distances.tsv</code>: the distance in angstroms between every pair of candidates, from smallest to largest, with <code>same_group</code>.</li>
+  </ul>
+  <p>How the groups work:</p>
+  <ol>
+    <li>Every position in a group is ≤ 17 Å from every other member. There are no chains.</li>
+    <li>A position that is not exposed has no group and is left out.</li>
+    <li>Groups are numbered by size. Group 1 is the largest, and it is the one selected.</li>
+    <li><code>same_group</code> is True only when both positions are in the same group.</li>
+  </ol>
+  <p>Biologically,</p>
+  <ul>
+    <li>A binder targets one surface patch made of several residues, not one residue. A single residue gives too little contact for strong, specific binding.</li>
+    <li>You still target one place. The patch is the single target, and the 3 to 6 hotspot residues mark the key points inside it.</li>
+    <li>The design tools use the hotspots to aim the binder at that patch. The binder usually contacts more residues than the hotspots, often around 10 or more.</li>
+    <li>That is why the residues must lie close together. They must form one patch that a single binder can cover.</li>
+      <li>There is no fixed number of residues. It depends on the target and the binder.</li>
+    <li>You choose 3 to 6 hotspot residues as the design input. This is a pilot guide, not a rule.</li>
+    <li>The patch around them is larger. An interface often involves roughly 10 to 30 residues on each side, with a buried area of about 600 square angstroms or more. These ranges are rough and not from a checked source.</li>
+    <li>So the 3 shared positions of AVR-Pik are a seed. The binder will contact residues beyond them, including nearby exposed residues that are not shared.</li>
+  </ul>
+  <p>Where to read the numbers:</p>
+  <ul>
+    <li><code>o7_family_surface.tsv</code>: the rows with <code>shared</code> set to True are the 7 shared positions.</li>
+    <li><code>o12_hotspots.tsv</code>: each candidate with its residue, <code>sasa</code>, <code>rsa</code>, <code>exposed</code>, <code>group</code>, <code>group_size</code> and <code>selected</code>. The script also prints this table on screen.</li>
+    <li><code>o14_distances.tsv</code>: the distance between every pair of candidates, from smallest to largest, and whether they share a group.</li>
+  </ul>
+  <p>How to know whether a position is exposed:</p>
+  <ul>
+    <li>Read <code>o12_hotspots.tsv</code>. For position 67 the <code>sasa</code> column shows 15 and the <code>rsa</code> column shows 0.12. The <code>exposed</code> column shows False because 0.12 is below the 0.25 cutoff.</li>
+    <li><code>sasa</code> is the exposed area of the residue in square angstroms. <code>rsa</code> divides it by the largest area that residue type can have. Alanine can have at most about 129, so 15 is only 12 percent.</li>
+    <li>You can also check in ChimeraX. Type <code>measure sasa #1:67</code>. The log prints the exposed area of residue 67. In the surface view, a buried residue is hard to see because the surface covers it.</li>
+  </ul>
+  <p>How to check the choice:</p>
+  <ol>
+    <li>Open <code>o12_hotspots.tsv</code>. The rows with <code>selected</code> set to True are the hotspots.</li>
+    <li>If fewer than 3 are selected, raise <code>MAX_DIST</code> or lower <code>MIN_RSA</code> and rerun. Note the change.</li>
+    <li>Open <code>o14_distances.tsv</code>. Check the distances between the selected positions.</li>
+    <li>In ChimeraX, run <code>open o13_chimerax_hotspots.cxc</code>. Check that the red residues sit on one side of the folded domain. Avoid a flat face or a mostly polar face.</li>
+    <li>A rough guide for a binding patch is 600 square angstroms or more. You can add a nearby exposed residue to the patch even if it is not a shared position.</li>
+    <li>Write down the hotspots. They are the target for step 12.</li>
+  </ol>
+  <p>Example from AVR-Pik, with no variant test:</p>
+  <ul>
+    <li>Position 67 has a relative exposure of 0.12, about 15 square angstroms. It is not exposed, so it is left out.</li>
+    <li>Group 1 is 71, 75 and 96. The largest distance in it is 16.9 Å, between 71 and 96. Group 2 is 64 and 65, 8.7 Å apart. Group 3 is 83 alone. It is 14.4 Å from 65 but 20.9 Å from 64.</li>
+    <li>The selected hotspots are 71, 75 and 96. I treat this as a first choice to test, not as proof.</li>
+    <li>The limit matters. At 15 Å, 71 and 96 cannot share a group, and group 1 shrinks to two positions.</li>
+  </ul>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin:12px 0 4px">
+    <figure style="margin:0"><img src="supplements/11_1.png" alt="AVR-Pik surface in grey with the largest hotspot group in red on one side of the folded domain" style="width:100%;height:auto;border:1px solid var(--line);border-radius:9px;background:#000"><figcaption class="note">View 1. The red group sits on one side of the folded domain.</figcaption></figure>
+    <figure style="margin:0"><img src="supplements/11_2.png" alt="AVR-Pik surface turned away, with one small red spot at the top" style="width:100%;height:auto;border:1px solid var(--line);border-radius:9px;background:#000"><figcaption class="note">View 2. The model turned away. Only one small red spot shows at the top.</figcaption></figure>
+    <figure style="margin:0"><img src="supplements/11_3.png" alt="AVR-Pik folded domain with red patches along one side" style="width:100%;height:auto;border:1px solid var(--line);border-radius:9px;background:#000"><figcaption class="note">View 3. The folded domain alone. The red patches lie along one side.</figcaption></figure>
+  </div>
+  <p class="note">Figure. The largest hotspot group, from <code>o13_chimerax_hotspots.cxc</code>, in red on the AVR-Pik reference model.</p>
+
+  <p style="margin:26px 0 4px;font-size:17px">Step 12. Design the binder.</p>
+  <p>We give BindCraft the trimmed target and the hotspots from step 11. It designs binders, predicts each complex and filters the results.</p>
+  <p>Tool: BindCraft in Google Colab, which gives a free GPU. A design run needs a GPU.</p>
+  <p>BindCraft already contains AlphaFold2 and ProteinMPNN, so you do not run RFdiffusion or ProteinMPNN yourself. They belong to a different pipeline: RFdiffusion makes backbones, ProteinMPNN designs sequences, and AlphaFold-Multimer checks the complex. That pipeline needs a local GPU and its own installation. This page does not use it.</p>
+  <ol>
+    <li>Trim the target to the folded domain. In your model, residues 1 to 31 are a floppy tail with pLDDT below 70. Residues 32 to 113 are the folded domain.</li>
+    <li>Check the numbering. Open <code>target.pdb</code> in ChimeraX and hover over residue 75. It should be a lysine. If not, the numbers changed and the hotspots would point at the wrong residues.</li>
+    <li>Open the BindCraft notebook: <a href="https://colab.research.google.com/github/martinpacesa/BindCraft/blob/main/notebooks/BindCraft.ipynb" target="_blank" rel="noopener">BindCraft in Colab ↗</a>. In Runtime, choose Change runtime type and pick a GPU. Upload <code>target.pdb</code>.</li>
+    <li>Fill in the settings below. Run the notebook.</li>
+    <li>Run it again with the hotspots <code>71,75</code>. The results show which hotspot set gives better binders.</li>
+    <li>Rank the designs and take the best ones.</li>
+  </ol>
+  <pre style="margin:8px 0 14px;padding:12px 14px;overflow:auto;border:1px solid var(--line);border-radius:9px;background:#eef3f4;font:12px/1.5 ui-monospace,SFMono-Regular,Menlo,monospace">open family/C4B8C2.cif
+delete #1:1-31
+save target.pdb #1</pre>
+  <ul>
+    <li><code>open family/C4B8C2.cif</code>: load the reference model.</li>
+    <li><code>delete #1:1-31</code>: remove residues 1 to 31 from model 1.</li>
+    <li><code>save target.pdb #1</code>: save model 1 as a PDB file. The residue numbers stay the same.</li>
+  </ul>
+  <pre style="margin:8px 0 14px;padding:12px 14px;overflow:auto;border:1px solid var(--line);border-radius:9px;background:#eef3f4;font:12px/1.5 ui-monospace,SFMono-Regular,Menlo,monospace">{
+  "design_path": "/content/drive/My Drive/BindCraft/AVRPik/",
+  "binder_name": "AVRPik_71_75_96",
+  "starting_pdb": "target.pdb",
+  "chains": "A",
+  "target_hotspot_residues": "71,75,96",
+  "lengths": [65, 150],
+  "number_of_final_designs": 100
+}</pre>
+  <ul>
+    <li><code>design_path</code>: the folder where BindCraft saves the results. In Colab it is a folder in your Google Drive.</li>
+    <li><code>binder_name</code>: a name for this run. Use a new name for each hotspot set.</li>
+    <li><code>starting_pdb</code>: the target file you trimmed.</li>
+    <li><code>chains</code>: the chain of the target. AlphaFold models use chain A.</li>
+    <li><code>target_hotspot_residues</code>: the hotspot positions from step 11. Use the residue numbers of <code>target.pdb</code>.</li>
+    <li><code>lengths</code>: the shortest and longest binder to try, in amino acids. 65 and 150 are the values in the BindCraft example.</li>
+    <li><code>number_of_final_designs</code>: how many designs that pass all filters BindCraft collects before it stops.</li>
+  </ul>
+  <p>Ranking the results: BindCraft scores each design. i_pTM is the confidence in the interface, pLDDT is the confidence in the structure, and i_pAE is the error at the interface. Higher i_pTM and pLDDT are better. Lower i_pAE is better. The BindCraft README advises generating at least 100 designs that pass its filters, then ordering the top 5 to 20 for the laboratory.</p>
+  <p>Then test the top designs against the other family members from step 6 and against off targets. Keep designs that bind several family members and none of the off targets.</p>
+  <p class="note">The settings come from the BindCraft README. The notebook form may name the fields slightly differently. Check it before you run.</p>
+
+  <p style="margin:26px 0 4px;font-size:17px">Step 13. Build the receptor.</p>
+  <p>Tool: molecular cloning, with a sensor NLR as the chassis</p>
+  <p>Fuse the binder into the NLR, for example in place of an integrated domain. Test several linker lengths. Add the helper NLR if the sensor requires one.</p>
+
+  <p style="margin:26px 0 4px;font-size:17px">Step 14. Test binding, then immunity.</p>
+  <p>Tool: SPR, BLI, pull down assays and <i>N. benthamiana</i></p>
+  <p>Measure binding to each family member and to off targets. Then compare the receptor without and with the effector in plants. Measure cell death, calcium with GCaMP or aequorin, and defence genes. The goal is a low baseline without the effector and a strong signal with it. Then solve the complex structure and test resistance against pathogen isolates.</p>
 </section>
 
 <footer class="footer">Concise study guide derived from the full reference in <code>backup/syntheticprotein.html</code>. It is not a validated protocol or a substitute for primary methods. Published evidence, inference and untested engineering hypotheses must remain distinct.</footer>

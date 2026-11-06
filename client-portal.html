@@ -2054,6 +2054,809 @@ a.chat-source:hover{border-color:#555;color:#000;background:#E4E4E4}
 @media (prefers-reduced-motion:reduce){
   *{animation-duration:.001ms!important;transition-duration:.001ms!important;scroll-behavior:auto!important}
 }
+
+/* =====================================================================
+   CLEAN REDESIGN LAYER — aligned with kreatbio.com
+   Flat white / off-white surfaces, single teal accent, navy text,
+   hairline borders, no photo backgrounds or heavy shadows.
+   ===================================================================== */
+:root{
+  --navy:#071B3A; --navy-2:#0F2D52;
+  --brand-green:#007C78; --brand-green-dark:#006864;
+  --teal:#007C78; --blue:#007C78;
+  --paper:#FFFFFF; --card:#FFFFFF; --panel-tint:#F8FAF9; --navy-soft:#F8FAF9;
+  --aqua:#EEF6F5; --aqua-2:#F4F9F8;
+  --line:#DBE6EE; --line-2:#EAF0F3;
+  --muted:#52636D; --muted-2:#7F93A5; --ink:#0E2238;
+  --radius:10px; --radius-sm:8px;
+  --shadow-1:0 1px 2px rgba(7,27,58,.04);
+  --shadow-2:0 1px 3px rgba(7,27,58,.06),0 8px 24px -12px rgba(7,27,58,.12);
+  --display:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+body{background:#F8FAF9 !important}
+body.presentation-embed{background:#F8FAF9}
+::selection{background:#CDEBE8;color:var(--navy)}
+:focus-visible{outline-color:var(--brand-green)}
+h1,h2,h3{letter-spacing:-.015em}
+.eyebrow,.micro-kicker{color:var(--brand-green);letter-spacing:.12em}
+
+/* buttons */
+.btn{border-radius:8px;box-shadow:none !important}
+.btn:hover{transform:none}
+.btn-primary,.btn-teal{background:var(--brand-green) !important;color:#fff}
+.btn-primary:hover,.btn-teal:hover{background:var(--brand-green-dark) !important}
+.btn-ghost{background:#fff;border:1px solid var(--line);color:var(--navy)}
+.btn-ghost:hover{border-color:var(--brand-green);color:var(--brand-green)}
+.cta-demo-secondary{background:#fff !important;color:var(--navy) !important;border:1px solid var(--line) !important}
+.cta-demo-secondary:hover{border-color:var(--brand-green) !important;color:var(--brand-green) !important}
+
+/* login gate */
+.gate{grid-template-columns:1fr 1fr;background:#fff}
+.gate-visual{background:var(--navy) !important;color:#fff;border-right:0}
+.gate-visual::before,.gate-visual::after{display:none}
+.gate-copy h1{color:#fff;font-weight:700;line-height:1.1}
+.gate-copy .gate-lead,.gate-copy p{color:#B9C8D6}
+.gate-copy .micro-kicker{color:#7FD6CC}
+.gate-mainpage-img{display:none}
+.gate-form{background:#fff !important}
+.access-card{border:1px solid var(--line);border-radius:12px;box-shadow:none;padding:32px 28px}
+.access-card .or{color:var(--muted-2)}
+.code-row input,#code{border:1px solid var(--line);border-radius:8px;background:#fff}
+.code-row input:focus,#code:focus{border-color:var(--brand-green);outline:none;box-shadow:0 0 0 3px rgba(0,124,120,.14)}
+.gate-mini-guide{background:transparent;border:0;box-shadow:none;color:var(--muted)}
+.gate-mini-guide h3{color:var(--navy);font-size:.8rem;letter-spacing:.08em;text-transform:uppercase}
+
+/* top bar */
+.topbar{background:#fff !important;backdrop-filter:none;box-shadow:none;border-bottom:1px solid var(--line);height:68px}
+.topbar-in{grid-template-columns:264px minmax(0,1fr) auto}
+.shell{margin-top:68px;grid-template-columns:264px 1fr}
+.top-report-text{color:var(--navy);font-weight:600}
+.top-assay-select{border:1px solid var(--line);border-radius:8px;background:#fff}
+.top-help{border:1px solid var(--line);border-radius:8px;background:#fff;color:var(--navy)}
+.top-help:hover{border-color:var(--brand-green);color:var(--brand-green)}
+
+/* sidebar: light, quiet */
+.rail{top:68px;width:264px;background:#fff !important;color:var(--navy);border-right:1px solid var(--line);padding:20px 16px 24px}
+.rail-head .r-title{color:var(--navy);font-weight:700}
+.rail-head .r-sub{color:var(--muted)}
+.rail-badge{background:#EEF6F5 !important;color:var(--brand-green) !important;border-radius:8px}
+.progress-track{background:var(--line-2)}
+.progress-fill{background:var(--brand-green)}
+.progress-label{color:var(--muted)}
+.nav{gap:2px}
+.nav-item{color:var(--navy);border-radius:8px;padding:9px 10px;grid-template-columns:30px 1fr}
+.nav-item:hover{background:#F1F6F6}
+.nav-item .n-ic{background:transparent;color:var(--muted);width:30px;height:30px}
+.nav-item small{color:var(--muted-2)}
+.nav-item.on{background:#EAF5F4;border-color:transparent;box-shadow:none;color:var(--brand-green)}
+.nav-item.on::before{left:-16px;background:var(--brand-green);width:3px}
+.nav-item.on .n-ic,.nav-item.on b{color:var(--brand-green) !important}
+.nav-item.on small{color:var(--muted)}
+.nav-item[data-nav-id] b,.nav-item[data-nav-id] .n-ic{color:inherit}
+.nav-item[data-nav-id="metrics"] b,.nav-item[data-nav-id="metrics"] .n-ic,
+.nav-item[data-nav-id="glossary"] b,.nav-item[data-nav-id="glossary"] .n-ic{color:var(--muted)}
+.rail-help{background:#F8FAF9;border:1px solid var(--line);color:var(--navy);border-radius:8px}
+.rail-help span{color:var(--muted)}
+.rail-edge-toggle{background:#fff;border:1px solid var(--line);color:var(--navy);box-shadow:none}
+
+/* content area: flat, no photo, no dark overlays */
+.content{background:transparent !important;border:0 !important;box-shadow:none !important;backdrop-filter:none !important;padding:0 !important;max-width:1280px}
+.content.welcome-content,
+.content.theme-learning{background:transparent !important;width:auto;margin:0 auto;max-width:1280px;padding:0 !important;min-height:0;overflow:visible}
+.content.welcome-content::before{display:none}
+.main{padding:28px clamp(20px,3vw,40px) 80px}
+.content.theme-learning{background:transparent !important}
+.content[class*="theme-"]{--topic:#007C78;--topic-rgb:0,124,120;--topic-soft:#F4F9F8;--topic-line:#DBE6EE}
+
+/* page headings: plain navy text, no banners */
+.section-head,
+.content[class*="theme-"] .section-head{height:auto !important;min-height:0 !important;margin:0 0 24px !important;padding:0 0 20px !important;border:0 !important;border-bottom:1px solid var(--line) !important;border-radius:0 !important;background:transparent !important;box-shadow:none !important}
+.section-head::before,.section-head::after{display:none !important}
+.section-head h1,
+.content[class*="theme-"] .section-head h1,
+.content.theme-flow .section-head h1{color:var(--navy) !important;text-shadow:none !important;font-size:clamp(1.6rem,2.4vw,2.2rem);font-weight:700;max-width:100%}
+.section-head .dek,
+.content[class*="theme-"] .section-head .dek{color:var(--muted) !important;text-shadow:none !important;font-weight:400;font-size:1rem;max-width:72ch;-webkit-line-clamp:unset;display:block}
+.welcome-map-panel{min-height:max(640px,calc(100vh - 150px));background:#fff !important;border:1px solid var(--line) !important;border-radius:12px !important}
+.welcome-map-head{left:32px;right:32px;top:28px}
+.pathway-stage{inset:120px 0 0}
+.pathway-svg path.backbone{stroke:#E6EEF0 !important;filter:none !important}
+.pathway-svg path.inner{stroke:#7FC4BF}
+.pathway-svg circle{stroke:var(--brand-green) !important;filter:none !important}
+.welcome-map-head h2{color:var(--navy) !important;text-shadow:none !important;font-size:clamp(1.6rem,2.4vw,2.2rem);line-height:1.15;font-weight:700}
+.welcome-map-head p{color:var(--muted)}
+.section-body-shell{background:transparent;border:0;box-shadow:none;backdrop-filter:none;padding:0}
+
+/* cards / panels */
+.card,.viz,.released-panel,.detail-panel,.filter-panel,.file-card,.pattern-panel,
+.welcome-content :where(.detail-panel,.glance-panel,.overview-callout,.learn-card,.overview-stat-card){
+  background:#fff;border:1px solid var(--line);border-radius:10px;box-shadow:none}
+.content[class*="theme-"] :where(.detail-panel,.filter-panel,.file-card){background:#F8FAF9;border:1px solid var(--line)}
+.content[class*="theme-"] .released-head h3,
+.content[class*="theme-"] .detail-panel-head b,
+.content[class*="theme-"] .filter-panel b{color:var(--navy)}
+.welcome-summary-chips span{background:#EEF6F5;border-color:#CFE4E1;color:var(--brand-green)}
+a{color:var(--brand-green)}
+
+/* chat + popovers */
+.chat-launch{background:var(--brand-green) !important;box-shadow:0 4px 14px rgba(0,124,120,.28)}
+.chat-panel,.glossary-popover,.glossary-detail-popover,.chart-zoom-modal{border:1px solid var(--line);border-radius:12px;box-shadow:var(--shadow-2)}
+
+
+/* top-bar buttons: one neutral style */
+.top-help.glossary-help,.top-help.metric-guide-help{background:#fff;border:1px solid var(--line);color:var(--navy)}
+.top-help.glossary-help:hover,.top-help.metric-guide-help:hover{background:#fff;border-color:var(--brand-green);color:var(--brand-green)}
+#exit-btn{background:#fff;border:1px solid var(--line);color:var(--navy)}
+#exit-btn:hover{background:#fff;border-color:var(--brand-green);color:var(--brand-green)}
+.rail-edge-toggle{top:84px;left:264px;background:#fff !important;color:var(--navy) !important;border:1px solid var(--line) !important;box-shadow:none !important}
+.app.rail-collapsed .rail-edge-toggle{left:0}
+.main{padding-left:clamp(44px,4vw,56px)}
+
+/* ---- round 2: neutralise remaining colour noise ---- */
+/* group selector bar */
+.group-selector-panel{background:#fff !important;border:1px solid var(--line) !important;box-shadow:none !important}
+.group-selector-panel label{color:var(--navy) !important}
+.group-selector-panel span{color:var(--muted) !important}
+.group-selector-panel select{border-color:var(--line) !important}
+/* conclusion / takeaway cards: neutral, teal accent only */
+.takeaway-card{border:1px solid var(--line) !important;box-shadow:none !important;border-radius:10px !important}
+.takeaway-card:first-child::before{background:var(--brand-green) !important}
+.takeaway-card .takeaway-card-icon,.takeaway-card:first-child .takeaway-card-icon,.takeaway-card:nth-child(3) .takeaway-card-icon{background:#EEF6F5 !important;color:var(--brand-green) !important}
+.takeaway-card[data-metric-tone="good"] .takeaway-card-value,
+.takeaway-card[data-metric-tone="poor"] .takeaway-card-value,
+.takeaway-card:first-child .takeaway-card-value{color:var(--navy) !important}
+.takeaway-group-medians{color:var(--brand-green) !important}
+/* alpha/beta view toggle */
+.alpha-view-tabs{background:#fff !important;border:1px solid var(--line) !important;border-radius:8px !important}
+.alpha-view-tab{color:var(--muted) !important}
+.alpha-view-tab:hover{background:#F1F6F6 !important;color:var(--navy) !important}
+.alpha-view-tab[aria-selected="true"]{background:var(--brand-green) !important;color:#fff !important;box-shadow:none !important}
+.alpha-view-hint{color:var(--muted) !important;text-shadow:none !important;font-weight:500 !important}
+/* learning cards */
+.learning-stage,.learning-shell > div:first-child{background:transparent}
+.learning-topic-control select{background:#fff !important;color:var(--navy) !important;border:1px solid var(--line) !important}
+[class*="learning-"][class*="viewer"],.learning-slide-frame,.learning-viewer{background:#fff !important;border:1px solid var(--line) !important;box-shadow:none !important}
+/* suggestions: neutral cells */
+.suggestion-hero{background:var(--navy) !important}
+.suggestion-branch,.suggestion-branch[data-kind="unexpected"]{background:#F8FAF9 !important;border:1px solid var(--line)}
+.suggestion-branch-head,.suggestion-branch[data-kind="unexpected"] .suggestion-branch-head{background:#fff !important;color:var(--navy) !important;border-bottom:1px solid var(--line)}
+.suggestion-branch-head b,.suggestion-branch-head span{color:inherit !important}
+.suggestion-branch[data-kind="expected"] .suggestion-branch-head{box-shadow:inset 3px 0 0 var(--brand-green)}
+.suggestion-branch[data-kind="unexpected"] .suggestion-branch-head{box-shadow:inset 3px 0 0 #B26A1C}
+/* flow / pipeline accents → teal */
+.content.theme-flow{--topic:#007C78;--flow-accent:#007C78}
+.flow-section{--flow-accent:#007C78 !important}
+.flow-step span{background:var(--brand-green) !important}
+
+.learning-toolbar{background:#fff !important;border:1px solid var(--line) !important;border-radius:10px !important;box-shadow:none !important}
+.learning-card-frame{border-radius:10px !important;box-shadow:none !important}
+.learning-arrow{box-shadow:none !important;border-color:var(--line) !important}
+.pipe-node,.pipe-detail{--step-color:#007C78 !important;--step-rgb:0,124,120 !important}
+.pipe-node-tag{color:var(--muted) !important}
+.pipe-detail{border-radius:10px !important;box-shadow:none !important}
+.pipe-side{background:#F4F9F8 !important}
+.pipe-detail :where([class*="chip"],[class*="card"],[class*="box"]){box-shadow:none !important}
+
+/* learning cards: plain light frame */
+.theme-learning .learning-shell{background:#fff !important;border:1px solid var(--line) !important;border-radius:12px !important;box-shadow:none !important;backdrop-filter:none !important;padding:20px !important}
+.theme-learning .learning-topic-control label,.theme-learning .learning-counter{color:var(--muted) !important;text-shadow:none !important}
+.theme-learning .learning-card-head b{color:var(--navy) !important;text-shadow:none !important;font-weight:700}
+.theme-learning .learning-card-head span{background:#EEF6F5 !important;color:var(--brand-green) !important;border:0 !important}
+.theme-learning .learning-arrow{width:44px !important;height:44px !important;background:#fff !important;border:1px solid var(--line) !important;color:var(--navy) !important;box-shadow:none !important;transform:none !important}
+.theme-learning .learning-arrow:hover{background:var(--brand-green) !important;border-color:var(--brand-green) !important;color:#fff !important;transform:none !important;box-shadow:none !important}
+.theme-learning .learning-stage{grid-template-columns:44px minmax(0,1fr) 44px}
+.theme-learning .learning-topic-control select{background:#fff !important;color:var(--navy) !important;border:1px solid var(--line) !important;border-radius:8px !important;text-shadow:none !important;padding:0 12px !important}
+.theme-learning .learning-card-image img{filter:none !important;border:1px solid var(--line);border-radius:8px}
+/* advanced details bars */
+.clinical-details[data-alpha-advanced-details]>summary,
+.clinical-details[data-beta-advanced-details]>summary,
+.clinical-details[data-alpha-advanced-details][open]>summary,
+.clinical-details[data-beta-advanced-details][open]>summary{background:#fff !important;color:var(--navy) !important;border:1px solid var(--line) !important;box-shadow:none !important;border-radius:10px !important}
+.clinical-details[data-alpha-advanced-details]>summary::after,
+.clinical-details[data-beta-advanced-details]>summary::after{background:#fff !important;border-color:var(--line) !important;color:var(--brand-green) !important}
+.clinical-details[data-beta-advanced-details]{border:0 !important;background:transparent !important;box-shadow:none !important}
+/* start page: five clean cards instead of a winding map */
+.welcome-map-panel{min-height:0 !important;overflow:visible}
+.welcome-map-head{position:static !important;padding:28px 28px 8px}
+.pathway-stage{position:static !important;inset:auto !important;display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px;padding:12px 28px 32px;overflow:visible}
+.pathway-svg{display:none !important}
+.pathway-checkpoint{position:static !important;left:auto !important;top:auto !important;width:auto !important;min-height:84px;background:#fff !important;border:1px solid var(--line) !important;border-radius:10px !important;box-shadow:none !important;backdrop-filter:none !important;transform:none !important;filter:none !important}
+.pathway-checkpoint:hover{border-color:var(--brand-green) !important;background:#F4F9F8 !important}
+.pathway-checkpoint[style*="text-align"],.pathway-checkpoint{text-align:left !important}
+.pathway-checkpoint[data-cp] .cp-num{grid-column:1 !important;grid-row:1 !important;border-color:var(--brand-green) !important;color:var(--brand-green) !important}
+.pathway-checkpoint[data-cp] .cp-num .icon{color:var(--brand-green) !important}
+.pathway-checkpoint[data-cp] .cp-copy{grid-column:2 !important;grid-row:1 !important;text-align:left !important}
+.pathway-checkpoint .cp-copy{color:var(--navy)}
+.pathway-checkpoint .cp-copy span{color:var(--muted);font-weight:500}
+.theme-learning .learning-topic-control{width:min(380px,100%)}
+.theme-learning .learning-toolbar{background:transparent !important;border:0 !important;padding:0 !important}
+.filter-panel{border:1px solid var(--line) !important;background:#fff !important}
+.filter-chip.on,.filter-chip[aria-pressed="true"]{background:var(--brand-green);border-color:var(--brand-green);color:#fff}
+.pathway-checkpoint[data-cp]{grid-template-columns:50px minmax(0,1fr) !important}
+
+/* =====================================================================
+   ROUND 3 — FEWER BOXES: sections are separated by whitespace and
+   hairlines, not nested bordered cards.
+   ===================================================================== */
+/* page-level containers: no frame */
+.card,.viz,.released-panel,.pattern-panel,.metric-section,.takeaway-card,
+.learning-shell,.theme-learning .learning-shell,.pipe-detail,.overall-grid,
+.welcome-map-panel,.detail-panel,.filter-panel,.file-card,.group-selector-panel,
+.content[class*="theme-"] :where(.detail-panel,.filter-panel,.file-card,.released-panel),
+.welcome-content :where(.detail-panel,.glance-panel,.overview-callout,.learn-card,.overview-stat-card){
+  background:transparent !important;border:0 !important;border-radius:0 !important;box-shadow:none !important}
+/* sections: a single hairline above, generous space */
+.released-panel,.pattern-panel,.metric-section,.clinical-details,.pipe-detail,.overall-grid{
+  padding:28px 0 8px !important;margin-top:0 !important;border-top:1px solid var(--line) !important}
+.metric-section:first-of-type{border-top:0 !important;padding-top:8px !important}
+.metric-section h3,.released-head h3,.pattern-panel h3{font-size:1.15rem;color:var(--navy);margin-bottom:4px}
+.metric-intro{color:var(--muted);margin-bottom:8px}
+.metric-section{padding-left:0 !important;padding-right:0 !important}
+.metric-rule,.metric-row{border-top:1px solid var(--line-2)}
+/* topic / filter bars: inline, no box */
+.filter-panel,.group-selector-panel{padding:0 0 16px !important;border-bottom:1px solid var(--line) !important}
+.group-selector-panel{margin-top:0 !important}
+/* conclusion cards: side-by-side, divided by a line instead of boxed */
+.takeaway-card{padding:4px 24px 4px 0 !important;min-height:0 !important}
+.takeaway-card:first-child::before{display:none !important}
+.takeaway-card + .takeaway-card{border-left:1px solid var(--line) !important;padding-left:24px !important}
+.takeaway-card .takeaway-card-icon,.takeaway-card:first-child .takeaway-card-icon{width:48px !important;height:48px !important}
+.takeaway-card .takeaway-card-icon .icon,.takeaway-card:first-child .takeaway-card-icon .icon{width:24px !important;height:24px !important}
+.takeaway-card-head,.takeaway-card:first-child .takeaway-card-head{grid-template-columns:48px minmax(0,1fr) !important;gap:14px !important}
+.takeaway-panel{padding:0 !important}
+.takeaway-card-grid{gap:0 !important}
+/* chart wrappers */
+.viz,.chart-frame,[class*="chart-card"],[class*="chart-shell"],[class*="plot-frame"]{border:0 !important;background:transparent !important;box-shadow:none !important}
+/* collapsible rows ("Shannon values by sample", "Advanced details") become simple lines */
+.clinical-details,.clinical-details[data-alpha-advanced-details],.clinical-details[data-beta-advanced-details]{border:0 !important;border-top:1px solid var(--line) !important;border-radius:0 !important;background:transparent !important;box-shadow:none !important;padding:0 !important;margin-top:18px !important}
+.clinical-details>summary,.clinical-details[open]>summary,
+.clinical-details[data-alpha-advanced-details]>summary,.clinical-details[data-beta-advanced-details]>summary,
+.clinical-details[data-alpha-advanced-details][open]>summary,.clinical-details[data-beta-advanced-details][open]>summary{border:0 !important;border-radius:0 !important;background:transparent !important;padding:16px 0 !important}
+.clinical-details[open]>.clinical-details-body,
+.clinical-details[data-alpha-advanced-details][open]>.clinical-details-body,
+.clinical-details[data-beta-advanced-details][open]>.clinical-details-body{border:0 !important;background:transparent !important;box-shadow:none !important;padding:4px 0 16px !important}
+/* notes inside content: keep a quiet left rule, no fill */
+.readbox,.limitbox{background:transparent !important;border:0 !important;border-left:2px solid var(--line) !important;border-radius:0 !important;padding:4px 0 4px 14px !important;box-shadow:none !important}
+/* overall page: two-column grid divided by lines */
+.overall-grid{padding:0 !important;border:0 !important}
+.overall-grid .overall-card,.overall-grid .detail-panel{padding:24px 24px 24px 0 !important}
+.overall-grid > *{border-top:1px solid var(--line) !important}
+#overall-composition,#overall-confidence{border-right:1px solid var(--line) !important}
+#overall-variability,#overall-whatmatters{padding-left:24px !important}
+/* suggestions: step rows with lines, no tinted cells */
+.suggestion-branch,.suggestion-branch[data-kind="unexpected"]{background:transparent !important;border:0 !important;border-top:1px solid var(--line) !important}
+.suggestion-branch-head,.suggestion-branch[data-kind="unexpected"] .suggestion-branch-head{border-bottom:0 !important}
+[class^="suggestion-"][class*="cell"],.suggestion-card,.suggestion-step-card{background:transparent !important;border:0 !important}
+/* pipeline detail */
+.pipe-detail{border-radius:0 !important}
+.pipe-detail-in{padding:0 !important}
+.pipe-side{background:transparent !important;border:0 !important;border-right:1px solid var(--line) !important;border-radius:0 !important}
+/* learning cards: image only */
+.theme-learning .learning-shell{padding:0 !important}
+.theme-learning .learning-card-image img{border:0 !important}
+/* start page cards: lines instead of boxes */
+.welcome-map-panel{padding:0 !important}
+.welcome-map-head,.pathway-stage{padding-left:0 !important;padding-right:0 !important}
+.pathway-checkpoint{border:0 !important;border-top:1px solid var(--line) !important;border-radius:0 !important;background:transparent !important;padding-left:0 !important}
+.pathway-checkpoint:hover{background:transparent !important;border-top-color:var(--brand-green) !important}
+/* glossary/metric rows */
+.glossary-row,.gloss-row,[class*="glossary-term"]{border-left:0;background:transparent !important;box-shadow:none !important}
+/* sidebar help + selects stay as light controls */
+.filter-panel,.detail-panel,.overall-card{overflow:visible !important}
+.filter-panel::before,.filter-panel::after,.detail-panel::before,.detail-panel::after,.overall-grid::before,.overall-grid::after{display:none !important;content:none !important}
+.overall-evidence-note,.confidence-current,.confidence-scale-details,.confidence-guide,.relationship-line,.variability-row,.chart-observations-box{background:transparent !important;border:0 !important;box-shadow:none !important;border-radius:0 !important}
+.overall-evidence-note{border-left:2px solid var(--line) !important;padding:2px 0 2px 14px !important}
+.relationship-line,.variability-row{border-top:1px solid var(--line-2) !important}
+.variability-row.top{background:transparent !important}
+/* suggestions + hand-off: no tinted cells */
+.suggestion-decision-stage,.suggestion-decision-stage[data-tone]{background:transparent !important;padding:4px 14px !important}
+.suggestion-decision-stage-label,.suggestion-decision-summary b{color:var(--brand-green) !important}
+.suggestion-decision-step span{background:var(--brand-green) !important}
+.suggestion-decision-arrow{color:var(--muted-2) !important}
+.suggestion-decision-row{border-bottom:1px solid var(--line) !important}
+.suggestion-outcome-dot{background:var(--brand-green) !important}
+.suggestion-decision{border-top:1px solid var(--line) !important}
+.suggestion-decision-head{border-bottom:0 !important}
+.suggestion-hero{background:transparent !important;color:var(--navy) !important;padding:8px 0 24px !important;border-bottom:1px solid var(--line)}
+.suggestion-hero h2{color:var(--navy) !important}
+.suggestion-hero-statement{color:var(--muted) !important}
+.suggestion-hero-kicker{color:var(--brand-green) !important}
+.suggestion-facts span{background:#EEF6F5 !important;color:var(--brand-green) !important}
+.suggestion-status{background:#fff !important;border:1px solid var(--line) !important;color:var(--muted) !important}
+.handoff-card,.handoff-card:nth-child(2),.handoff-card:nth-child(3){background:transparent !important;border:0 !important;border-top:1px solid var(--line) !important;border-radius:0 !important;box-shadow:none !important;padding:16px 0 !important;min-height:0 !important}
+.handoff-icon,.handoff-card:nth-child(2) .handoff-icon,.handoff-card:nth-child(3) .handoff-icon{background:#EEF6F5 !important;color:var(--brand-green) !important;box-shadow:none !important;width:44px !important;height:44px !important}
+.handoff-card{grid-template-columns:44px minmax(0,1fr) !important}
+.handoff-card b,.handoff-card:nth-child(2) b,.handoff-card:nth-child(3) b{color:var(--brand-green) !important}
+.pipe-text .p-tag{color:var(--brand-green) !important}
+.taxonomy-sample-bars-card,.taxonomy-chart-tile,.self-experiment-shell,.suggestion-hero{background:transparent !important;border:0 !important;box-shadow:none !important;border-radius:0 !important}
+.taxonomy-sample-bars-card{padding:0 !important}
+.takeaway-panel{margin-top:20px !important}
+.filter-panel{border:0 !important;border-radius:0 !important;background:transparent !important;box-shadow:none !important;padding:0 0 8px !important;margin:0 0 20px !important}
+/* round 4: strip remaining container borders/corners on every page */
+.overall-detail-row,.guided-anchor,.released-card,.inspection-table,.genus-inspection-methods,.pattern-table,
+.self-experiment-stats-card,.alpha-self-mini-plot,.self-experiment-shell,.section-body-shell,.chart-size-control,
+.metric-rule,.suggestion-status,.alpha-view-tabs,.chart-observations,.chart-observations-box,.table-wrap,
+.taxonomy-comparison-grid,.clinical-details-body,.alpha-advanced-section,article.released-card,
+.content article,.content figure{
+  border-radius:0 !important;box-shadow:none !important;background:transparent !important}
+.overall-detail-row,.guided-anchor,.released-card,.inspection-table,.genus-inspection-methods,
+.self-experiment-stats-card,.alpha-self-mini-plot,.section-body-shell,.chart-size-control,.alpha-view-tabs,
+.content article,.content figure{border:0 !important}
+.chart-size-control{padding:0 !important}
+.alpha-view-tabs{padding:0 !important;gap:18px !important}
+.alpha-view-tab{border-radius:0 !important;background:transparent !important;color:var(--muted) !important;border-bottom:2px solid transparent !important;padding:8px 2px !important}
+.alpha-view-tab[aria-selected="true"]{background:transparent !important;color:var(--brand-green) !important;border-bottom-color:var(--brand-green) !important}
+.inspection-table,.pattern-table{border-top:1px solid var(--line) !important}
+.self-experiment-stats-card,.alpha-self-mini-plot{border-top:1px solid var(--line) !important;padding-top:12px !important}
+.filter-panel,.group-selector-panel,.metric-guide-filter,[class*="filter-panel"]{border:0 !important;border-radius:0 !important;background:transparent !important;box-shadow:none !important}
+.functional-evidence-note,.functional-diff-method-note,.taxonomy-note{background:transparent !important;color:var(--muted) !important;border-left:2px solid var(--line) !important;border-radius:0 !important;padding:2px 0 2px 14px !important}
+
+/* =====================================================================
+   ROUND 5 — consistent margins + solid fills for emphasis (no borders)
+   Tokens: --fill-1 quiet grey-teal, --fill-2 teal tint, white panels
+   ===================================================================== */
+:root{--fill-1:#EDF2F2;--fill-2:#E4F1EF;--gutter:44px}
+/* margins: one gutter, same left and right, room under the last button */
+.main{padding:32px var(--gutter) 120px calc(var(--gutter) + 12px) !important}
+.content,.content.welcome-content,.content.theme-learning{max-width:1240px !important;margin:0 auto !important}
+.rail-edge-toggle{top:76px}
+.section-head,.content[class*="theme-"] .section-head{padding-bottom:22px !important;margin-bottom:28px !important}
+.content > * + *{margin-top:0}
+.released-panel,.pattern-panel{margin-top:28px !important}
+/* alpha/beta tab row aligns with page edge */
+.alpha-view-bar{margin:0 0 22px !important;padding:0 !important}
+.alpha-view-tabs{margin-left:0 !important}
+.alpha-view-tab{padding:8px 0 !important;margin-right:6px}
+/* pipeline: align label with the rest */
+.pipe-kicker{margin-left:0 !important}
+.pipe-stepper-card{padding:0 0 26px !important}
+.pipe-panel{padding:0 !important}
+
+/* ---- emphasis: solid fills ---- */
+/* white work surfaces for charts / tables */
+.released-panel{background:#fff !important;padding:28px 28px 20px !important;border-top:0 !important}
+/* main conclusion row */
+.takeaway-panel{background:var(--fill-2) !important;padding:26px 28px !important;margin-top:24px !important}
+.takeaway-card + .takeaway-card{border-left-color:rgba(0,124,120,.25) !important}
+.takeaway-card .takeaway-card-icon,.takeaway-card:first-child .takeaway-card-icon{background:#fff !important}
+/* group-by bar and filters */
+.group-selector-panel{background:var(--fill-1) !important;padding:12px 16px !important;border:0 !important;margin-bottom:0 !important}
+.filter-panel{background:var(--fill-1) !important;padding:16px 18px !important}
+/* key observations */
+.chart-observations{background:var(--fill-1) !important;padding:16px 18px !important;margin-top:20px !important}
+/* inline notes */
+.overall-evidence-note,.readbox,.limitbox,.functional-evidence-note,.functional-diff-method-note,.taxonomy-note{background:var(--fill-1) !important;border-left:3px solid var(--brand-green) !important;padding:10px 14px !important;color:var(--ink) !important}
+/* overall page */
+.overall-detail-row{background:var(--navy) !important;color:#fff !important;padding:22px 26px !important;margin-bottom:24px}
+.overall-detail-row *{color:#fff !important}
+.overall-detail-row .icon{color:#7FD6CC !important}
+.overall-detail-row .detail-item{border-color:rgba(255,255,255,.18) !important}
+.overall-grid{background:#fff !important;padding:0 !important}
+.overall-grid .overall-card,.overall-grid .detail-panel{padding:26px 28px !important}
+#overall-variability,#overall-whatmatters{padding-left:28px !important}
+/* suggestions */
+.suggestion-hero{background:var(--navy) !important;color:#fff !important;padding:28px 30px !important;border:0 !important}
+.suggestion-hero h2{color:#fff !important}
+.suggestion-hero-statement{color:#DCE9F4 !important}
+.suggestion-hero-kicker{color:#7FD6CC !important}
+.suggestion-facts span{background:rgba(255,255,255,.12) !important;color:#fff !important}
+.suggestion-status{background:#fff !important;color:var(--navy) !important;border:0 !important}
+.suggestion-decision-stage{background:var(--fill-1) !important;padding:16px !important}
+.suggestion-decision-stage[data-tone="decision"]{background:var(--fill-2) !important}
+.suggestion-decision-stage[data-tone="output"]{background:var(--fill-1) !important}
+.suggestion-decision-stage[data-tone="caution"]{background:#F6EEDD !important}
+.suggestion-branch-head{background:var(--fill-1) !important}
+/* pipeline detail */
+.pipe-side{background:var(--fill-2) !important;border:0 !important}
+.pipe-detail{background:#fff !important;padding:0 !important;border-top:0 !important}
+.pipe-detail-in{padding:20px !important}
+.handoff-card,.handoff-card:nth-child(2),.handoff-card:nth-child(3){background:var(--fill-1) !important;border:0 !important;padding:18px !important}
+.handoff-card{grid-template-columns:44px minmax(0,1fr) !important}
+.handoff-icon,.handoff-card:nth-child(n) .handoff-icon{background:var(--brand-green) !important;color:#fff !important}
+/* start page: white tiles */
+.pathway-checkpoint{background:#fff !important;border:0 !important;padding:18px 20px !important}
+.pathway-checkpoint:hover{background:var(--fill-2) !important}
+.welcome-map-panel{background:transparent !important}
+.welcome-map-head,.pathway-stage{padding-left:0 !important;padding-right:0 !important}
+/* learning + metric/glossary */
+.theme-learning .learning-shell{background:#fff !important;padding:20px !important}
+.metric-section{background:#fff !important;padding:26px 28px 14px !important;margin-top:20px !important;border-top:0 !important}
+.metric-section:first-of-type{padding-top:26px !important}
+.metric-rule,.metric-row{border-top:1px solid var(--line-2)}
+/* collapsible rows */
+.clinical-details{background:#fff !important;padding:0 20px !important;border-top:0 !important;margin-top:16px !important}
+.clinical-details>summary{padding:16px 0 !important}
+@media (max-width:900px){:root{--gutter:18px}.main{padding:20px var(--gutter) 100px !important}}
+body,body.presentation-embed{background:#F1F5F5 !important}
+.main{padding:32px 48px 120px 48px !important}
+.rail-edge-toggle{left:264px;top:76px}
+.alpha-view-tabs{grid-template-columns:auto auto !important;display:inline-grid !important}
+.alpha-view-tab{text-align:left !important;min-width:0 !important}
+.overall-detail-row{padding:20px 28px !important}
+.overall-detail-row .detail-panel,.overall-detail-row .detail-panel-head,.overall-detail-row .detail-grid{padding-top:0 !important;padding-bottom:0 !important;background:transparent !important}
+.overall-detail-row .detail-panel{padding:0 !important}
+.overall-detail-row .detail-panel-head{margin-bottom:12px}
+.takeaway-card,.taxonomy-takeaway-grid .takeaway-card{min-height:0 !important}
+.takeaway-panel{padding:22px 26px !important}
+.suggestion-hero{margin-bottom:8px}
+@media (max-width:900px){.main{padding:20px 18px 100px !important}}
+.suggestion-branch-head,.suggestion-branch[data-kind="unexpected"] .suggestion-branch-head{background:var(--fill-1) !important}
+.filter-panel{background:transparent !important;padding:0 0 8px !important}
+.pathway-stage{grid-template-columns:repeat(auto-fit,minmax(190px,1fr)) !important;gap:16px !important;padding-top:20px !important}
+.pathway-checkpoint{min-height:112px !important;padding:22px !important}
+
+/* ---- Start page: journey ---- */
+.journey-panel{background:transparent !important;overflow:visible !important;min-height:0 !important}
+.journey-hero{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:32px;align-items:center;background:var(--navy);color:#fff;padding:34px 38px;margin-bottom:28px}
+.journey-kicker{display:block;color:#7FD6CC;font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;margin-bottom:10px}
+.journey-hero h2{color:#fff !important;text-shadow:none !important;font-size:clamp(1.8rem,2.6vw,2.4rem) !important;line-height:1.1 !important;position:static !important}
+.journey-hero p{margin-top:12px;color:#B9C8D6;max-width:56ch;line-height:1.55}
+.journey-flow{display:flex;align-items:center;justify-content:flex-end;gap:10px;flex-wrap:wrap}
+.journey-flow span{padding:10px 14px;background:rgba(255,255,255,.08);color:#fff;font-size:.82rem;font-weight:600}
+.journey-flow svg{width:18px;height:18px;fill:none;stroke:#7FD6CC;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.journey{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:0 24px;position:relative;align-items:stretch}
+.journey .journey-step{position:relative !important;display:flex !important;flex-direction:column;align-items:stretch;gap:0;width:auto !important;min-height:0 !important;padding:0 !important;background:#fff !important;border:0 !important;text-align:left !important;cursor:pointer;transition:transform .15s ease}
+.journey .journey-step:hover{transform:translateY(-3px);background:#fff !important}
+.journey .journey-step:hover .js-go{color:var(--brand-green)}
+.js-art{display:block;background:var(--fill-2);padding:14px 14px 10px}
+.js-art svg{display:block;width:100%;height:auto}
+.js-body{display:flex;flex-direction:column;gap:6px;padding:18px 18px 8px;flex:1}
+.js-num{font-size:.68rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--brand-green)}
+.js-body b{font-size:1.15rem;color:var(--navy);line-height:1.2}
+.js-q{color:var(--muted);font-size:.9rem;line-height:1.4}
+.js-list{display:flex;flex-direction:column;gap:5px;margin-top:8px}
+.js-list i{font-style:normal;font-size:.8rem;color:var(--ink);padding-left:14px;position:relative}
+.js-list i::before{content:"";position:absolute;left:0;top:.5em;width:6px;height:6px;border-radius:50%;background:var(--brand-green)}
+.js-go{display:flex;align-items:center;gap:6px;padding:12px 18px 16px;font-size:.82rem;font-weight:700;color:var(--navy);margin-top:auto}
+.js-go .icon{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.js-link{position:absolute;display:none}
+.journey::before{content:"";position:absolute;left:4%;right:4%;top:calc(50px);height:0;border-top:2px dashed var(--brand-green);opacity:.0}
+.journey .journey-step:first-child .js-num{color:#fff;background:var(--brand-green);padding:3px 8px;align-self:flex-start}
+@media (max-width:1280px){.journey{grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}.journey-hero{grid-template-columns:1fr}.journey-flow{justify-content:flex-start}}
+@media (max-width:760px){.journey{grid-template-columns:1fr}.journey-hero{padding:24px}}
+.journey{gap:0 40px !important}
+.js-art{padding:0 !important;background:var(--fill-2)}
+.js-num{letter-spacing:.06em !important;font-size:.7rem !important;white-space:nowrap}
+.journey .journey-step:first-child .js-num{background:var(--brand-green);color:#fff;padding:3px 8px}
+.journey .journey-step:not(:last-of-type)::after{content:"";position:absolute;right:-34px;top:60px;width:28px;height:28px;border-radius:50%;background:var(--brand-green) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h14M13 6l6 6-6 6'/%3E%3C/svg%3E") center/16px no-repeat;z-index:2}
+.journey-flow{gap:8px !important}
+.journey-flow span{padding:8px 12px !important;font-size:.78rem !important;white-space:nowrap}
+.journey-hero{grid-template-columns:minmax(0,1fr) auto !important}
+@media (max-width:1280px){.journey .journey-step::after{display:none !important}.journey{gap:24px !important}}
+/* ---- Round 6: Your samples (pipeline) — solid colour ---- */
+.pipe-stepper-card{background:var(--navy) !important;padding:22px 24px 24px !important;margin-bottom:20px}
+.pipe-kicker{color:#7FD6D0 !important;margin:0 0 18px !important}
+.pipe-map::before{background:rgba(255,255,255,.22) !important}
+.pipe-node{color:#fff !important}
+.pipe-node h3{color:#fff !important;font-weight:700 !important}
+.pipe-node-tag{color:#7FD6D0 !important}
+.pipe-node-num{background:transparent !important;border:2px solid rgba(255,255,255,.4) !important;color:#fff !important;box-shadow:none !important}
+.pipe-node.past .pipe-node-num{background:var(--brand-green) !important;border-color:var(--brand-green) !important}
+.pipe-node.on .pipe-node-num{background:#fff !important;border-color:#fff !important;color:var(--navy) !important;box-shadow:0 0 0 6px rgba(127,214,208,.35) !important}
+.pipe-node.on h3{color:#fff !important}
+.pipe-node:hover .pipe-node-num,.pipe-node:focus-visible .pipe-node-num{background:var(--brand-green) !important;border-color:#7FD6D0 !important;color:#fff !important;box-shadow:none !important}
+.pipe-node:hover h3,.pipe-node:focus-visible h3,.pipe-node:hover .pipe-node-tag,.pipe-node:focus-visible .pipe-node-tag{color:#fff !important}
+.pipe-detail{background:#fff !important;border:0 !important;box-shadow:none !important}
+.pipe-detail-in{padding:0 !important;gap:0 !important;grid-template-columns:260px minmax(0,1fr) !important}
+.pipe-side{background:var(--brand-green) !important;color:#fff !important;border-radius:0 !important;min-height:520px !important;gap:26px !important;position:relative;overflow:hidden}
+.pipe-side::before{content:"";position:absolute;width:300px;height:300px;border-radius:50%;background:rgba(255,255,255,.07);right:-120px;top:-110px}
+.pipe-side::after{content:"";position:absolute;width:220px;height:220px;border-radius:50%;background:rgba(7,27,58,.18);left:-90px;bottom:-90px}
+.pipe-glyph{position:relative;z-index:1;width:168px !important;height:168px !important;border-radius:50%;background:#fff;box-shadow:0 0 0 10px rgba(255,255,255,.18)}
+.pipe-glyph svg{width:112px !important;height:112px !important}
+.pipe-side p{position:relative;z-index:1;color:#fff !important;font-weight:600;font-size:1rem !important;max-width:18ch !important}
+.pipe-text{padding:28px 32px 24px !important}
+.pipe-text .p-tag{display:inline-block;align-self:flex-start;background:var(--fill-2);color:var(--brand-green) !important;padding:5px 12px;font-size:.72rem !important}
+.pipe-text h3{font-size:2rem !important;margin-top:12px !important}
+.pipe-nav{border-bottom:0 !important;margin:10px 0 6px !important;padding:0 !important}
+.handoff-grid{gap:0 !important;margin-top:18px !important}
+.handoff-card{border:0 !important;border-radius:0 !important;box-shadow:none !important;min-height:140px !important;background:var(--brand-green) !important;color:#fff !important}
+.handoff-card:nth-child(2){background:var(--navy) !important}
+.handoff-card:nth-child(3){background:#0B5C8A !important}
+.handoff-card b,.handoff-card:nth-child(2) b,.handoff-card:nth-child(3) b{color:rgba(255,255,255,.75) !important}
+.handoff-card div > span{color:#fff !important;font-weight:600}
+.handoff-card .handoff-icon,.handoff-card:nth-child(2) .handoff-icon,.handoff-card:nth-child(3) .handoff-icon{background:rgba(255,255,255,.18) !important;box-shadow:none !important}
+.pipe-text .method-list{border-top:0 !important;margin-top:8px !important}
+.pipe-text .method-row{border-bottom:0 !important;padding:16px 18px !important;margin-top:8px;background:var(--fill-1)}
+.pipe-text .method-row:nth-child(2){background:var(--fill-2)}
+.pipe-text .method-row:nth-child(3){background:#FFF3DC}
+.pipe-text .method-row:nth-child(3) .pipe-row-icon{color:#B26A00}
+.method-notes{margin-top:20px}
+.method-note{background:#FFF3DC !important;border:0 !important;border-left:4px solid #E0A12B !important;padding:14px 18px !important;display:grid;grid-template-columns:150px minmax(0,1fr);gap:16px;align-items:start}
+.method-note > b{color:#8A5200 !important}
+.method-note p{color:var(--ink) !important}
+@media (max-width:1100px){.pipe-detail-in{grid-template-columns:1fr !important}.pipe-side{min-height:0 !important;padding:24px !important}.handoff-grid{grid-template-columns:1fr !important}}
+.alpha-view-hint{color:var(--navy) !important;font-weight:500 !important}
+.alpha-view-hint b{color:var(--brand-green) !important;font-weight:800 !important}
+/* ---- Round 7: Example views get a violet theme ---- */
+.alpha-view-hint{gap:.35em}
+.alpha-view-hint b{color:#5B3FB5 !important}
+.alpha-view-tab[data-alpha-view="example"],.alpha-view-tab[data-beta-view="example"]{color:#5B3FB5 !important;border-bottom-color:transparent !important}
+.alpha-view-tab[data-alpha-view="example"][aria-selected="true"],.alpha-view-tab[data-beta-view="example"][aria-selected="true"]{border-bottom-color:#5B3FB5 !important}
+.alpha-learning-shell{--ex:#5B3FB5;--ex-fill:#F0ECFA;--ex-fill2:#E3DBF6;background:var(--ex-fill) !important;padding:20px 28px 28px !important;margin-top:8px}
+.alpha-learning-shell::before{content:"EXAMPLE  ·  Practice with made-up samples, not your own data";display:block;margin:-20px -28px 22px;padding:11px 28px;background:var(--ex);color:#fff;font-size:.74rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase}
+.alpha-learning-section-label,.alpha-learning-shell .alpha-learning-section-label{color:var(--ex) !important}
+.alpha-learning-metric{background:#fff !important;color:#3B2E6B !important}
+.alpha-learning-metric:hover{background:var(--ex-fill2) !important;color:var(--ex) !important}
+.alpha-learning-metric[aria-selected="true"]{background:var(--ex) !important;color:#fff !important;box-shadow:none !important}
+.alpha-learning-metric+.alpha-learning-metric{border-left-color:var(--ex-fill) !important}
+.alpha-learning-scenario,.alpha-learning-scenario:nth-child(2),.alpha-learning-scenario:nth-child(3){--scenario-color:var(--ex) !important}
+.alpha-learning-scenario[aria-pressed="true"]{background:var(--ex) !important;color:#fff !important;border-radius:999px !important;padding:6px 14px !important}
+.alpha-learning-shell .alpha-learning-controls{background:var(--ex-fill2) !important}
+.alpha-learning-shell input[type=range]{accent-color:var(--ex)}
+.alpha-learning-shell :is(h3,h4){color:#2B1F5C}
+.alpha-learning-report-row{background:transparent !important;padding:0 !important}
+.alpha-learning-report-bridge,.alpha-learning-report-bridge *{color:#2B1F5C !important}
+.alpha-learning-report-bridge{background:var(--ex-fill2) !important;border-left:4px solid var(--ex) !important}
+.alpha-learning-report-button{background:var(--ex) !important;color:#fff !important;border:0 !important}
+.alpha-learning-shell [class*="meaning"] :is(b,h4,h5,span.label),.alpha-learning-shell [class*="fixed"] :is(b,h4,h5){color:var(--ex) !important}
+.alpha-learning-shell [class*="observation"] :is(b,strong,code){color:var(--ex) !important}
+.alpha-learning-shell .alpha-meaning-card[data-kind="observation"] :is(strong,code,mark,.beta-learning-pattern-mark,span){color:var(--ex) !important}
+.alpha-learning-shell .alpha-meaning-card > b,.alpha-learning-shell .beta-learning-current strong{color:var(--ex) !important}
+.alpha-learning-shell .alpha-meaning-card[data-kind="observation"] p > span:not(.beta-learning-pattern-mark){color:var(--ink) !important}
+/* ---- Round 8: Example views in two columns (story left, interactive right) ---- */
+@media (min-width:1200px){
+  .alpha-learning-shell{display:grid !important;grid-template-columns:minmax(0,5fr) minmax(0,7fr);column-gap:28px;row-gap:18px;align-items:start}
+  .alpha-learning-shell::before{grid-column:1 / -1;margin-bottom:4px !important}
+  .alpha-learning-shell > .alpha-learning-metric-head,.alpha-learning-shell > .alpha-learning-report-row{grid-column:1 / -1}
+  .alpha-learning-shell > .alpha-story-board{grid-column:1;position:sticky;top:16px;grid-template-columns:1fr !important;width:100% !important}
+  .alpha-learning-shell > .alpha-story-board.is-image-story{grid-template-columns:1fr !important}
+  .alpha-learning-shell .alpha-story-thumbs{grid-template-rows:none !important;grid-template-columns:repeat(3,minmax(0,1fr));height:auto !important}
+  .alpha-learning-shell > .alpha-learning-card{grid-column:2;grid-row:3;min-width:0;padding:22px !important}
+  .alpha-learning-shell > .alpha-story-board{grid-row:3}
+  .alpha-learning-shell .alpha-learning-controls{grid-template-columns:1fr !important;gap:18px !important}
+  .alpha-learning-shell .alpha-learning-stage{gap:18px !important}
+  .alpha-learning-shell > .alpha-learning-report-row{grid-row:4}
+}
+/* ---- Round 9: "Change the example yourself" = obvious interactive zone (orange) ---- */
+.alpha-learning-shell .alpha-learning-controls-section{margin-top:26px !important;padding:0 0 4px !important;background:#FFEFD0 !important;border-top:6px solid #E8833A !important;border-bottom:0 !important}
+.alpha-learning-shell .alpha-learning-controls-section > .alpha-learning-section-label{display:flex;align-items:center;gap:10px;margin:0 !important;padding:14px 20px 0;color:#8A4A00 !important;font-size:.82rem !important}
+.alpha-learning-shell .alpha-learning-controls-section > .alpha-learning-section-label::before{content:"TRY IT";white-space:nowrap;flex:none;background:#E8833A;color:#fff;padding:4px 10px;border-radius:999px;font-size:.68rem;letter-spacing:.12em}
+.alpha-learning-shell .alpha-learning-controls-section > .alpha-learning-section-label::after{content:"Drag the sliders and watch the result change above";flex:1;min-width:0;color:#8A4A00;font-weight:500;letter-spacing:0;text-transform:none;font-size:.82rem}
+.alpha-learning-shell .alpha-learning-controls-section .alpha-learning-controls{background:transparent !important;margin-top:4px !important;padding:14px 20px 18px !important}
+.alpha-learning-shell .alpha-learning-controls-section input[type=range]{accent-color:#C85F10}
+.alpha-learning-shell .alpha-learning-controls-section :is(h4,label,b){color:#5A3300 !important}
+/* ---- Round 10: stats pages (taxonomy / functional / alpha / beta) — clear stacked sections ---- */
+:is(.theme-taxonomy,.theme-functional,.theme-alpha,.theme-beta) .section-body-shell{display:flex;flex-direction:column;gap:0}
+/* 1 · Conclusion = navy answer block */
+:is(.theme-taxonomy,.theme-functional,.theme-alpha,.theme-beta) .takeaway-panel{background:var(--navy) !important;padding:30px 34px !important;margin-top:20px !important}
+:is(.theme-taxonomy,.theme-functional,.theme-alpha,.theme-beta) .takeaway-card{background:transparent !important;border-color:rgba(255,255,255,.18) !important}
+:is(.theme-taxonomy,.theme-functional,.theme-alpha,.theme-beta) .takeaway-card + .takeaway-card{border-left-color:rgba(255,255,255,.2) !important}
+:is(.theme-taxonomy,.theme-functional,.theme-alpha,.theme-beta) .takeaway-card-head b{color:#7FD6D0 !important}
+:is(.theme-taxonomy,.theme-functional,.theme-alpha,.theme-beta) .takeaway-card .takeaway-card-icon{background:rgba(127,214,208,.18) !important;color:#7FD6D0 !important}
+:is(.theme-taxonomy,.theme-functional,.theme-alpha,.theme-beta) .takeaway-card-value{color:#fff !important}
+:is(.theme-taxonomy,.theme-functional,.theme-alpha,.theme-beta) .takeaway-card-rule{background:rgba(255,255,255,.2) !important}
+:is(.theme-taxonomy,.theme-functional,.theme-alpha,.theme-beta) .takeaway-card-detail,
+:is(.theme-taxonomy,.theme-functional,.theme-alpha,.theme-beta) .takeaway-card-detail :is(p,span,div,li,small,b,strong){color:rgba(255,255,255,.88) !important}
+:is(.theme-taxonomy,.theme-functional,.theme-alpha,.theme-beta) .takeaway-card-detail-label{color:rgba(255,255,255,.62) !important}
+:is(.theme-taxonomy,.theme-functional,.theme-alpha,.theme-beta) .takeaway-group-medians,
+:is(.theme-taxonomy,.theme-functional,.theme-alpha,.theme-beta) .takeaway-card-detail strong{color:#7FD6D0 !important;font-weight:800}
+:is(.theme-taxonomy,.theme-functional,.theme-alpha,.theme-beta) .takeaway-card li::marker{color:#7FD6D0}
+:is(.theme-taxonomy,.theme-functional,.theme-alpha,.theme-beta) .takeaway-panel :is(.functional-evidence-note,.taxonomy-note,.overall-evidence-note){background:rgba(255,255,255,.1) !important;border-left-color:#7FD6D0 !important}
+:is(.theme-taxonomy,.theme-functional,.theme-alpha,.theme-beta) .takeaway-panel :is(.functional-evidence-note,.taxonomy-note,.overall-evidence-note) *{color:rgba(255,255,255,.92) !important}
+/* 2 · Chart / result panels = white cards with teal top bar */
+:is(.theme-taxonomy,.theme-functional,.theme-alpha,.theme-beta) .released-panel{background:#fff !important;border-top:4px solid var(--brand-green) !important;padding:24px 28px 28px !important;margin-top:24px !important}
+:is(.theme-taxonomy,.theme-functional,.theme-alpha,.theme-beta) .released-head h3{font-size:1.3rem !important}
+/* 3 · Key observations = mint block with strong teal edge */
+
+:is(.theme-taxonomy,.theme-functional,.theme-alpha,.theme-beta) .chart-observations-head{color:var(--brand-green) !important}
+/* 4 · Details / accordions = grey rows with a teal marker, distinct from white cards */
+:is(.theme-taxonomy,.theme-functional,.theme-alpha,.theme-beta) .guided-anchor:not(.released-panel){margin-top:20px}
+:is(.theme-taxonomy,.theme-functional,.theme-alpha,.theme-beta) details.clinical-details,
+:is(.theme-taxonomy,.theme-functional,.theme-alpha,.theme-beta) .released-panel details,
+:is(.theme-taxonomy,.theme-functional,.theme-alpha,.theme-beta) .taxonomy-rank-charts > *{background:var(--fill-1) !important;border-left:4px solid var(--brand-green) !important}
+:is(.theme-taxonomy,.theme-functional,.theme-alpha,.theme-beta) :is(details.clinical-details,.released-panel details) summary{font-weight:800;color:var(--navy)}
+/* paired plot panels side by side with a gap */
+.theme-taxonomy .taxonomy-plot-pair{gap:24px !important;margin-top:24px}
+.theme-taxonomy .taxonomy-plot-pair .released-panel{margin-top:0 !important}
+/* Genus top-5 table section */
+.theme-taxonomy .genus-inspection-section{background:#fff;border-top:4px solid #0B5C8A;padding:24px 28px 28px;margin-top:4px}
+.theme-taxonomy .genus-inspection-section > h3{color:var(--navy);font-size:1.3rem}
+:is(.theme-taxonomy,.theme-functional,.theme-alpha,.theme-beta) .takeaway-panel .takeaway-card[class] .takeaway-card-value{color:#fff !important}
+:is(.theme-taxonomy,.theme-functional,.theme-alpha,.theme-beta) .takeaway-panel .takeaway-card[class] .takeaway-card-head b{color:#7FD6D0 !important}
+:is(.theme-taxonomy,.theme-functional,.theme-alpha,.theme-beta) .takeaway-panel .takeaway-card[class] .takeaway-card-icon{background:rgba(127,214,208,.18) !important;color:#7FD6D0 !important}
+:is(.theme-taxonomy,.theme-functional,.theme-alpha,.theme-beta) .takeaway-panel .takeaway-card[class] :is(.takeaway-card-detail,p,li,.takeaway-card-detail span){color:rgba(255,255,255,.88) !important}
+:is(.theme-taxonomy,.theme-functional,.theme-alpha,.theme-beta) .takeaway-panel .takeaway-card[class] :is(.takeaway-group-medians,strong:not(.takeaway-card-value)){color:#7FD6D0 !important}
+:is(.theme-alpha,.theme-beta) .released-panel > .guided-anchor,:is(.theme-alpha,.theme-beta) .released-panel details{margin-top:16px !important}
+:is(.theme-taxonomy,.theme-functional,.theme-alpha,.theme-beta) details.clinical-details > summary{padding-left:22px !important}
+/* ---- Round 11: Plot Flow — coloured stages ---- */
+.flow-tabs{gap:8px !important;padding-bottom:4px}
+.flow-tab,.flow-tab:first-child{background:#fff;border:0 !important;min-width:0 !important;padding:12px 20px !important;border-radius:0}
+.flow-tab::after{display:none !important}
+.flow-tab[aria-selected="true"]{background:var(--flow-accent) !important;color:#fff !important}
+.flow-tab[aria-selected="true"] :is(b,em,.flow-tab-icon){color:#fff !important}
+.flow-tab[aria-selected="true"] .flow-tab-icon .icon *{stroke:#fff !important}
+.flow-section-head{padding:6px 0 14px !important}
+.flow-board{gap:16px}
+.flow-row{grid-template-columns:40px minmax(170px,.9fr) minmax(0,1.35fr) 30px minmax(0,1fr) 30px minmax(0,1fr) !important;align-items:stretch !important;background:#fff !important;padding:20px 20px 20px 8px !important;border:0 !important}
+.flow-row .flow-step::after{display:none !important}
+.flow-summary-copy{padding:0 14px 0 6px}
+.flow-stage{align-self:stretch !important;padding:16px 16px !important;display:block}
+.flow-stage-label{margin-bottom:12px !important;font-size:.7rem !important;letter-spacing:.12em !important}
+.flow-input-stage{background:var(--fill-1)}
+.flow-input-stage .flow-stage-label{color:var(--navy) !important}
+.flow-analysis-stage{background:var(--brand-green) !important;color:#fff}
+.flow-analysis-stage *{color:#fff !important}
+.flow-analysis-stage svg *{stroke:#fff !important}
+.flow-output-stage{background:var(--navy) !important}
+.flow-output-stage *{color:#fff !important}
+.flow-output-stage .flow-stage-label{color:#7FD6D0 !important}
+.flow-stage code,.flow-stage [class*="file"],.flow-stage [class*="path"],.flow-stage .mono{font-size:.74rem !important;overflow-wrap:anywhere !important;word-break:break-all}
+.flow-arrow{align-self:center !important;justify-self:center}
+.flow-arrow svg{color:var(--brand-green) !important;stroke:var(--brand-green) !important}
+/* ---- Round 12: Overall summary ---- */
+.relationship-line{grid-template-columns:minmax(96px,.55fr) minmax(0,.9fr) minmax(0,1.25fr) !important}
+.relationship-node{white-space:normal !important;overflow:visible !important;text-overflow:clip !important;line-height:1.3}
+.relationship-line .relationship-node:last-child{color:var(--brand-green) !important;font-weight:800}
+.overall-card{display:flex;flex-direction:column}
+.overall-card > .overall-evidence-note{margin-top:auto !important}
+.overall-grid > .guided-anchor:nth-child(3) > .overall-card,.overall-grid > .guided-anchor:nth-child(4) > .overall-card{background:var(--fill-1) !important}
+.overall-grid > .guided-anchor:nth-child(3) .overall-evidence-note,.overall-grid > .guided-anchor:nth-child(4) .overall-evidence-note{background:#fff !important}
+.overall-card h3{font-size:.76rem !important;letter-spacing:.14em;text-transform:uppercase;color:var(--brand-green) !important}
+/* ---- Round 13: suggestions / metric guide / glossary colour ---- */
+.suggestion-decision-row > .suggestion-decision-stage:nth-child(3):not([data-tone="caution"]){background:var(--brand-green) !important}
+.suggestion-decision-row > .suggestion-decision-stage:nth-child(7):not([data-tone="caution"]){background:var(--navy) !important}
+.suggestion-decision-row > .suggestion-decision-stage:nth-child(3):not([data-tone="caution"]) *,.suggestion-decision-row > .suggestion-decision-stage:nth-child(7):not([data-tone="caution"]) *{color:#fff !important}
+.suggestion-decision-row > .suggestion-decision-stage:nth-child(3):not([data-tone="caution"]) .suggestion-decision-stage-label{color:#BFEDE9 !important}
+.suggestion-decision-row > .suggestion-decision-stage:nth-child(7):not([data-tone="caution"]) .suggestion-decision-stage-label{color:#7FD6D0 !important}
+.suggestion-decision-row > .suggestion-decision-stage:nth-child(7) .suggestion-outcomes li::marker{color:#7FD6D0}
+.metric-section{border-top:5px solid var(--brand-green) !important}
+.metric-section:nth-of-type(2){border-top-color:#0B5C8A !important}
+.metric-section:nth-of-type(3){border-top-color:var(--navy) !important}
+.metric-section:nth-of-type(4){border-top-color:#B26A00 !important}
+.metric-section:nth-of-type(5){border-top-color:#5B3FB5 !important}
+.metric-section h3{font-size:1.35rem !important}
+.metric-rule > b{color:var(--navy)}
+.term .t-tag{display:inline-block;margin-left:10px !important;padding:2px 10px;border-radius:999px;font-size:.66rem !important;font-weight:800 !important}
+.term .t-tag[data-c="0"]{background:#DDF1EF;color:#00605C !important}
+.term .t-tag[data-c="1"]{background:#DCE9F6;color:#0B4A73 !important}
+.term .t-tag[data-c="2"]{background:#E9E2F8;color:#4A3295 !important}
+.term .t-tag[data-c="3"]{background:#FFEBC8;color:#8A4A00 !important}
+.term .t-tag[data-c="4"]{background:#E0E6EE;color:#071B3A !important}
+.term .t-tag{width:fit-content !important;justify-self:start !important;margin-top:4px}
+/* Top-5 table: one sample per line with a mini bar */
+.sample-values{flex-direction:column !important;flex-wrap:nowrap !important;gap:3px !important}
+.sample-values i{display:flex !important;justify-content:space-between;gap:10px;width:100%;border:0 !important;border-radius:0 !important;padding:3px 8px !important;font-size:.76rem !important;background:linear-gradient(90deg,#BFE6E2 var(--v,0%),#F1F5F5 var(--v,0%)) !important;color:var(--navy) !important}
+.sample-values i em{font-style:normal;font-weight:600}
+.sample-values i u{text-decoration:none;font-weight:800;color:#00605C}
+/* ---- Round 14: phone / tablet fixes ---- */
+@media (max-width:900px){
+  .shell,.app.rail-collapsed .shell{grid-template-columns:1fr !important;margin-top:68px !important}
+  .main{grid-column:1 !important;padding:20px 18px 100px !important}
+  .rail{top:68px !important;width:min(320px,86vw) !important;height:calc(100vh - 68px) !important;transform:translateX(-104%);z-index:45;box-shadow:0 20px 50px rgba(7,27,58,.25)}
+  .app.rail-collapsed .rail{transform:translateX(-104%)}
+  .rail.open,.app.rail-collapsed .rail.open{transform:none !important}
+  .rail-edge-toggle{left:0 !important;top:84px !important}
+  .rail.open + .rail-edge-toggle{left:min(304px,calc(86vw - 16px)) !important}
+  .journey-hero{grid-template-columns:1fr !important;padding:24px !important}
+  .journey-flow{justify-content:flex-start !important}
+  .journey-flow span{white-space:normal !important}
+  .section-head{height:auto !important;padding:0 0 14px !important}
+  .section-head h1{max-width:100% !important;font-size:1.7rem}
+  .pipe-stepper-card{padding:18px 16px 18px !important}
+  .pipe-detail-in{grid-template-columns:1fr !important}
+  .pipe-text{padding:20px 16px !important}
+  .pipe-text .method-row{grid-template-columns:34px minmax(0,1fr) !important;padding:14px !important}
+  .pipe-text .method-row > span:last-child{grid-column:1 / -1}
+  .pipe-text .method-row .pipe-row-icon{grid-row:1 !important;grid-column:1 !important}
+  .pipe-text .method-row > b{grid-row:1;grid-column:2;align-self:center}
+  .main{padding-top:64px !important}
+  .handoff-grid{grid-template-columns:1fr !important}
+  .takeaway-panel{padding:22px 18px !important}
+  .takeaway-card-grid{grid-template-columns:1fr !important}
+  .takeaway-card + .takeaway-card{border-left:0 !important;padding-left:0 !important;border-top:1px solid rgba(255,255,255,.2) !important;padding-top:18px !important}
+  .released-panel{padding:18px 16px 20px !important}
+  .taxonomy-plot-pair{grid-template-columns:1fr !important}
+  .flow-row{grid-template-columns:1fr !important;gap:12px}
+  .flow-arrow{transform:rotate(90deg)}
+  .flow-tabs{flex-wrap:wrap}
+  .suggestion-decision-row{grid-template-columns:1fr !important}
+  .suggestion-decision-arrow{display:none}
+  .overall-grid{grid-template-columns:1fr !important}
+  .alpha-learning-shell{padding:16px !important}
+  .alpha-learning-shell::before{margin:-16px -16px 16px !important;padding:10px 16px !important;font-size:.66rem !important}
+}
+/* ---- Round 15: neatness pass (colour + alignment) ---- */
+.nav-item[data-nav-id="metrics"] b,.nav-item[data-nav-id="glossary"] b{color:var(--navy)}
+.nav-item[data-nav-id="metrics"] .n-ic,.nav-item[data-nav-id="glossary"] .n-ic{color:var(--muted)}
+.nav-item.on[data-nav-id] b,.nav-item.on[data-nav-id] .n-ic{color:var(--brand-green) !important}
+/* Start page cards: equal heights for the tag line, readable text */
+.journey .js-num{display:flex;align-items:center;min-height:26px;margin-bottom:6px}
+.journey .js-num:not(.is-start){padding-left:0}
+.journey .js-q{color:#3E4C56 !important;font-size:.92rem;min-height:2.6em}
+.journey .js-list li{color:var(--ink)}
+/* Overall: aligned details band, label columns, note spacing */
+.overall-detail-row .detail-grid{align-items:center}
+.overall-detail-row .detail-item{align-items:center;min-height:56px}
+.overall-detail-row .detail-item > :is(div,span){align-self:center}
+.relationship-line{grid-template-columns:118px minmax(0,1fr) minmax(0,1.2fr) !important}
+.relationship-line .relationship-node:first-child{white-space:nowrap !important}
+.overall-card > :nth-last-child(2):not(.overall-evidence-note){margin-bottom:20px}
+.overall-card > .overall-evidence-note,.overall-card .confidence-stats,.overall-card > .overall-evidence-note + *{margin-top:auto}
+.takeaway-card-head{min-height:56px;align-items:center}
+:is(.theme-taxonomy,.theme-functional,.theme-alpha,.theme-beta) .takeaway-card-value{margin-top:14px !important}
+:is(.theme-taxonomy,.theme-functional,.theme-alpha,.theme-beta) details.clinical-details{margin-top:20px}
+.supplement-visual-section{background:#fff !important;padding:24px 28px 28px !important;margin-top:20px !important;border-top:4px solid #0B5C8A !important;text-align:center}
+.supplement-visual-section::before{content:"How to read this chart";display:block;text-align:left;font-weight:800;font-size:1.25rem;color:var(--navy);margin-bottom:16px}
+.supplement-visual-section img{max-width:min(100%,760px);height:auto}
+/* ---- Round 16: suggestions polish ---- */
+.suggestion-outcomes{display:grid;gap:8px}
+.suggestion-outcome{background:rgba(255,255,255,.1) !important;border:0 !important;border-left:3px solid #7FD6D0 !important;padding:8px 12px !important;border-radius:0 !important;color:#fff !important}
+.suggestion-outcome *{color:#fff !important}
+.suggestion-outcome b{color:#7FD6D0 !important}
+.suggestion-outcome-dot{display:none !important}
+details.suggestion-evidence{background:var(--fill-1) !important;border-left:4px solid var(--brand-green) !important;margin-top:24px !important;padding:0 !important}
+details.suggestion-evidence > summary{padding:18px 22px !important}
+.suggestion-evidence-body{padding:6px 22px 24px !important}
+.suggestion-domain{background:#fff !important;border-top:4px solid var(--brand-green);padding:20px 22px !important;margin-top:14px}
+.suggestion-decision-stage .suggestion-outcomes .suggestion-outcome{background:rgba(255,255,255,.1) !important;border:0 !important;border-left:3px solid #7FD6D0 !important;border-radius:0 !important;color:#fff !important;box-shadow:none !important}
+.suggestion-decision-stage .suggestion-outcomes .suggestion-outcome span{color:#fff !important}
+.suggestion-decision-stage .suggestion-outcomes .suggestion-outcome b{color:#7FD6D0 !important}
+.suggestion-evidence-body .suggestion-domain{display:grid !important;grid-template-columns:200px minmax(0,1fr) 190px !important;column-gap:28px;align-items:start;background:#fff !important}
+.suggestion-evidence-body .suggestion-domain > button{justify-self:end}
+.suggestion-evidence-body{display:grid;gap:14px}
+.suggestion-domain-title{display:grid;gap:10px;align-content:start}
+.suggestion-domain-title .suggestion-status{justify-self:start}
+.suggestion-action-list{display:grid;gap:8px}
+.suggestion-decision-stage .suggestion-action-list > span{background:rgba(255,255,255,.1) !important;border:0 !important;border-left:3px solid #7FD6D0 !important;border-radius:0 !important;padding:9px 12px !important;color:#fff !important}
+.suggestion-decision-stage .suggestion-action-list > span *{color:#fff !important}
+.suggestion-decision-stage .suggestion-action-list > span b{color:#7FD6D0 !important}
+.metric-guide > .metric-section:first-of-type{border-top:5px solid var(--brand-green) !important}
+:is(.theme-taxonomy,.theme-functional,.theme-alpha,.theme-beta) details.clinical-details > summary{padding:18px 24px !important}
+:is(.theme-taxonomy,.theme-functional,.theme-alpha,.theme-beta) details.clinical-details[open] > .clinical-details-body,
+:is(.theme-taxonomy,.theme-functional,.theme-alpha,.theme-beta) details.clinical-details > .clinical-details-body{padding:4px 28px 28px 28px !important;background:transparent !important;border:0 !important}
+:is(.theme-alpha,.theme-beta) .clinical-details-body .alpha-advanced-section{margin-top:0}
+:is(.theme-alpha,.theme-beta) .clinical-details-body .alpha-advanced-section + .alpha-advanced-section{margin-top:26px;padding-top:24px}
+.content details.clinical-details.clinical-details[class] > summary{padding:18px 28px !important}
+.content .released-panel details.clinical-details.clinical-details[class] > summary{padding:16px 24px !important}
+/* ---- Round 17: readability / contrast fixes ---- */
+.alpha-self-card-head,.alpha-self-card-head *{text-shadow:none !important}
+.alpha-self-card-head b{color:#00605C !important}
+.alpha-self-card-head strong{color:var(--navy) !important}
+.alpha-self-card-head span,.alpha-self-card-head small{color:#3E4C56 !important}
+.alpha-self-mini-plot text{fill:#3E4C56 !important}
+.self-experiment-shell :is(.sample-num,.self-sample-num,[class*="badge"]){background:var(--fill-2) !important;color:#00605C !important}
+/* teal text on light fills: use the darker teal */
+.m-ref{color:#00605C !important}
+.overall-card h3,.relationship-line .relationship-node:last-child{color:#00605C !important}
+.pipe-text .p-tag{color:#00605C !important}
+/* muted small labels */
+.relationship-caption span,.variability-axis span,.relationship-caption,.variability-axis{color:#4D5D6C !important}
+/* labels on solid teal / amber blocks */
+.handoff-card b{color:#fff !important;opacity:.92}
+.suggestion-decision-row > .suggestion-decision-stage:nth-child(3):not([data-tone="caution"]) .suggestion-decision-stage-label{color:#fff !important}
+.suggestion-decision-stage[data-tone="decision"] .suggestion-decision-stage-label{color:#00605C !important}
+.suggestion-decision-stage[data-tone="caution"] .suggestion-decision-stage-label{color:#8A4A00 !important}
+.suggestion-decision-arrow{color:#4D5D6C !important}
+/* ---- Round 18: Key observations = label / finding rows, no side bar ---- */
+.chart-observations{background:transparent !important;border:0 !important;border-left:0 !important;border-top:2px solid var(--navy) !important;padding:16px 0 0 !important;margin-top:28px !important}
+.chart-observations-head h4{font-size:1.05rem !important;letter-spacing:0 !important;text-transform:none !important;color:var(--navy) !important}
+.chart-observations ol{margin-top:6px !important;gap:0 !important}
+.chart-observations li,.chart-observations li.obs-row{display:grid !important;grid-template-columns:190px minmax(0,1fr);column-gap:28px;padding:14px 0 !important;border-bottom:1px solid var(--line-2,#DDE6E6);counter-increment:none !important}
+.chart-observations li::before{display:none !important;content:none !important}
+.chart-observations li.obs-plain{grid-template-columns:1fr}
+.chart-observations .obs-k{color:#00605C;font-size:.78rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;line-height:1.5;padding-top:2px}
+.chart-observations .obs-v{color:var(--ink);font-size:.95rem;line-height:1.6;min-width:0}
+.chart-observations .chart-assessment-disclaimer,.chart-observations .taxonomy-pattern-disclaimer{margin-top:14px !important;padding:12px 16px !important;background:var(--fill-1) !important;border:0 !important;border-radius:0 !important;color:#3E4C56 !important;font-size:.82rem !important}
+@media (max-width:760px){.chart-observations li,.chart-observations li.obs-row{grid-template-columns:1fr;row-gap:4px}}
+/* ---- Round 19: no left-bar boxes anywhere; use plain tinted blocks ---- */
+.content .overall-evidence-note,.content .readbox,.content .limitbox,.content .functional-evidence-note,.content .functional-diff-method-note,.content .taxonomy-note,.content .self-experiment-note,.content .method-note{border-left:0 !important;border-radius:0 !important;padding:14px 18px !important;background:var(--fill-1) !important}
+.content .method-note{background:#FFF3DC !important}
+.content .functional-evidence-note{background:#FFF3DC !important}
+.takeaway-panel .functional-evidence-note{background:rgba(255,255,255,.1) !important}
+.alpha-learning-report-bridge{border-left:0 !important}
+.content details.clinical-details,.content details.suggestion-evidence,.content .taxonomy-rank-charts > *,.content .released-panel details{border-left:0 !important;background:var(--fill-1) !important}
+.content .suggestion-decision-stage .suggestion-outcomes .suggestion-outcome,.content .suggestion-decision-stage .suggestion-action-list > span{border-left:0 !important;padding:10px 14px !important}
+.content .suggestion-branch-head,.content .suggestion-branch{border-left:0 !important}
+.suggestion-branch-head{background:var(--brand-green) !important}
+.suggestion-branch[data-kind="unexpected"] .suggestion-branch-head{background:#A8611F !important}
+.suggestion-branch-head,.suggestion-branch-head *{color:#fff !important}
+.content .suggestion-branch{background:var(--fill-2) !important}
+.content .suggestion-branch[data-kind="unexpected"]{background:#FFF3DC !important}
+.content .suggestion-branch .suggestion-branch-head,.content .suggestion-branch .suggestion-branch-head :is(b,span,small,p,h4){color:#fff !important}
+@media (max-width:900px){
+  .gate{grid-template-columns:1fr}
+  .topbar-in{grid-template-columns:auto minmax(0,1fr) auto}
+}
 </style>
 </head>
 <body>
@@ -4024,6 +4827,11 @@ function commonHelpTerms(){
     {term:"reference database",tip:"A reference database is a library of known sequences used to assign names to detected reads."}
   ];
 }
+function obsItem(x){
+  var t=String(x==null?"":x),m=t.match(/^([^:.;]{3,42}):\s+([\s\S]+)$/);
+  if(m)return '<li class="obs-row"><b class="obs-k">'+esc(m[1])+'</b><span class="obs-v">'+helpCommon(m[2])+'</span></li>';
+  return '<li class="obs-row obs-plain"><span class="obs-v">'+helpCommon(t)+'</span></li>';
+}
 function helpCommon(text,extraTerms){
   return esc(text);
 }
@@ -4786,7 +5594,7 @@ function samplePatternCell(stat){
   var shownSamples=stat.samples.filter(function(s){return Math.round((Number(s.val)||0)*1000)/10>0;});
   if(!shownSamples.length)return '<span class="sample-cell empty"><strong>Not detected</strong></span>';
   return '<span class="sample-cell"><small class="sample-values">'+shownSamples.map(function(s){
-      return '<i class="'+(s.val>=0.01?'on':'')+'">'+esc(s.id)+' '+fmtPct(s.val,1)+'</i>';
+      return '<i class="'+(s.val>=0.01?'on':'')+'" style="--v:'+Math.max(4,Math.min(100,s.val/0.4*100)).toFixed(0)+'%"><em>'+esc(s.id)+'</em><u>'+fmtPct(s.val,1)+'</u></i>';
     }).join("")+'</small></span>';
 }
 function taxonomyPatternSummary(d,file){
@@ -6119,27 +6927,32 @@ function welcomeTopline(d){
   return "The groups look mostly descriptive rather than clearly separated. "+closest+" are most similar, while "+variable+" shows the most within-group variation.";
 }
 function microbiomePathwayMap(d){
-  var checkpoints=[
-    {id:"overall",n:"01",title:"Overall",sub:"Big picture",sec:"overall",ic:'<path d="M4 12a8 8 0 0 1 16 0"/><path d="M6 12h12"/><path d="M8 16h8"/><path d="M12 8v8"/>'},
-    {id:"taxonomy",n:"02",title:"Composition",sub:"Who is there",sec:"taxonomy",ic:'<circle cx="8" cy="8" r="3"/><circle cx="16" cy="9" r="2.5"/><circle cx="12" cy="16" r="3.5"/>'},
-    {id:"alpha",n:"03",title:"Diversity",sub:"Variety inside",sec:"alpha",ic:'<path d="M7 20V10"/><path d="M12 20V4"/><path d="M17 20v-7"/>'},
-    {id:"beta",n:"04",title:"Relationship",sub:"Group similarity",sec:"beta",ic:'<circle cx="7" cy="12" r="3"/><circle cx="17" cy="7" r="3"/><circle cx="17" cy="17" r="3"/><path d="M10 11l4-2M10 13l4 2"/>'},
-    {id:"functional",n:"05",title:"Function",sub:"Predicted activity",sec:"functional",ic:'<path d="M9 3h6M10 3v6l-4 8a3 3 0 0 0 2.7 4h6.6A3 3 0 0 0 18 17l-4-8V3"/><path d="M8 14h8"/>'}
+  var T="#007C78",T2="#7FC4BF",T3="#CFE8E5",N="#071B3A",A="#B26A1C",B="#2A6DB0",R="#C0455B";
+  var art={
+    overall:'<svg viewBox="0 0 200 120" aria-hidden="true"><rect x="6" y="6" width="188" height="108" rx="8" fill="#fff"/><circle cx="62" cy="62" r="26" fill="none" stroke="'+T3+'" stroke-width="14"/><path d="M62 36a26 26 0 0 1 24.7 18" fill="none" stroke="'+T+'" stroke-width="14"/><path d="M86.7 54A26 26 0 0 1 70 87" fill="none" stroke="'+B+'" stroke-width="14"/><rect x="108" y="38" width="62" height="8" rx="4" fill="'+T3+'"/><rect x="108" y="38" width="40" height="8" rx="4" fill="'+T+'"/><rect x="108" y="58" width="62" height="8" rx="4" fill="'+T3+'"/><rect x="108" y="58" width="52" height="8" rx="4" fill="'+N+'"/><rect x="108" y="78" width="62" height="8" rx="4" fill="'+T3+'"/><rect x="108" y="78" width="22" height="8" rx="4" fill="'+T2+'"/></svg>',
+    taxonomy:'<svg viewBox="0 0 200 120" aria-hidden="true"><rect x="6" y="6" width="188" height="108" rx="8" fill="#fff"/><g><rect x="30" y="30" width="140" height="12" rx="6" fill="'+T3+'"/><rect x="30" y="30" width="46" height="12" rx="6" fill="'+T+'"/><rect x="76" y="30" width="28" height="12" fill="'+B+'"/><rect x="104" y="30" width="22" height="12" fill="'+R+'"/><rect x="126" y="30" width="18" height="12" fill="'+A+'"/><rect x="144" y="30" width="26" height="12" rx="6" fill="#7B4FA0"/></g><g><rect x="30" y="52" width="140" height="12" rx="6" fill="'+T3+'"/><rect x="30" y="52" width="30" height="12" rx="6" fill="'+T+'"/><rect x="60" y="52" width="52" height="12" fill="'+B+'"/><rect x="112" y="52" width="16" height="12" fill="'+R+'"/><rect x="128" y="52" width="42" height="12" rx="6" fill="#7B4FA0"/></g><g><rect x="30" y="74" width="140" height="12" rx="6" fill="'+T3+'"/><rect x="30" y="74" width="60" height="12" rx="6" fill="'+T+'"/><rect x="90" y="74" width="20" height="12" fill="'+A+'"/><rect x="110" y="74" width="60" height="12" rx="6" fill="#7B4FA0"/></g></svg>',
+    alpha:'<svg viewBox="0 0 200 120" aria-hidden="true"><rect x="6" y="6" width="188" height="108" rx="8" fill="#fff"/><text x="30" y="34" font-size="9" fill="#52636D" font-family="Inter,sans-serif">Few types</text><circle cx="40" cy="50" r="7" fill="'+T+'"/><circle cx="58" cy="50" r="7" fill="'+T+'"/><circle cx="76" cy="50" r="7" fill="'+T+'"/><circle cx="94" cy="50" r="7" fill="'+B+'"/><text x="30" y="78" font-size="9" fill="#52636D" font-family="Inter,sans-serif">Many types</text><circle cx="40" cy="94" r="6" fill="'+T+'"/><circle cx="56" cy="94" r="6" fill="'+B+'"/><circle cx="72" cy="94" r="6" fill="'+A+'"/><circle cx="88" cy="94" r="6" fill="'+R+'"/><circle cx="104" cy="94" r="6" fill="#7B4FA0"/><circle cx="120" cy="94" r="6" fill="'+T2+'"/><circle cx="136" cy="94" r="6" fill="'+N+'"/><circle cx="152" cy="94" r="6" fill="#8C6A4F"/></svg>',
+    beta:'<svg viewBox="0 0 200 120" aria-hidden="true"><rect x="6" y="6" width="188" height="108" rx="8" fill="#fff"/><line x1="28" y1="92" x2="172" y2="92" stroke="'+T3+'"/><line x1="28" y1="28" x2="28" y2="92" stroke="'+T3+'"/><ellipse cx="68" cy="58" rx="28" ry="16" fill="'+T+'" fill-opacity=".14" stroke="'+T+'" stroke-dasharray="3 3" transform="rotate(-20 68 58)"/><ellipse cx="138" cy="68" rx="26" ry="15" fill="'+A+'" fill-opacity=".14" stroke="'+A+'" stroke-dasharray="3 3" transform="rotate(15 138 68)"/><circle cx="58" cy="58" r="4.5" fill="'+T+'"/><circle cx="72" cy="50" r="4.5" fill="'+T+'"/><circle cx="78" cy="64" r="4.5" fill="'+T+'"/><circle cx="130" cy="64" r="4.5" fill="'+A+'"/><circle cx="144" cy="72" r="4.5" fill="'+A+'"/><circle cx="150" cy="60" r="4.5" fill="'+A+'"/></svg>',
+    functional:'<svg viewBox="0 0 200 120" aria-hidden="true"><rect x="6" y="6" width="188" height="108" rx="8" fill="#fff"/><path d="M44 60h38M82 60l26-24M82 60l26 24M108 36h36M108 84h36M144 36l14 24M144 84l14-24" fill="none" stroke="'+T2+'" stroke-width="2.5"/><circle cx="44" cy="60" r="10" fill="'+N+'"/><circle cx="82" cy="60" r="9" fill="'+T+'"/><circle cx="108" cy="36" r="8" fill="'+B+'"/><circle cx="108" cy="84" r="8" fill="'+A+'"/><circle cx="144" cy="36" r="8" fill="'+T+'"/><circle cx="144" cy="84" r="8" fill="'+T+'"/><circle cx="160" cy="60" r="10" fill="'+T+'"/></svg>'
+  };
+  var steps=[
+    {id:"overall",n:"01",title:"Overall",q:"What is the big picture?",items:["Dominant microbes","How groups relate","How confident the data is"]},
+    {id:"taxonomy",n:"02",title:"Composition",q:"Who is there?",items:["Species and genus bars","Which taxa differ by group"]},
+    {id:"alpha",n:"03",title:"Diversity",q:"How varied is each sample?",items:["Richness and evenness","Shannon and Simpson"]},
+    {id:"beta",n:"04",title:"Relationship",q:"How similar are the groups?",items:["Distance between samples","PCoA map and statistics"]},
+    {id:"functional",n:"05",title:"Function",q:"What might they do?",items:["Predicted pathways","KO and EC features"]}
   ];
-  var pathD="M110 74 C310 8 500 22 650 76 C540 92 410 112 254 170 C80 230 150 350 430 330 C520 322 570 280 620 258 C700 222 705 330 750 358";
-  return '<div class="welcome-map-panel"><div class="welcome-map-head"><h2>Explore your Data</h2></div>'+
-    '<div class="pathway-stage">'+
-      '<svg class="pathway-svg" viewBox="0 0 900 390" aria-hidden="true"><defs>'+
-        '<mask id="path-mask-overall" maskUnits="userSpaceOnUse" x="0" y="0" width="900" height="390"><path d="'+pathD+'" pathLength="100" fill="none" stroke="#fff" stroke-width="62" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="2 100"/></mask>'+
-        '<mask id="path-mask-taxonomy" maskUnits="userSpaceOnUse" x="0" y="0" width="900" height="390"><path d="'+pathD+'" pathLength="100" fill="none" stroke="#fff" stroke-width="62" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="30.9 100"/></mask>'+
-        '<mask id="path-mask-alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="900" height="390"><path d="'+pathD+'" pathLength="100" fill="none" stroke="#fff" stroke-width="62" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="53.8 100"/></mask>'+
-        '<mask id="path-mask-beta" maskUnits="userSpaceOnUse" x="0" y="0" width="900" height="390"><path d="'+pathD+'" pathLength="100" fill="none" stroke="#fff" stroke-width="62" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="88.3 100"/></mask>'+
-        '<mask id="path-mask-functional" maskUnits="userSpaceOnUse" x="0" y="0" width="900" height="390"><path d="'+pathD+'" pathLength="100" fill="none" stroke="#fff" stroke-width="62" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="100 100"/></mask>'+
-      '</defs><path class="backbone" d="'+pathD+'"/><path class="inner" d="'+pathD+'"/><path class="progress-dots" data-cp="overall" d="'+pathD+'" mask="url(#path-mask-overall)"/><path class="progress-dots" data-cp="taxonomy" d="'+pathD+'" mask="url(#path-mask-taxonomy)"/><path class="progress-dots" data-cp="alpha" d="'+pathD+'" mask="url(#path-mask-alpha)"/><path class="progress-dots" data-cp="beta" d="'+pathD+'" mask="url(#path-mask-beta)"/><path class="progress-dots" data-cp="functional" d="'+pathD+'" mask="url(#path-mask-functional)"/><circle data-cp="overall" cx="110" cy="74" r="13"/><circle data-cp="taxonomy" cx="650" cy="76" r="13"/><circle data-cp="alpha" cx="254" cy="170" r="13"/><circle data-cp="beta" cx="620" cy="258" r="13"/><circle data-cp="functional" cx="750" cy="358" r="13"/></svg>'+
-      checkpoints.map(function(c){
-        return '<button class="pathway-checkpoint" data-cp="'+esc(c.id)+'" data-sec="'+esc(c.sec)+'" type="button" aria-label="Open '+esc(c.title)+' section"><span class="cp-num">'+svgIcon(c.ic)+'<span class="cp-index">'+esc(c.n)+'</span></span><span class="cp-copy"><b>'+esc(c.title)+'</b><span>'+esc(c.sub)+'</span></span></button>';
-      }).join("")+
-    '</div></div>';
+  var cards=steps.map(function(c,i){
+    return '<button class="pathway-checkpoint journey-step" data-cp="'+esc(c.id)+'" data-sec="'+esc(c.id)+'" type="button" aria-label="Open '+esc(c.title)+' section">'+
+      '<span class="js-art">'+art[c.id]+'</span>'+
+      '<span class="js-body"><span class="js-num">Step '+esc(c.n)+(i===0?' · Start here':'')+'</span><b>'+esc(c.title)+'</b><span class="js-q">'+esc(c.q)+'</span>'+
+      '<span class="js-list">'+c.items.map(function(t){return '<i>'+esc(t)+'</i>';}).join("")+'</span></span>'+
+      '<span class="js-go">Open <svg class="icon" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></button>'+(i<steps.length-1?'<span class="js-link" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>':'');
+  }).join("");
+  return '<div class="welcome-map-panel journey-panel">'+
+    '<div class="journey-hero"><div><span class="journey-kicker">Your report, step by step</span><h2>Explore your Data</h2><p>Follow the five steps below, from the overall picture to what the microbes may be doing. Each step opens a page with charts and plain-language explanations.</p></div>'+
+    '<div class="journey-flow" aria-hidden="true"><span>Sequencing reads</span><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg><span>Microbes identified</span><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg><span>Patterns &amp; meaning</span></div></div>'+
+    '<div class="journey">'+cards+'</div></div>';
 }
 function clinicalDetails(title,body){
   return '<details class="clinical-details"><summary>'+esc(title)+'</summary><div class="clinical-details-body">'+body+'</div></details>';
@@ -7932,7 +8745,7 @@ function taxonomyAllObservationInner(d){
   var items=taxonomyAllObservationItems(d);
   var hasAssessment=taxonomySpeciesBarEntries(d).length>0;
   var disclaimer=hasAssessment?'<p class="taxonomy-pattern-disclaimer"><b>This group-by-group visual assessment is descriptive.</b> For each taxon, we look for a consistent pattern: samples in one group remain higher while samples in another remain lower. Use the matching ALDEx2 result from the same database and taxonomic rank—not this visual screen—to determine statistical support.</p>':"";
-  return '<div class="chart-observations-head"><h4>Key observations</h4><button class="chart-observations-help" type="button" data-metric-guide-topic="Group-pattern assessment" aria-label="Open group-pattern assessment rules" title="Group-pattern assessment rules">?</button></div><ol>'+items.map(function(x){return '<li>'+helpCommon(x)+'</li>';}).join("")+'</ol>'+disclaimer;
+  return '<div class="chart-observations-head"><h4>Key observations</h4><button class="chart-observations-help" type="button" data-metric-guide-topic="Group-pattern assessment" aria-label="Open group-pattern assessment rules" title="Group-pattern assessment rules">?</button></div><ol>'+items.map(obsItem).join("")+'</ol>'+disclaimer;
 }
 function taxonomyRankChartSection(rank,groupType){
   var figs=taxonomyComparisonFiguresForRank(rank,groupType);
@@ -8205,7 +9018,7 @@ function chartObservationMarkup(kind,file,items){
     if(!/nsti|aldex2|volcano/.test(t))disclaimer='<p class="chart-assessment-disclaimer"><b>Note — how the largest shifts are determined:</b> The heatmap first selects up to 30 features with the greatest across-sample variance after CPM normalization. Among those displayed features, the portal calculates the mean predicted abundance within each selected metadata category, then subtracts the lowest category mean from the highest. Features outside the displayed subset are not used for this observation. This ranks descriptive magnitude only; ALDEx2 p-values and adjusted p-values/FDR are evaluated separately for statistical support.</p>';
   }
   var help=topic?'<button class="chart-observations-help" type="button" data-metric-guide-topic="'+esc(topic)+'" aria-label="Open '+esc(topic)+' rules" title="'+esc(topic)+' rules">?</button>':"";
-  return '<div class="chart-observations-head"><h4>Key observations</h4>'+help+'</div><ol>'+items.map(function(x){return '<li>'+helpCommon(x)+'</li>';}).join("")+'</ol>'+disclaimer;
+  return '<div class="chart-observations-head"><h4>Key observations</h4>'+help+'</div><ol>'+items.map(obsItem).join("")+'</ol>'+disclaimer;
 }
 function hydrateGenusInspectionPanels(){
   ["EMU","SILVA"].forEach(function(method){
@@ -9225,7 +10038,7 @@ function alphaViewSwitch(){
   return '<div class="alpha-view-bar"><div class="alpha-view-tabs" role="tablist" aria-label="Choose alpha-diversity view">'+
     '<button class="alpha-view-tab" type="button" role="tab" data-alpha-view="example" aria-controls="alpha-example-panel" aria-selected="'+(example?'true':'false')+'" tabindex="'+(example?'0':'-1')+'">Example</button>'+
     '<button class="alpha-view-tab" type="button" role="tab" data-alpha-view="report" aria-controls="alpha-report-panel" aria-selected="'+(!example?'true':'false')+'" tabindex="'+(!example?'0':'-1')+'">This report</button></div>'+
-    '<p class="alpha-view-hint">New to alpha diversity? Start with Example.</p></div>';
+    '<p class="alpha-view-hint">New to alpha diversity? <b>Start with Example.</b></p></div>';
 }
 function alphaLearningMetricOptions(d){
   var labels={shannon:"Shannon",simpson:"Simpson",observed:"Observed Features",faith:"Faith PD",pielou:"Pielou",rarefaction:"Sampling Depth"},seen={},options=[];
@@ -9671,7 +10484,7 @@ function betaViewSwitch(){
   return '<div class="alpha-view-bar"><div class="alpha-view-tabs" role="tablist" aria-label="Choose beta-diversity view">'+
     '<button class="alpha-view-tab" type="button" role="tab" data-beta-view="example" aria-controls="beta-example-panel" aria-selected="'+(example?'true':'false')+'" tabindex="'+(example?'0':'-1')+'">Example</button>'+
     '<button class="alpha-view-tab" type="button" role="tab" data-beta-view="report" aria-controls="beta-report-panel" aria-selected="'+(!example?'true':'false')+'" tabindex="'+(!example?'0':'-1')+'">This report</button></div>'+
-    '<p class="alpha-view-hint">New to beta diversity? Start with Example.</p></div>';
+    '<p class="alpha-view-hint">New to beta diversity? <b>Start with Example.</b></p></div>';
 }
 function betaLearningMetricOptions(d){
   var labels={bray:"Bray–Curtis",unweighted_unifrac:"Unweighted UniFrac",weighted_unifrac:"Weighted UniFrac"},seen={},options=[];
@@ -10186,7 +10999,7 @@ function secLearning(){
   var opts=LEARNING_TOPICS.map(function(t){
     return '<option value="'+esc(t.id)+'"'+(t.id===topic?' selected':'')+'>'+esc(t.label)+'</option>';
   }).join("");
-  var html='<section class="learning-shell guided-anchor" id="page-chart">'+
+  var html=head("Learning","Learning Cards","Slide-style guides to the methods behind your report. Pick a topic, then page through the cards.")+'<section class="learning-shell guided-anchor" id="page-chart">'+
     '<div class="learning-toolbar">'+
       '<div class="learning-topic-control"><label for="learning-topic">Topic</label><select id="learning-topic" aria-label="Learning card topic" data-learning-topic>'+opts+'</select></div>'+
     '</div>'+
@@ -10383,6 +11196,7 @@ var METRIC_GUIDE=[
   {metric:"PERMDISP",rule:"Green: PERMDISP p >= 0.05, so category spread is not flagged by this check; Red: PERMDISP p < 0.05 or missing when needed for a supported claim.",note:"Dispersion matters because PERMANOVA can be affected when one category is much more spread out than another. If dispersion is flagged, the apparent category difference may partly reflect unequal within-category variability rather than a clean centroid shift."}
  ]},
  {section:"Predicted functions",intro:"How function-prediction support is interpreted.",rules:[
+ {metric:"PICRUSt2 predictions",rule:"Features are predicted from the 16S marker-gene profile and reference genomes; they are not measured gene activity. Heatmaps rank the 30 most variable features across samples; the largest shift is the highest group mean minus the lowest group mean.",note:"Treat visible differences as leads. Use the matching ALDEx2 result (FDR-adjusted) to judge statistical support, and check NSTI for how well reference genomes cover your samples."},
  {metric:"NSTI",rule:"Green: mean NSTI < 0.10, good reference support; Red: mean NSTI >= 0.10, weak/moderate support, or NSTI missing.",note:"Lower NSTI means the observed organisms have closer reference genomes for prediction. If NSTI support is weak, do not treat predicted function differences as strong experimental evidence."},
  {metric:"Pathway features",rule:"Number of predicted pathway-level functions available in the report.",note:"More features means more predicted output to explore, not necessarily stronger biology. Use pathway changes to prioritize follow-up hypotheses, not to claim measured pathway activity."},
  {metric:"EC features",rule:"Number of predicted enzyme-function features available in the report.",note:"EC predictions are hypotheses and should be confirmed with direct methods when important. A predicted enzyme-function difference does not prove that the enzyme is active in the samples."},
@@ -10572,7 +11386,7 @@ function glossaryFilteredTerms(active,q){
 }
 function termList(list){
   if(!list.length)return '<p style="padding:16px 0;color:var(--muted)">No terms match that search.</p>';
-  return list.map(function(x){return '<button class="term" type="button" data-glossary-detail="'+esc(x.t)+'" aria-label="Open glossary detail for '+esc(x.t)+'"><b>'+esc(x.t)+'</b><span class="t-tag">'+esc(x.tag)+'</span><span class="term-desc">'+esc(x.d)+'</span><span class="gloss-book" aria-hidden="true">'+svgIcon('<path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v16H7a3 3 0 0 0-3 3z"/><path d="M4 5.5V22"/><path d="M8 7h8M8 11h8"/>')+'</span></button>';}).join("");
+  return list.map(function(x){return '<button class="term" type="button" data-glossary-detail="'+esc(x.t)+'" aria-label="Open glossary detail for '+esc(x.t)+'"><b>'+esc(x.t)+'</b><span class="t-tag" data-c="'+(String(x.tag).split("").reduce(function(a,c){return a+c.charCodeAt(0);},0)%5)+'">'+esc(x.tag)+'</span><span class="term-desc">'+esc(x.d)+'</span><span class="gloss-book" aria-hidden="true">'+svgIcon('<path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v16H7a3 3 0 0 0-3 3z"/><path d="M4 5.5V22"/><path d="M8 7h8M8 11h8"/>')+'</span></button>';}).join("");
 }
 function glossaryMatches(q){
   q=String(q||"").trim().toLowerCase();
